@@ -1,0 +1,3 @@
+execute from docs directory!
+   sphinx-apidoc -f -o source ../src/
+   make html

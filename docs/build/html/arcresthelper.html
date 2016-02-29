@@ -1,0 +1,722 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>arcresthelper package &mdash; atlantis 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="atlantis 1 documentation" href="index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">atlantis 1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="arcresthelper-package">
+<h1>arcresthelper package<a class="headerlink" href="#arcresthelper-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="arcresthelper.packages.html">arcresthelper.packages package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="arcresthelper.packages.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arcresthelper.packages.html#arcresthelper-packages-six-module">arcresthelper.packages.six module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arcresthelper.packages.html#module-arcresthelper.packages">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-arcresthelper.common">
+<span id="arcresthelper-common-module"></span><h2>arcresthelper.common module<a class="headerlink" href="#module-arcresthelper.common" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="arcresthelper.common.ArcRestHelperError">
+<em class="property">exception </em><code class="descclassname">arcresthelper.common.</code><code class="descname">ArcRestHelperError</code><a class="headerlink" href="#arcresthelper.common.ArcRestHelperError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></p>
+<p>raised when error occurs in utility module functions</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="arcresthelper.common.Tee">
+<em class="property">class </em><code class="descclassname">arcresthelper.common.</code><code class="descname">Tee</code><span class="sig-paren">(</span><em>*files</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.common.Tee" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Combines standard output with a file for logging</p>
+<dl class="method">
+<dt id="arcresthelper.common.Tee.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.common.Tee.write" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="arcresthelper.common.chunklist">
+<code class="descclassname">arcresthelper.common.</code><code class="descname">chunklist</code><span class="sig-paren">(</span><em>l</em>, <em>n</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.common.chunklist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Yield successive n-sized chunks from l .</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="arcresthelper.common.close_log">
+<code class="descclassname">arcresthelper.common.</code><code class="descname">close_log</code><span class="sig-paren">(</span><em>log_file</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.common.close_log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="arcresthelper.common.find_replace">
+<code class="descclassname">arcresthelper.common.</code><code class="descname">find_replace</code><span class="sig-paren">(</span><em>obj</em>, <em>find</em>, <em>replace</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.common.find_replace" title="Permalink to this definition">¶</a></dt>
+<dd><p>searchs an object and does a find and replace</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="arcresthelper.common.find_replace_string">
+<code class="descclassname">arcresthelper.common.</code><code class="descname">find_replace_string</code><span class="sig-paren">(</span><em>obj</em>, <em>find</em>, <em>replace</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.common.find_replace_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="arcresthelper.common.getLayerIndex">
+<code class="descclassname">arcresthelper.common.</code><code class="descname">getLayerIndex</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.common.getLayerIndex" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="arcresthelper.common.getLayerName">
+<code class="descclassname">arcresthelper.common.</code><code class="descname">getLayerName</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.common.getLayerName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="arcresthelper.common.init_config_json">
+<code class="descclassname">arcresthelper.common.</code><code class="descname">init_config_json</code><span class="sig-paren">(</span><em>config_file</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.common.init_config_json" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="arcresthelper.common.init_log">
+<code class="descclassname">arcresthelper.common.</code><code class="descname">init_log</code><span class="sig-paren">(</span><em>log_file</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.common.init_log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="arcresthelper.common.is_number">
+<code class="descclassname">arcresthelper.common.</code><code class="descname">is_number</code><span class="sig-paren">(</span><em>s</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.common.is_number" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="arcresthelper.common.local_time_to_online">
+<code class="descclassname">arcresthelper.common.</code><code class="descname">local_time_to_online</code><span class="sig-paren">(</span><em>dt=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.common.local_time_to_online" title="Permalink to this definition">¶</a></dt>
+<dd><p>converts datetime object to a UTC timestamp for AGOL
+Inputs:</p>
+<blockquote>
+<div>dt - datetime object</div></blockquote>
+<dl class="docutils">
+<dt>Output:</dt>
+<dd>Long value</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="arcresthelper.common.merge_dicts">
+<code class="descclassname">arcresthelper.common.</code><code class="descname">merge_dicts</code><span class="sig-paren">(</span><em>dicts</em>, <em>op=&lt;built-in function add&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.common.merge_dicts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="arcresthelper.common.noneToValue">
+<code class="descclassname">arcresthelper.common.</code><code class="descname">noneToValue</code><span class="sig-paren">(</span><em>value</em>, <em>newValue</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.common.noneToValue" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="arcresthelper.common.online_time_to_string">
+<code class="descclassname">arcresthelper.common.</code><code class="descname">online_time_to_string</code><span class="sig-paren">(</span><em>value</em>, <em>timeFormat</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.common.online_time_to_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a timestamp to date/time string
+Inputs:</p>
+<blockquote>
+<div>value - timestamp as long
+timeFormat - output date/time format</div></blockquote>
+<dl class="docutils">
+<dt>Output:</dt>
+<dd>string</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="arcresthelper.common.random_int_generator">
+<code class="descclassname">arcresthelper.common.</code><code class="descname">random_int_generator</code><span class="sig-paren">(</span><em>maxrange</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.common.random_int_generator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="arcresthelper.common.random_string_generator">
+<code class="descclassname">arcresthelper.common.</code><code class="descname">random_string_generator</code><span class="sig-paren">(</span><em>size=6</em>, <em>chars='ABCDEFGHIJKLMNOPQRSTUVWXYZ'</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.common.random_string_generator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="arcresthelper.common.trace">
+<code class="descclassname">arcresthelper.common.</code><code class="descname">trace</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.common.trace" title="Permalink to this definition">¶</a></dt>
+<dd><p>trace finds the line, the filename
+and error message and returns it
+to the user</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="arcresthelper.common.unicode_convert">
+<code class="descclassname">arcresthelper.common.</code><code class="descname">unicode_convert</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.common.unicode_convert" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="arcresthelper.common.write_config_json">
+<code class="descclassname">arcresthelper.common.</code><code class="descname">write_config_json</code><span class="sig-paren">(</span><em>config_file</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.common.write_config_json" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-arcresthelper.featureservicetools">
+<span id="arcresthelper-featureservicetools-module"></span><h2>arcresthelper.featureservicetools module<a class="headerlink" href="#module-arcresthelper.featureservicetools" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arcresthelper.featureservicetools.featureservicetools">
+<em class="property">class </em><code class="descclassname">arcresthelper.featureservicetools.</code><code class="descname">featureservicetools</code><span class="sig-paren">(</span><em>securityinfo</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.featureservicetools.featureservicetools" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#arcresthelper.securityhandlerhelper.securityhandlerhelper" title="arcresthelper.securityhandlerhelper.securityhandlerhelper"><code class="xref py py-class docutils literal"><span class="pre">arcresthelper.securityhandlerhelper.securityhandlerhelper</span></code></a></p>
+<dl class="method">
+<dt id="arcresthelper.featureservicetools.featureservicetools.AddFeaturesToFeatureLayer">
+<code class="descname">AddFeaturesToFeatureLayer</code><span class="sig-paren">(</span><em>url</em>, <em>pathToFeatureClass</em>, <em>chunksize=0</em>, <em>lowerCaseFieldNames=False</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.featureservicetools.featureservicetools.AddFeaturesToFeatureLayer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="arcresthelper.featureservicetools.featureservicetools.DeleteFeaturesFromFeatureLayer">
+<code class="descname">DeleteFeaturesFromFeatureLayer</code><span class="sig-paren">(</span><em>url</em>, <em>sql</em>, <em>chunksize=0</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.featureservicetools.featureservicetools.DeleteFeaturesFromFeatureLayer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="arcresthelper.featureservicetools.featureservicetools.EnableEditingOnService">
+<code class="descname">EnableEditingOnService</code><span class="sig-paren">(</span><em>url</em>, <em>definition=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.featureservicetools.featureservicetools.EnableEditingOnService" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="arcresthelper.featureservicetools.featureservicetools.GetFeatureService">
+<code class="descname">GetFeatureService</code><span class="sig-paren">(</span><em>itemId</em>, <em>returnURLOnly=False</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.featureservicetools.featureservicetools.GetFeatureService" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="arcresthelper.featureservicetools.featureservicetools.GetLayerFromFeatureService">
+<code class="descname">GetLayerFromFeatureService</code><span class="sig-paren">(</span><em>fs</em>, <em>layerName=''</em>, <em>returnURLOnly=False</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.featureservicetools.featureservicetools.GetLayerFromFeatureService" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="arcresthelper.featureservicetools.featureservicetools.GetLayerFromFeatureServiceByURL">
+<code class="descname">GetLayerFromFeatureServiceByURL</code><span class="sig-paren">(</span><em>url</em>, <em>layerName=''</em>, <em>returnURLOnly=False</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.featureservicetools.featureservicetools.GetLayerFromFeatureServiceByURL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="arcresthelper.featureservicetools.featureservicetools.QueryAllFeatures">
+<code class="descname">QueryAllFeatures</code><span class="sig-paren">(</span><em>url</em>, <em>sql</em>, <em>out_fields='*'</em>, <em>chunksize=1000</em>, <em>saveLocation=''</em>, <em>outName=''</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.featureservicetools.featureservicetools.QueryAllFeatures" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="arcresthelper.featureservicetools.featureservicetools.RemoveAndAddFeatures">
+<code class="descname">RemoveAndAddFeatures</code><span class="sig-paren">(</span><em>url</em>, <em>pathToFeatureClass</em>, <em>id_field</em>, <em>chunksize=1000</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.featureservicetools.featureservicetools.RemoveAndAddFeatures" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="arcresthelper.featureservicetools.featureservicetools.disableSync">
+<code class="descname">disableSync</code><span class="sig-paren">(</span><em>url</em>, <em>definition=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.featureservicetools.featureservicetools.disableSync" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="arcresthelper.featureservicetools.trace">
+<code class="descclassname">arcresthelper.featureservicetools.</code><code class="descname">trace</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.featureservicetools.trace" title="Permalink to this definition">¶</a></dt>
+<dd><p>trace finds the line, the filename
+and error message and returns it
+to the user</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-arcresthelper.featureservicetoolsPrettify">
+<span id="arcresthelper-featureservicetoolsprettify-module"></span><h2>arcresthelper.featureservicetoolsPrettify module<a class="headerlink" href="#module-arcresthelper.featureservicetoolsPrettify" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arcresthelper.featureservicetoolsPrettify.featureservicetools">
+<em class="property">class </em><code class="descclassname">arcresthelper.featureservicetoolsPrettify.</code><code class="descname">featureservicetools</code><span class="sig-paren">(</span><em>securityinfo</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.featureservicetoolsPrettify.featureservicetools" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#arcresthelper.securityhandlerhelper.securityhandlerhelper" title="arcresthelper.securityhandlerhelper.securityhandlerhelper"><code class="xref py py-class docutils literal"><span class="pre">arcresthelper.securityhandlerhelper.securityhandlerhelper</span></code></a></p>
+<dl class="method">
+<dt id="arcresthelper.featureservicetoolsPrettify.featureservicetools.AddFeaturesToFeatureLayer">
+<code class="descname">AddFeaturesToFeatureLayer</code><span class="sig-paren">(</span><em>url</em>, <em>pathToFeatureClass</em>, <em>chunksize=0</em>, <em>lowerCaseFieldNames=False</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.featureservicetoolsPrettify.featureservicetools.AddFeaturesToFeatureLayer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="arcresthelper.featureservicetoolsPrettify.featureservicetools.DeleteFeaturesFromFeatureLayer">
+<code class="descname">DeleteFeaturesFromFeatureLayer</code><span class="sig-paren">(</span><em>url</em>, <em>sql</em>, <em>chunksize=0</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.featureservicetoolsPrettify.featureservicetools.DeleteFeaturesFromFeatureLayer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="arcresthelper.featureservicetoolsPrettify.featureservicetools.EnableEditingOnService">
+<code class="descname">EnableEditingOnService</code><span class="sig-paren">(</span><em>url</em>, <em>definition=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.featureservicetoolsPrettify.featureservicetools.EnableEditingOnService" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="arcresthelper.featureservicetoolsPrettify.featureservicetools.GetFeatureService">
+<code class="descname">GetFeatureService</code><span class="sig-paren">(</span><em>itemId</em>, <em>returnURLOnly=False</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.featureservicetoolsPrettify.featureservicetools.GetFeatureService" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="arcresthelper.featureservicetoolsPrettify.featureservicetools.GetLayerFromFeatureService">
+<code class="descname">GetLayerFromFeatureService</code><span class="sig-paren">(</span><em>fs</em>, <em>layerName=''</em>, <em>returnURLOnly=False</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.featureservicetoolsPrettify.featureservicetools.GetLayerFromFeatureService" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="arcresthelper.featureservicetoolsPrettify.featureservicetools.GetLayerFromFeatureServiceByURL">
+<code class="descname">GetLayerFromFeatureServiceByURL</code><span class="sig-paren">(</span><em>url</em>, <em>layerName=''</em>, <em>returnURLOnly=False</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.featureservicetoolsPrettify.featureservicetools.GetLayerFromFeatureServiceByURL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="arcresthelper.featureservicetoolsPrettify.featureservicetools.QueryAllFeatures">
+<code class="descname">QueryAllFeatures</code><span class="sig-paren">(</span><em>url</em>, <em>sql</em>, <em>out_fields='*'</em>, <em>chunksize=1000</em>, <em>saveLocation=''</em>, <em>outName=''</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.featureservicetoolsPrettify.featureservicetools.QueryAllFeatures" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="arcresthelper.featureservicetoolsPrettify.featureservicetools.RemoveAndAddFeatures">
+<code class="descname">RemoveAndAddFeatures</code><span class="sig-paren">(</span><em>url</em>, <em>pathToFeatureClass</em>, <em>id_field</em>, <em>chunksize=1000</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.featureservicetoolsPrettify.featureservicetools.RemoveAndAddFeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>removes features from a feature service and appends the features from a feature class</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>url</strong> (<em>str</em>) &#8211; The URL of the feature service.</li>
+<li><strong>pathToFeatureClass</strong> (<em>str</em>) &#8211; The absolute path to the feature class.</li>
+<li><strong>id_field</strong> (<em>str</em>) &#8211; Field name used for chunking.</li>
+<li><strong>chunksize</strong> (<em>Optional [int]</em>) &#8211; Chunking value to divide input feature class in parts.
+Defaults to 1000.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-exc docutils literal"><span class="pre">ArcRestHelperError</span></code> &#8211;
+If <code class="docutils literal"><span class="pre">arcpy</span></code> not found, FC does not exist, or field does not exist.</li>
+<li><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> &#8211;
+If chunksize is &lt; 1 or is not an integer.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://services.arcgis.com/&lt;random&gt;/arcgis/rest/services/test/FeatureServer/x&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fst</span><span class="o">.</span><span class="n">RemoveAndAddFeatures</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;C:/test.gdb/x&quot;</span><span class="p">,</span> <span class="s2">&quot;PARCELID&quot;</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="arcresthelper.featureservicetoolsPrettify.featureservicetools.disableSync">
+<code class="descname">disableSync</code><span class="sig-paren">(</span><em>url</em>, <em>definition=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.featureservicetoolsPrettify.featureservicetools.disableSync" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="arcresthelper.featureservicetoolsPrettify.trace">
+<code class="descclassname">arcresthelper.featureservicetoolsPrettify.</code><code class="descname">trace</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.featureservicetoolsPrettify.trace" title="Permalink to this definition">¶</a></dt>
+<dd><p>trace finds the line, the filename
+and error message and returns it
+to the user</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-arcresthelper.orgtools">
+<span id="arcresthelper-orgtools-module"></span><h2>arcresthelper.orgtools module<a class="headerlink" href="#module-arcresthelper.orgtools" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arcresthelper.orgtools.orgtools">
+<em class="property">class </em><code class="descclassname">arcresthelper.orgtools.</code><code class="descname">orgtools</code><span class="sig-paren">(</span><em>securityinfo</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.orgtools.orgtools" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#arcresthelper.securityhandlerhelper.securityhandlerhelper" title="arcresthelper.securityhandlerhelper.securityhandlerhelper"><code class="xref py py-class docutils literal"><span class="pre">arcresthelper.securityhandlerhelper.securityhandlerhelper</span></code></a></p>
+<dl class="method">
+<dt id="arcresthelper.orgtools.orgtools.createGroup">
+<code class="descname">createGroup</code><span class="sig-paren">(</span><em>title</em>, <em>tags</em>, <em>description=''</em>, <em>snippet=''</em>, <em>phone=''</em>, <em>access='org'</em>, <em>sortField='title'</em>, <em>sortOrder='asc'</em>, <em>isViewOnly=False</em>, <em>isInvitationOnly=False</em>, <em>thumbnail=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.orgtools.orgtools.createGroup" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="arcresthelper.orgtools.orgtools.createRole">
+<code class="descname">createRole</code><span class="sig-paren">(</span><em>name</em>, <em>description=''</em>, <em>privileges=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.orgtools.orgtools.createRole" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="arcresthelper.orgtools.orgtools.getGroupContent">
+<code class="descname">getGroupContent</code><span class="sig-paren">(</span><em>groupName</em>, <em>onlyInOrg</em>, <em>onlyInUser</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.orgtools.orgtools.getGroupContent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="arcresthelper.orgtools.orgtools.getGroupContentItems">
+<code class="descname">getGroupContentItems</code><span class="sig-paren">(</span><em>groupName</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.orgtools.orgtools.getGroupContentItems" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="arcresthelper.orgtools.orgtools.getThumbnailForItem">
+<code class="descname">getThumbnailForItem</code><span class="sig-paren">(</span><em>itemId</em>, <em>fileName</em>, <em>filePath</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.orgtools.orgtools.getThumbnailForItem" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="arcresthelper.orgtools.orgtools.shareItemsToGroup">
+<code class="descname">shareItemsToGroup</code><span class="sig-paren">(</span><em>shareToGroupName</em>, <em>items=None</em>, <em>groups=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.orgtools.orgtools.shareItemsToGroup" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="arcresthelper.orgtools.trace">
+<code class="descclassname">arcresthelper.orgtools.</code><code class="descname">trace</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.orgtools.trace" title="Permalink to this definition">¶</a></dt>
+<dd><p>trace finds the line, the filename
+and error message and returns it
+to the user</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-arcresthelper.portalautomation">
+<span id="arcresthelper-portalautomation-module"></span><h2>arcresthelper.portalautomation module<a class="headerlink" href="#module-arcresthelper.portalautomation" title="Permalink to this headline">¶</a></h2>
+<p>&#64;author: ArcGIS for Utilities
+&#64;contact: <a class="reference external" href="mailto:ArcGISTeamUtilities&#37;&#52;&#48;esri&#46;com">ArcGISTeamUtilities<span>&#64;</span>esri<span>&#46;</span>com</a>
+&#64;company: Esri
+&#64;version: 1.2
+&#64;description: Used to create reports, maps and apps
+&#64;requirements: Python 2.7.x, ArcGIS 10.2
+&#64;copyright: Esri, 2015</p>
+<dl class="class">
+<dt id="arcresthelper.portalautomation.portalautomation">
+<em class="property">class </em><code class="descclassname">arcresthelper.portalautomation.</code><code class="descname">portalautomation</code><span class="sig-paren">(</span><em>securityinfo</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.portalautomation.portalautomation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#arcresthelper.securityhandlerhelper.securityhandlerhelper" title="arcresthelper.securityhandlerhelper.securityhandlerhelper"><code class="xref py py-class docutils literal"><span class="pre">arcresthelper.securityhandlerhelper.securityhandlerhelper</span></code></a></p>
+<dl class="method">
+<dt id="arcresthelper.portalautomation.portalautomation.createGroups">
+<code class="descname">createGroups</code><span class="sig-paren">(</span><em>configFiles</em>, <em>dateTimeFormat=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.portalautomation.portalautomation.createGroups" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="arcresthelper.portalautomation.portalautomation.createRoles">
+<code class="descname">createRoles</code><span class="sig-paren">(</span><em>configFiles</em>, <em>dateTimeFormat=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.portalautomation.portalautomation.createRoles" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="arcresthelper.portalautomation.portalautomation.publishfromconfig">
+<code class="descname">publishfromconfig</code><span class="sig-paren">(</span><em>configFiles</em>, <em>combinedApp=None</em>, <em>dateTimeFormat=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.portalautomation.portalautomation.publishfromconfig" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="arcresthelper.portalautomation.portalautomation.setLog">
+<code class="descname">setLog</code><span class="sig-paren">(</span><em>log_file</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.portalautomation.portalautomation.setLog" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="arcresthelper.portalautomation.portalautomation.stageContent">
+<code class="descname">stageContent</code><span class="sig-paren">(</span><em>configFiles</em>, <em>dateTimeFormat=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.portalautomation.portalautomation.stageContent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="arcresthelper.portalautomation.trace">
+<code class="descclassname">arcresthelper.portalautomation.</code><code class="descname">trace</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.portalautomation.trace" title="Permalink to this definition">¶</a></dt>
+<dd><p>trace finds the line, the filename
+and error message and returns it
+to the user</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-arcresthelper.publishingtools">
+<span id="arcresthelper-publishingtools-module"></span><h2>arcresthelper.publishingtools module<a class="headerlink" href="#module-arcresthelper.publishingtools" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="arcresthelper.publishingtools.lineno">
+<code class="descclassname">arcresthelper.publishingtools.</code><code class="descname">lineno</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.publishingtools.lineno" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current line number in our program.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="arcresthelper.publishingtools.publishingtools">
+<em class="property">class </em><code class="descclassname">arcresthelper.publishingtools.</code><code class="descname">publishingtools</code><span class="sig-paren">(</span><em>securityinfo</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.publishingtools.publishingtools" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#arcresthelper.securityhandlerhelper.securityhandlerhelper" title="arcresthelper.securityhandlerhelper.securityhandlerhelper"><code class="xref py py-class docutils literal"><span class="pre">arcresthelper.securityhandlerhelper.securityhandlerhelper</span></code></a></p>
+<dl class="method">
+<dt id="arcresthelper.publishingtools.publishingtools.folderExist">
+<code class="descname">folderExist</code><span class="sig-paren">(</span><em>name</em>, <em>folders</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.publishingtools.publishingtools.folderExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines if a folder exist</p>
+<dl class="docutils">
+<dt>Inputs:</dt>
+<dd>name - the name of the folder
+folders - list of folders</dd>
+<dt>Output:</dt>
+<dd>boolean - true/false if the folder exist</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="arcresthelper.publishingtools.publishingtools.getItem">
+<code class="descname">getItem</code><span class="sig-paren">(</span><em>userContent</em>, <em>title=None</em>, <em>name=None</em>, <em>itemType=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.publishingtools.publishingtools.getItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function retrieves the item ID if the item exist</p>
+<dl class="docutils">
+<dt>Inputs:</dt>
+<dd><blockquote class="first">
+<div>name - the name of the item</div></blockquote>
+<p class="last">userContent - a list of user contnet</p>
+</dd>
+<dt>Output:</dt>
+<dd>string - ID of item, none if item does not exist</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="arcresthelper.publishingtools.publishingtools.getItemID">
+<code class="descname">getItemID</code><span class="sig-paren">(</span><em>userContent</em>, <em>title=None</em>, <em>name=None</em>, <em>itemType=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.publishingtools.publishingtools.getItemID" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function retrieves the item ID if the item exist</p>
+<dl class="docutils">
+<dt>Inputs:</dt>
+<dd><blockquote class="first">
+<div>name - the name of the item</div></blockquote>
+<p class="last">userContent - a list of user contnet</p>
+</dd>
+<dt>Output:</dt>
+<dd>string - ID of item, none if item does not exist</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="arcresthelper.publishingtools.publishingtools.publishApp">
+<code class="descname">publishApp</code><span class="sig-paren">(</span><em>app_info</em>, <em>map_info=None</em>, <em>fsInfo=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.publishingtools.publishingtools.publishApp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="arcresthelper.publishingtools.publishingtools.publishCombinedWebMap">
+<code class="descname">publishCombinedWebMap</code><span class="sig-paren">(</span><em>maps_info</em>, <em>webmaps</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.publishingtools.publishingtools.publishCombinedWebMap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="arcresthelper.publishingtools.publishingtools.publishFeatureCollections">
+<code class="descname">publishFeatureCollections</code><span class="sig-paren">(</span><em>configs</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.publishingtools.publishingtools.publishFeatureCollections" title="Permalink to this definition">¶</a></dt>
+<dd><p>publishs a feature service from a mxd
+Inputs:</p>
+<blockquote>
+<div>feature_service_config: Json file with list of feature service publishing details</div></blockquote>
+<dl class="docutils">
+<dt>Output:</dt>
+<dd>feature service item information</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="arcresthelper.publishingtools.publishingtools.publishFsFromMXD">
+<code class="descname">publishFsFromMXD</code><span class="sig-paren">(</span><em>fs_config</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.publishingtools.publishingtools.publishFsFromMXD" title="Permalink to this definition">¶</a></dt>
+<dd><p>publishs a feature service from a mxd
+Inputs:</p>
+<blockquote>
+<div>feature_service_config: Json file with list of feature service publishing details</div></blockquote>
+<dl class="docutils">
+<dt>Output:</dt>
+<dd>feature service item information</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="arcresthelper.publishingtools.publishingtools.publishItems">
+<code class="descname">publishItems</code><span class="sig-paren">(</span><em>items_info</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.publishingtools.publishingtools.publishItems" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="arcresthelper.publishingtools.publishingtools.publishMap">
+<code class="descname">publishMap</code><span class="sig-paren">(</span><em>maps_info</em>, <em>fsInfo=None</em>, <em>itInfo=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.publishingtools.publishingtools.publishMap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="arcresthelper.publishingtools.publishingtools.updateFeatureService">
+<code class="descname">updateFeatureService</code><span class="sig-paren">(</span><em>efs_config</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.publishingtools.publishingtools.updateFeatureService" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="arcresthelper.publishingtools.trace">
+<code class="descclassname">arcresthelper.publishingtools.</code><code class="descname">trace</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.publishingtools.trace" title="Permalink to this definition">¶</a></dt>
+<dd><p>trace finds the line, the filename
+and error message and returns it
+to the user</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-arcresthelper.resettools">
+<span id="arcresthelper-resettools-module"></span><h2>arcresthelper.resettools module<a class="headerlink" href="#module-arcresthelper.resettools" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="arcresthelper.resettools.resetTools">
+<em class="property">class </em><code class="descclassname">arcresthelper.resettools.</code><code class="descname">resetTools</code><span class="sig-paren">(</span><em>securityinfo</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.resettools.resetTools" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#arcresthelper.securityhandlerhelper.securityhandlerhelper" title="arcresthelper.securityhandlerhelper.securityhandlerhelper"><code class="xref py py-class docutils literal"><span class="pre">arcresthelper.securityhandlerhelper.securityhandlerhelper</span></code></a></p>
+<dl class="method">
+<dt id="arcresthelper.resettools.resetTools.removeUserData">
+<code class="descname">removeUserData</code><span class="sig-paren">(</span><em>users=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.resettools.resetTools.removeUserData" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function deletes content for the list of users,
+if no users are specified, all users in the org are queried
+and their content is deleted.</p>
+<p>Inputs:
+users - Comma delimited list of user names</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="arcresthelper.resettools.resetTools.removeUserGroups">
+<code class="descname">removeUserGroups</code><span class="sig-paren">(</span><em>users=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.resettools.resetTools.removeUserGroups" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function deletes all groups for the list of users,
+if no users are specified, all users in the org are queried
+and their groups is deleted.</p>
+<p>Inputs:
+users - Comma delimted list of user names</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="arcresthelper.resettools.trace">
+<code class="descclassname">arcresthelper.resettools.</code><code class="descname">trace</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.resettools.trace" title="Permalink to this definition">¶</a></dt>
+<dd><p>trace finds the line, the filename
+and error message and returns it
+to the user</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-arcresthelper.securityhandlerhelper">
+<span id="arcresthelper-securityhandlerhelper-module"></span><h2>arcresthelper.securityhandlerhelper module<a class="headerlink" href="#module-arcresthelper.securityhandlerhelper" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="arcresthelper.securityhandlerhelper.lineno">
+<code class="descclassname">arcresthelper.securityhandlerhelper.</code><code class="descname">lineno</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.securityhandlerhelper.lineno" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current line number in our program.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="arcresthelper.securityhandlerhelper.securityhandlerhelper">
+<em class="property">class </em><code class="descclassname">arcresthelper.securityhandlerhelper.</code><code class="descname">securityhandlerhelper</code><span class="sig-paren">(</span><em>securityinfo</em><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.securityhandlerhelper.securityhandlerhelper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>A number of different security handlers are suppoted by ArcGIS, this
+function simplifies the creation of the handlers.  A dict with the
+type of handler and information to created it is required to generate
+the handlers</p>
+<dl class="method">
+<dt id="arcresthelper.securityhandlerhelper.securityhandlerhelper.dispose">
+<code class="descname">dispose</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.securityhandlerhelper.securityhandlerhelper.dispose" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="arcresthelper.securityhandlerhelper.securityhandlerhelper.message">
+<code class="descname">message</code><a class="headerlink" href="#arcresthelper.securityhandlerhelper.securityhandlerhelper.message" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns any messages</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="arcresthelper.securityhandlerhelper.securityhandlerhelper.securityhandler">
+<code class="descname">securityhandler</code><a class="headerlink" href="#arcresthelper.securityhandlerhelper.securityhandlerhelper.securityhandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns the security hanlder</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="arcresthelper.securityhandlerhelper.securityhandlerhelper.valid">
+<code class="descname">valid</code><a class="headerlink" href="#arcresthelper.securityhandlerhelper.securityhandlerhelper.valid" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns boolean wether handler is valid</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="arcresthelper.securityhandlerhelper.trace">
+<code class="descclassname">arcresthelper.securityhandlerhelper.</code><code class="descname">trace</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcresthelper.securityhandlerhelper.trace" title="Permalink to this definition">¶</a></dt>
+<dd><p>trace finds the line, the filename
+and error message and returns it
+to the user</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-arcresthelper">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-arcresthelper" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">arcresthelper package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-arcresthelper.common">arcresthelper.common module</a></li>
+<li><a class="reference internal" href="#module-arcresthelper.featureservicetools">arcresthelper.featureservicetools module</a></li>
+<li><a class="reference internal" href="#module-arcresthelper.featureservicetoolsPrettify">arcresthelper.featureservicetoolsPrettify module</a></li>
+<li><a class="reference internal" href="#module-arcresthelper.orgtools">arcresthelper.orgtools module</a></li>
+<li><a class="reference internal" href="#module-arcresthelper.portalautomation">arcresthelper.portalautomation module</a></li>
+<li><a class="reference internal" href="#module-arcresthelper.publishingtools">arcresthelper.publishingtools module</a></li>
+<li><a class="reference internal" href="#module-arcresthelper.resettools">arcresthelper.resettools module</a></li>
+<li><a class="reference internal" href="#module-arcresthelper.securityhandlerhelper">arcresthelper.securityhandlerhelper module</a></li>
+<li><a class="reference internal" href="#module-arcresthelper">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/arcresthelper.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">atlantis 1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2016, p.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
+    </div>
+  </body>
+</html>
