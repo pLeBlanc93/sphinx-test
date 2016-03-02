@@ -27,14 +27,6 @@ arcresthelper.featureservicetools module
     :undoc-members:
     :show-inheritance:
 
-arcresthelper.featureservicetoolsPrettify module
-------------------------------------------------
-
-.. automodule:: arcresthelper.featureservicetoolsPrettify
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 arcresthelper.orgtools module
 -----------------------------
 

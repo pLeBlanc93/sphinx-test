@@ -6,4 +6,3 @@ src
 
    arcrest
    arcresthelper
-   example_google

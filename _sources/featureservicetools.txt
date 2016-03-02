@@ -1,7 +1,0 @@
-featureservicetools module
-==========================
-
-.. automodule:: featureservicetools
-    :members:
-    :undoc-members:
-    :show-inheritance:
