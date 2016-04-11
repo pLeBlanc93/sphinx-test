@@ -848,7 +848,7 @@ if <code class="docutils literal"><span class="pre">arcpy</span></code> can&#821
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>title</strong> (<a class="reference external" href="https://docs.python.org/3.4/library/stdtypes.html#str" title="(in Python v3.4)"><em>str</em></a>) &#8211; The name of the new group, limited to 250 characters.</li>
 <li><strong>tags</strong> (<a class="reference external" href="https://docs.python.org/3.4/library/stdtypes.html#str" title="(in Python v3.4)"><em>str</em></a>) &#8211; A comma delimited list of tag names.</li>
 <li><strong>description</strong> (<a class="reference external" href="https://docs.python.org/3.4/library/stdtypes.html#str" title="(in Python v3.4)"><em>str</em></a>) &#8211; A description of the group that can be any length.</li>
@@ -862,6 +862,11 @@ Defaults to <code class="docutils literal"><span class="pre">&quot;&quot;</span>
 <li><strong>isInvitationOnly</strong> (<a class="reference external" href="https://docs.python.org/3.4/library/functions.html#bool" title="(in Python v3.4)"><em>bool</em></a>) &#8211; A boolean value to not accept join requests. Defaults to <code class="docutils literal"><span class="pre">False</span></code>.</li>
 <li><strong>thumbnail</strong> (<a class="reference external" href="https://docs.python.org/3.4/library/stdtypes.html#str" title="(in Python v3.4)"><em>str</em></a>) &#8211; The full pathname to the group thumbnail to upload. Defaults to <code class="docutils literal"><span class="pre">None</span></code>.</li>
 </ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><p>If sucessful, the result from <code class="xref py py-func docutils literal"><span class="pre">arcrest.manageorg._community.Community.createGroup()</span></code>.</p>
+<p>If the group already exists or there is an error, <code class="docutils literal"><span class="pre">None</span></code> is returned.</p>
+</p>
 </td>
 </tr>
 </tbody>
@@ -886,15 +891,32 @@ Defaults to <code class="docutils literal"><span class="pre">&quot;&quot;</span>
 </tr>
 </tbody>
 </table>
-<p>Notes: The following are valid values:</p>
-<blockquote>
-<div><code class="docutils literal"><span class="pre">access</span></code></div></blockquote>
 </dd></dl>
 
 <dl class="method">
 <dt id="arcresthelper.orgtools.orgtools.createRole">
 <code class="descname">createRole</code><span class="sig-paren">(</span><em>name</em>, <em>description=''</em>, <em>privileges=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcresthelper/orgtools.html#orgtools.createRole"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcresthelper.orgtools.orgtools.createRole" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Creates a new role.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3.4/library/stdtypes.html#str" title="(in Python v3.4)"><em>str</em></a>) &#8211; The name of the new role.</li>
+<li><strong>description</strong> (<a class="reference external" href="https://docs.python.org/3.4/library/stdtypes.html#str" title="(in Python v3.4)"><em>str</em></a>) &#8211; The description of the new role. Defaults to <code class="docutils literal"><span class="pre">&quot;&quot;</span></code>.</li>
+<li><strong>privileges</strong> (<a class="reference external" href="https://docs.python.org/3.4/library/stdtypes.html#str" title="(in Python v3.4)"><em>str</em></a>) &#8211; A comma delimited list of privileges to apply to the new role.
+Defaults to <code class="docutils literal"><span class="pre">None</span></code>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><p>If <code class="docutils literal"><span class="pre">privileges</span></code> is <code class="docutils literal"><span class="pre">None</span></code>, the result from <code class="xref py py-func docutils literal"><span class="pre">arcrest.manageorg._portals.Portal.createRole()</span></code>.</p>
+<p>If <code class="docutils literal"><span class="pre">privileges</span></code> were succesfully added, the result from <code class="xref py py-func docutils literal"><span class="pre">arcrest.manageorg._portals.Roles.setPrivileges()</span></code>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="arcresthelper.orgtools.orgtools.getGroupContent">
@@ -937,7 +959,7 @@ credentials. Defaults to <code class="docutils literal"><span class="pre">False<
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>groupName</strong> (<a class="reference external" href="https://docs.python.org/3.4/library/stdtypes.html#list" title="(in Python v3.4)"><em>list</em></a>) &#8211; The name of the group(s) from which to get items.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list of <a href="#id1"><span class="problematic" id="id2">`items :py:class:`arcrest.manageorg._content.UserItem`_</span></a> belonging to the group(s).</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list of items belonging to the group(s).</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.4/library/stdtypes.html#list" title="(in Python v3.4)">list</a></td>
 </tr>
@@ -945,7 +967,7 @@ credentials. Defaults to <code class="docutils literal"><span class="pre">False<
 </table>
 <div class="admonition-notes admonition">
 <p class="first admonition-title">Notes</p>
-<p class="last">If you want to get items from a single group, <code class="docutils literal"><span class="pre">groupName</span></code> can be passed as a <code class="docutils literal"><span class="pre">str</span></code>.</p>
+<p class="last">If you want to get items from a single group, <code class="docutils literal"><span class="pre">groupName</span></code> can be passed as a <a class="reference external" href="https://docs.python.org/3.4/library/stdtypes.html#str" title="(in Python v3.4)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>.</p>
 </div>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>

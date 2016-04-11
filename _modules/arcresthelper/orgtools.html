@@ -181,9 +181,9 @@
 <span class="sd">        Args:</span>
 <span class="sd">            groupName (list): The name of the group(s) from which to get items.</span>
 <span class="sd">        Returns:</span>
-<span class="sd">            list: A list of `items :py:class:`arcrest.manageorg._content.UserItem`_ belonging to the group(s).</span>
+<span class="sd">            list: A list of items belonging to the group(s).</span>
 <span class="sd">        Notes:</span>
-<span class="sd">            If you want to get items from a single group, ``groupName`` can be passed as a ``str``.</span>
+<span class="sd">            If you want to get items from a single group, ``groupName`` can be passed as a :py:obj:`str`.</span>
 <span class="sd">        See Also:</span>
 <span class="sd">            :py:func:`getGroupContent` for retrieving all content, not just items.</span>
 <span class="sd">        </span>
@@ -363,6 +363,10 @@
 <span class="sd">            isViewOnly (bool): A boolean value to create a view-only group with no sharing. Defaults to ``False``.</span>
 <span class="sd">            isInvitationOnly (bool): A boolean value to not accept join requests. Defaults to ``False``.</span>
 <span class="sd">            thumbnail (str): The full pathname to the group thumbnail to upload. Defaults to ``None``.</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            If sucessful, the result from :py:func:`arcrest.manageorg._community.Community.createGroup`.</span>
+<span class="sd">            </span>
+<span class="sd">            If the group already exists or there is an error, ``None`` is returned.</span>
 <span class="sd">            </span>
 <span class="sd">        ===============     ====================================================</span>
 <span class="sd">        **Parameter**        **Possible Values**</span>
@@ -372,13 +376,7 @@
 <span class="sd">        sortField           title | owner | avgrating | numviews | created | modified</span>
 <span class="sd">        ---------------     ----------------------------------------------------</span>
 <span class="sd">        sortOrder           asc | desc</span>
-<span class="sd">        ===============     ====================================================</span>
-<span class="sd">            </span>
-<span class="sd">        Notes: The following are valid values:</span>
-<span class="sd">        </span>
-<span class="sd">            ``access``</span>
-<span class="sd">            </span>
-<span class="sd">            </span>
+<span class="sd">        ===============     ==================================================== </span>
 <span class="sd">            </span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">admin</span> <span class="o">=</span> <span class="bp">None</span>
@@ -427,10 +425,20 @@
 
             <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span></div>
     <span class="c1">#----------------------------------------------------------------------</span>
-<div class="viewcode-block" id="orgtools.createRole"><a class="viewcode-back" href="../../arcresthelper.html#arcresthelper.orgtools.orgtools.createRole">[docs]</a>    <span class="k">def</span> <span class="nf">createRole</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
-                    <span class="n">name</span><span class="p">,</span>
-                    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-                    <span class="n">privileges</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="orgtools.createRole"><a class="viewcode-back" href="../../arcresthelper.html#arcresthelper.orgtools.orgtools.createRole">[docs]</a>    <span class="k">def</span> <span class="nf">createRole</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">privileges</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Creates a new role.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            name (str): The name of the new role.</span>
+<span class="sd">            description (str): The description of the new role. Defaults to ``&quot;&quot;``.</span>
+<span class="sd">            privileges (str): A comma delimited list of privileges to apply to the new role.</span>
+<span class="sd">                Defaults to ``None``.</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            If ``privileges`` is ``None``, the result from :py:func:`arcrest.manageorg._portals.Portal.createRole`.</span>
+<span class="sd">            </span>
+<span class="sd">            If ``privileges`` were succesfully added, the result from :py:func:`arcrest.manageorg._portals.Roles.setPrivileges`.</span>
+<span class="sd">            </span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">admin</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="n">portal</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="n">setPrivResults</span> <span class="o">=</span> <span class="bp">None</span>

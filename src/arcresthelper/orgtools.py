@@ -132,9 +132,9 @@ class orgtools(securityhandlerhelper):
         Args:
             groupName (list): The name of the group(s) from which to get items.
         Returns:
-            list: A list of `items :py:class:`arcrest.manageorg._content.UserItem`_ belonging to the group(s).
+            list: A list of items belonging to the group(s).
         Notes:
-            If you want to get items from a single group, ``groupName`` can be passed as a ``str``.
+            If you want to get items from a single group, ``groupName`` can be passed as a :py:obj:`str`.
         See Also:
             :py:func:`getGroupContent` for retrieving all content, not just items.
         
@@ -314,6 +314,10 @@ class orgtools(securityhandlerhelper):
             isViewOnly (bool): A boolean value to create a view-only group with no sharing. Defaults to ``False``.
             isInvitationOnly (bool): A boolean value to not accept join requests. Defaults to ``False``.
             thumbnail (str): The full pathname to the group thumbnail to upload. Defaults to ``None``.
+        Returns:
+            If sucessful, the result from :py:func:`arcrest.manageorg._community.Community.createGroup`.
+            
+            If the group already exists or there is an error, ``None`` is returned.
             
         ===============     ====================================================
         **Parameter**        **Possible Values**
@@ -323,13 +327,7 @@ class orgtools(securityhandlerhelper):
         sortField           title | owner | avgrating | numviews | created | modified
         ---------------     ----------------------------------------------------
         sortOrder           asc | desc
-        ===============     ====================================================
-            
-        Notes: The following are valid values:
-        
-            ``access``
-            
-            
+        ===============     ==================================================== 
             
         """
         admin = None
@@ -378,10 +376,20 @@ class orgtools(securityhandlerhelper):
 
             gc.collect()
     #----------------------------------------------------------------------
-    def createRole(self,
-                    name,
-                    description="",
-                    privileges=None):
+    def createRole(self, name, description="", privileges=None):
+        """Creates a new role.
+        
+        Args:
+            name (str): The name of the new role.
+            description (str): The description of the new role. Defaults to ``""``.
+            privileges (str): A comma delimited list of privileges to apply to the new role.
+                Defaults to ``None``.
+        Returns:
+            If ``privileges`` is ``None``, the result from :py:func:`arcrest.manageorg._portals.Portal.createRole`.
+            
+            If ``privileges`` were succesfully added, the result from :py:func:`arcrest.manageorg._portals.Roles.setPrivileges`.
+            
+        """
         admin = None
         portal = None
         setPrivResults = None
