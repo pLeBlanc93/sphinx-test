@@ -48,8 +48,10 @@
             
   <h1>Source code for arcresthelper.resettools</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>
 
-<span class="kn">from</span> <span class="nn">securityhandlerhelper</span> <span class="kn">import</span> <span class="n">securityhandlerhelper</span>
+
+<span class="kn">from</span> <span class="nn">.securityhandlerhelper</span> <span class="kn">import</span> <span class="n">securityhandlerhelper</span>
 
 <span class="n">dateTimeFormat</span> <span class="o">=</span> <span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M&#39;</span>
 <span class="kn">import</span> <span class="nn">arcrest</span>
@@ -59,7 +61,7 @@
 <span class="kn">import</span> <span class="nn">datetime</span><span class="o">,</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">common</span> 
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">common</span>
 <span class="kn">import</span> <span class="nn">gc</span>
 
 <span class="c1">#----------------------------------------------------------------------</span>
@@ -69,7 +71,7 @@
 <span class="sd">        and error message and returns it</span>
 <span class="sd">        to the user</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">import</span> <span class="nn">traceback</span><span class="o">,</span> <span class="nn">inspect</span><span class="o">,</span> <span class="nn">sys</span> 
+    <span class="kn">import</span> <span class="nn">traceback</span><span class="o">,</span> <span class="nn">inspect</span><span class="o">,</span> <span class="nn">sys</span>
     <span class="n">tb</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span>
     <span class="n">tbinfo</span> <span class="o">=</span> <span class="n">traceback</span><span class="o">.</span><span class="n">format_tb</span><span class="p">(</span><span class="n">tb</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">filename</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getfile</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">currentframe</span><span class="p">())</span>
@@ -81,19 +83,19 @@
     <span class="k">return</span> <span class="n">line</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">synerror</span></div>
 
 <div class="viewcode-block" id="resetTools"><a class="viewcode-back" href="../../arcresthelper.html#arcresthelper.resettools.resetTools">[docs]</a><span class="k">class</span> <span class="nc">resetTools</span><span class="p">(</span><span class="n">securityhandlerhelper</span><span class="p">):</span>
-  
+
     <span class="c1">#----------------------------------------------------------------------</span>
 <div class="viewcode-block" id="resetTools.removeUserData"><a class="viewcode-back" href="../../arcresthelper.html#arcresthelper.resettools.resetTools.removeUserData">[docs]</a>    <span class="k">def</span> <span class="nf">removeUserData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">users</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            This function deletes content for the list of users,</span>
 <span class="sd">            if no users are specified, all users in the org are queried</span>
 <span class="sd">            and their content is deleted.</span>
-<span class="sd">    </span>
+
 <span class="sd">            Inputs:</span>
 <span class="sd">            users - Comma delimited list of user names</span>
-<span class="sd">            </span>
-<span class="sd">        &quot;&quot;&quot;</span>          
-        
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="n">admin</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="n">portal</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="n">user</span> <span class="o">=</span> <span class="bp">None</span>
@@ -110,22 +112,22 @@
                 <span class="n">commUsers</span> <span class="o">=</span> <span class="n">admin</span><span class="o">.</span><span class="n">portals</span><span class="o">.</span><span class="n">portalSelf</span><span class="o">.</span><span class="n">users</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
                 <span class="n">commUsers</span> <span class="o">=</span> <span class="n">commUsers</span><span class="p">[</span><span class="s1">&#39;users&#39;</span><span class="p">]</span>
                 <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">commUsers</span><span class="p">:</span>
-                    <span class="n">usersObj</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">userContent</span><span class="p">)</span>            
+                    <span class="n">usersObj</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">userContent</span><span class="p">)</span>
                 <span class="k">return</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">usersObj</span> <span class="o">=</span> <span class="p">[]</span>
                 <span class="n">userStr</span> <span class="o">=</span> <span class="n">users</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
                 <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">userStr</span><span class="p">:</span>
-                    <span class="k">try</span><span class="p">:</span>                    
+                    <span class="k">try</span><span class="p">:</span>
                         <span class="n">user</span> <span class="o">=</span> <span class="n">admin</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">user</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">user</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
                         <span class="n">usersObj</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
                     <span class="k">except</span><span class="p">:</span>
                         <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> does not exist&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">user</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
-                    
+
             <span class="k">if</span> <span class="n">usersObj</span><span class="p">:</span>
                 <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">usersObj</span><span class="p">:</span>
                     <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;Loading content for user: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
-                     
+
                     <span class="n">itemsToDel</span> <span class="o">=</span> <span class="p">[]</span>
                     <span class="k">for</span> <span class="n">userItem</span> <span class="ow">in</span> <span class="n">user</span><span class="o">.</span><span class="n">items</span><span class="p">:</span>
                         <span class="n">itemsToDel</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">userItem</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
@@ -140,9 +142,9 @@
                                     <span class="n">itemsToDel</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">userItem</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
                                 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">itemsToDel</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
                                     <span class="k">print</span> <span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">deleteItems</span><span class="p">(</span><span class="n">items</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">itemsToDel</span><span class="p">)))</span>
-    
+
                                 <span class="k">print</span> <span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">deleteFolder</span><span class="p">())</span>
-       
+
         <span class="k">except</span><span class="p">:</span>
             <span class="n">line</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">synerror</span> <span class="o">=</span> <span class="n">trace</span><span class="p">()</span>
             <span class="k">raise</span> <span class="n">common</span><span class="o">.</span><span class="n">ArcRestHelperError</span><span class="p">({</span>
@@ -180,11 +182,11 @@
 <span class="sd">            This function deletes all groups for the list of users,</span>
 <span class="sd">            if no users are specified, all users in the org are queried</span>
 <span class="sd">            and their groups is deleted.</span>
-<span class="sd">    </span>
+
 <span class="sd">            Inputs:</span>
 <span class="sd">            users - Comma delimted list of user names</span>
-<span class="sd">            </span>
-<span class="sd">            &quot;&quot;&quot;</span>        
+
+<span class="sd">            &quot;&quot;&quot;</span>
         <span class="n">admin</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="n">userCommunity</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="n">portal</span> <span class="o">=</span> <span class="bp">None</span>
@@ -193,28 +195,28 @@
         <span class="n">userCommData</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="n">group</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="k">try</span><span class="p">:</span>
-           
+
             <span class="n">admin</span> <span class="o">=</span> <span class="n">arcrest</span><span class="o">.</span><span class="n">manageorg</span><span class="o">.</span><span class="n">Administration</span><span class="p">(</span><span class="n">securityHandler</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_securityHandler</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">users</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
                 <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;You have selected to remove all users groups, you must modify the code to do this&quot;</span><span class="p">)</span>
                 <span class="n">usersObj</span> <span class="o">=</span> <span class="p">[]</span>
                 <span class="n">commUsers</span> <span class="o">=</span> <span class="n">admin</span><span class="o">.</span><span class="n">portals</span><span class="o">.</span><span class="n">portalSelf</span><span class="o">.</span><span class="n">users</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
                 <span class="n">usersObj</span> <span class="o">=</span> <span class="n">commUsers</span><span class="p">[</span><span class="s1">&#39;users&#39;</span><span class="p">]</span>
-            
+
                 <span class="k">return</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">usersObj</span> <span class="o">=</span> <span class="p">[]</span>
                 <span class="n">userStr</span> <span class="o">=</span> <span class="n">users</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
                 <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">userStr</span><span class="p">:</span>
-                    <span class="k">try</span><span class="p">:</span>   
+                    <span class="k">try</span><span class="p">:</span>
                         <span class="n">user</span> <span class="o">=</span> <span class="n">admin</span><span class="o">.</span><span class="n">community</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">user</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">user</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
                         <span class="n">usersObj</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
                     <span class="k">except</span><span class="p">:</span>
-                        <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> does not exist&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">user</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>                    
+                        <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> does not exist&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">user</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
             <span class="k">if</span> <span class="n">usersObj</span><span class="p">:</span>
                 <span class="k">for</span> <span class="n">userCommData</span> <span class="ow">in</span> <span class="n">usersObj</span><span class="p">:</span>
                     <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;Loading groups for user: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">userCommData</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
-                     
+
                     <span class="k">if</span> <span class="n">userCommData</span><span class="o">.</span><span class="n">groups</span><span class="p">:</span>
                         <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">userCommData</span><span class="o">.</span><span class="n">groups</span><span class="p">:</span>
                             <span class="n">groupObj</span> <span class="o">=</span> <span class="n">admin</span><span class="o">.</span><span class="n">community</span><span class="o">.</span><span class="n">groups</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="n">groupId</span><span class="o">=</span><span class="n">group</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])</span>
@@ -222,8 +224,6 @@
                                 <span class="k">print</span> <span class="p">(</span><span class="n">groupObj</span><span class="o">.</span><span class="n">delete</span><span class="p">())</span>
                     <span class="k">else</span><span class="p">:</span>
                         <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;No Groups Found&quot;</span><span class="p">)</span>
-
-       
         <span class="k">except</span><span class="p">:</span>
             <span class="n">line</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">synerror</span> <span class="o">=</span> <span class="n">trace</span><span class="p">()</span>
             <span class="k">raise</span> <span class="n">common</span><span class="o">.</span><span class="n">ArcRestHelperError</span><span class="p">({</span>

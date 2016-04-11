@@ -49,14 +49,15 @@
   <h1>Source code for arcresthelper.publishingtools</h1><div class="highlight"><pre>
 <span></span>
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>
 
-<span class="kn">from</span> <span class="nn">securityhandlerhelper</span> <span class="kn">import</span> <span class="n">securityhandlerhelper</span>
+<span class="kn">from</span> <span class="nn">.securityhandlerhelper</span> <span class="kn">import</span> <span class="n">securityhandlerhelper</span>
 <span class="kn">import</span> <span class="nn">re</span> <span class="kn">as</span> <span class="nn">re</span>
 
 <span class="n">dateTimeFormat</span> <span class="o">=</span> <span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M&#39;</span>
 <span class="kn">import</span> <span class="nn">arcrest</span>
 
-<span class="kn">import</span> <span class="nn">arcresthelper.featureservicetools</span> <span class="kn">as</span> <span class="nn">featureservicetools</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">featureservicetools</span> <span class="k">as</span> <span class="n">featureservicetools</span>
 
 <span class="kn">from</span> <span class="nn">arcrest.hostedservice</span> <span class="kn">import</span> <span class="n">AdminFeatureService</span>
 <span class="kn">import</span> <span class="nn">datetime</span><span class="o">,</span> <span class="nn">time</span>
@@ -66,7 +67,7 @@
 <span class="kn">import</span> <span class="nn">gc</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 
-<span class="kn">from</span> <span class="nn">packages.six.moves</span> <span class="kn">import</span> <span class="n">urllib_parse</span> <span class="k">as</span> <span class="n">urlparse</span>
+<span class="kn">from</span> <span class="nn">.packages.six.moves</span> <span class="kn">import</span> <span class="n">urllib_parse</span> <span class="k">as</span> <span class="n">urlparse</span>
 
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">pyparsing</span>
@@ -1465,28 +1466,29 @@
             <span class="k">if</span> <span class="n">skipIfExist</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
                 <span class="n">sea</span> <span class="o">=</span> <span class="n">arcrest</span><span class="o">.</span><span class="n">find</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">securityHandler</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_securityHandler</span><span class="p">)</span>
                 <span class="n">items</span> <span class="o">=</span> <span class="n">sea</span><span class="o">.</span><span class="n">findItem</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">service_name</span><span class="p">,</span> <span class="n">itemType</span><span class="o">=</span><span class="s1">&#39;Feature Service&#39;</span><span class="p">,</span><span class="n">searchorg</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+                <span class="k">if</span> <span class="s1">&#39;total&#39;</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">items</span><span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">items</span><span class="p">[</span><span class="s1">&#39;results&#39;</span><span class="p">]:</span>
+                            <span class="k">if</span> <span class="s1">&#39;type&#39;</span> <span class="ow">in</span> <span class="n">res</span> <span class="ow">and</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Feature Service&#39;</span><span class="p">:</span>
+                                <span class="k">if</span> <span class="s1">&#39;name&#39;</span> <span class="ow">in</span> <span class="n">res</span> <span class="ow">and</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">service_name</span><span class="p">:</span>
+                                    <span class="n">itemId</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
+                                    <span class="k">break</span>
+                                <span class="k">if</span> <span class="s1">&#39;title&#39;</span> <span class="ow">in</span> <span class="n">res</span> <span class="ow">and</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">service_name</span><span class="p">:</span>
+                                    <span class="n">itemId</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
+                                    <span class="k">break</span>
+                        <span class="k">if</span> <span class="n">itemId</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                            <span class="n">defItem</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">getItem</span><span class="p">(</span><span class="n">itemId</span><span class="p">)</span>
 
-                <span class="k">if</span> <span class="n">items</span><span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">:</span>
-                    <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">items</span><span class="p">[</span><span class="s1">&#39;results&#39;</span><span class="p">]:</span>
-                        <span class="k">if</span> <span class="s1">&#39;type&#39;</span> <span class="ow">in</span> <span class="n">res</span> <span class="ow">and</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Feature Service&#39;</span><span class="p">:</span>
-                            <span class="k">if</span> <span class="s1">&#39;name&#39;</span> <span class="ow">in</span> <span class="n">res</span> <span class="ow">and</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">service_name</span><span class="p">:</span>
-                                <span class="n">itemId</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
-                                <span class="k">break</span>
-                            <span class="k">if</span> <span class="s1">&#39;title&#39;</span> <span class="ow">in</span> <span class="n">res</span> <span class="ow">and</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">service_name</span><span class="p">:</span>
-                                <span class="n">itemId</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
-                                <span class="k">break</span>
-                    <span class="k">if</span> <span class="n">itemId</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-                        <span class="n">defItem</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">getItem</span><span class="p">(</span><span class="n">itemId</span><span class="p">)</span>
-
-                        <span class="n">results</span> <span class="o">=</span> <span class="p">{</span>
-                            <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="n">defItem</span><span class="o">.</span><span class="n">url</span><span class="p">,</span>
-                            <span class="s2">&quot;folderId&quot;</span><span class="p">:</span> <span class="n">folderId</span><span class="p">,</span>
-                            <span class="s2">&quot;itemId&quot;</span><span class="p">:</span> <span class="n">defItem</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
-                            <span class="s2">&quot;convertCase&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_featureServiceFieldCase</span><span class="p">,</span>
-                            <span class="s2">&quot;messages&quot;</span><span class="p">:</span><span class="s2">&quot;Exist&quot;</span>
-                        <span class="p">}</span>
-                        <span class="k">return</span> <span class="n">results</span>
-
+                            <span class="n">results</span> <span class="o">=</span> <span class="p">{</span>
+                                <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="n">defItem</span><span class="o">.</span><span class="n">url</span><span class="p">,</span>
+                                <span class="s2">&quot;folderId&quot;</span><span class="p">:</span> <span class="n">folderId</span><span class="p">,</span>
+                                <span class="s2">&quot;itemId&quot;</span><span class="p">:</span> <span class="n">defItem</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                                <span class="s2">&quot;convertCase&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_featureServiceFieldCase</span><span class="p">,</span>
+                                <span class="s2">&quot;messages&quot;</span><span class="p">:</span><span class="s2">&quot;Exist&quot;</span>
+                            <span class="p">}</span>
+                            <span class="k">return</span> <span class="n">results</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;Error searching organzation, {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">items</span><span class="p">))</span>
 
             <span class="k">if</span> <span class="p">(</span><span class="n">extension</span> <span class="o">==</span> <span class="s2">&quot;.mxd&quot;</span><span class="p">):</span>
                 <span class="n">dataFileType</span> <span class="o">=</span> <span class="s2">&quot;serviceDefinition&quot;</span>
@@ -1500,7 +1502,7 @@
                                                                      <span class="n">maxRecordCount</span><span class="o">=</span><span class="n">maxRecordCount</span><span class="p">,</span>
                                                                      <span class="n">server_type</span><span class="o">=</span><span class="s1">&#39;MY_HOSTED_SERVICES&#39;</span><span class="p">,</span>
                                                                      <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">sd_Info</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>                                                     
+                <span class="k">if</span> <span class="n">sd_Info</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
                     <span class="n">publishParameters</span> <span class="o">=</span> <span class="n">arcrest</span><span class="o">.</span><span class="n">manageorg</span><span class="o">.</span><span class="n">PublishSDParameters</span><span class="p">(</span><span class="n">tags</span><span class="o">=</span><span class="n">sd_Info</span><span class="p">[</span><span class="s1">&#39;tags&#39;</span><span class="p">],</span>
                                                                               <span class="n">overwrite</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
             <span class="k">elif</span> <span class="p">(</span><span class="n">extension</span> <span class="o">==</span> <span class="s2">&quot;.zip&quot;</span><span class="p">):</span>

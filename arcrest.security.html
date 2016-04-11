@@ -23,7 +23,10 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="atlantis 1 documentation" href="index.html" /> 
+    <link rel="top" title="atlantis 1 documentation" href="index.html" />
+    <link rel="up" title="arcrest package" href="arcrest.html" />
+    <link rel="next" title="arcrest.web package" href="arcrest.web.html" />
+    <link rel="prev" title="arcrest.packages.ntlm3 package" href="arcrest.packages.ntlm3.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -35,7 +38,15 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">atlantis 1 documentation</a> &raquo;</li> 
+        <li class="right" >
+          <a href="arcrest.web.html" title="arcrest.web package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="arcrest.packages.ntlm3.html" title="arcrest.packages.ntlm3 package"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">atlantis 1 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >src</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="arcrest.html" accesskey="U">arcrest package</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -51,9 +62,10 @@
 </div>
 <div class="section" id="module-arcrest.security.security">
 <span id="arcrest-security-security-module"></span><h2>arcrest.security.security module<a class="headerlink" href="#module-arcrest.security.security" title="Permalink to this headline">¶</a></h2>
+<p>Handles all the security operations for the product logins.</p>
 <dl class="class">
 <dt id="arcrest.security.security.AGOLTokenSecurityHandler">
-<em class="property">class </em><code class="descclassname">arcrest.security.security.</code><code class="descname">AGOLTokenSecurityHandler</code><span class="sig-paren">(</span><em>username</em>, <em>password</em>, <em>org_url='https://www.arcgis.com'</em>, <em>token_url=None</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.security.security.AGOLTokenSecurityHandler" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">arcrest.security.security.</code><code class="descname">AGOLTokenSecurityHandler</code><span class="sig-paren">(</span><em>username</em>, <em>password</em>, <em>org_url='https://www.arcgis.com'</em>, <em>token_url=None</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#AGOLTokenSecurityHandler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.AGOLTokenSecurityHandler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">arcrest._abstract.abstract.BaseSecurityHandler</span></code></p>
 <p>handles ArcGIS Online Token Base Security
 username - required - username to access AGOL services
@@ -80,8 +92,26 @@ unique url for your org</li>
 <dd>it here.</dd>
 </dl>
 <dl class="method">
+<dt id="arcrest.security.security.AGOLTokenSecurityHandler._AGOLTokenSecurityHandler__getRefererUrl">
+<code class="descname">_AGOLTokenSecurityHandler__getRefererUrl</code><span class="sig-paren">(</span><em>url=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.security.security.AGOLTokenSecurityHandler._AGOLTokenSecurityHandler__getRefererUrl" title="Permalink to this definition">¶</a></dt>
+<dd><p>gets the referer url for the token handler</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="arcrest.security.security.AGOLTokenSecurityHandler._generateForTokenSecurity">
+<code class="descname">_generateForTokenSecurity</code><span class="sig-paren">(</span><em>username</em>, <em>password</em>, <em>referer=None</em>, <em>tokenUrl=None</em>, <em>expiration=None</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#AGOLTokenSecurityHandler._generateForTokenSecurity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.AGOLTokenSecurityHandler._generateForTokenSecurity" title="Permalink to this definition">¶</a></dt>
+<dd><p>generates a token for a feature service</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="arcrest.security.security.AGOLTokenSecurityHandler._initURL">
+<code class="descname">_initURL</code><span class="sig-paren">(</span><em>org_url=None</em>, <em>token_url=None</em>, <em>referer_url=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#AGOLTokenSecurityHandler._initURL"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.AGOLTokenSecurityHandler._initURL" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets proper URLs for AGOL</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="arcrest.security.security.AGOLTokenSecurityHandler.check_portal">
-<code class="descname">check_portal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.security.security.AGOLTokenSecurityHandler.check_portal" title="Permalink to this definition">¶</a></dt>
+<code class="descname">check_portal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#AGOLTokenSecurityHandler.check_portal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.AGOLTokenSecurityHandler.check_portal" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -127,7 +157,7 @@ unique url for your org</li>
 
 <dl class="method">
 <dt id="arcrest.security.security.AGOLTokenSecurityHandler.resetTokenURLToDefault">
-<code class="descname">resetTokenURLToDefault</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.security.security.AGOLTokenSecurityHandler.resetTokenURLToDefault" title="Permalink to this definition">¶</a></dt>
+<code class="descname">resetTokenURLToDefault</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#AGOLTokenSecurityHandler.resetTokenURLToDefault"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.AGOLTokenSecurityHandler.resetTokenURLToDefault" title="Permalink to this definition">¶</a></dt>
 <dd><p>resets the token url to the default url</p>
 </dd></dl>
 
@@ -165,7 +195,7 @@ unique url for your org</li>
 
 <dl class="class">
 <dt id="arcrest.security.security.AGSTokenSecurityHandler">
-<em class="property">class </em><code class="descclassname">arcrest.security.security.</code><code class="descname">AGSTokenSecurityHandler</code><span class="sig-paren">(</span><em>username</em>, <em>password</em>, <em>org_url=None</em>, <em>token_url=None</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.security.security.AGSTokenSecurityHandler" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">arcrest.security.security.</code><code class="descname">AGSTokenSecurityHandler</code><span class="sig-paren">(</span><em>username</em>, <em>password</em>, <em>org_url=None</em>, <em>token_url=None</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#AGSTokenSecurityHandler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.AGSTokenSecurityHandler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">arcrest._abstract.abstract.BaseSecurityHandler</span></code></p>
 <p>handles ArcGIS Server Security
 username - required - person accessing server
@@ -173,6 +203,12 @@ password - required - login credential
 token_url - required - URL to generate a token on server
 proxy_url - optional - IP of proxy
 proxy_port - optional - port of the proxy server</p>
+<dl class="method">
+<dt id="arcrest.security.security.AGSTokenSecurityHandler._generateForTokenSecurity">
+<code class="descname">_generateForTokenSecurity</code><span class="sig-paren">(</span><em>username</em>, <em>password</em>, <em>tokenUrl</em>, <em>expiration=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#AGSTokenSecurityHandler._generateForTokenSecurity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.AGSTokenSecurityHandler._generateForTokenSecurity" title="Permalink to this definition">¶</a></dt>
+<dd><p>generates a token for a feature service</p>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="arcrest.security.security.AGSTokenSecurityHandler.method">
 <code class="descname">method</code><a class="headerlink" href="#arcrest.security.security.AGSTokenSecurityHandler.method" title="Permalink to this definition">¶</a></dt>
@@ -237,12 +273,24 @@ proxy_port - optional - port of the proxy server</p>
 
 <dl class="class">
 <dt id="arcrest.security.security.ArcGISTokenSecurityHandler">
-<em class="property">class </em><code class="descclassname">arcrest.security.security.</code><code class="descname">ArcGISTokenSecurityHandler</code><span class="sig-paren">(</span><em>proxy_url=None</em>, <em>proxy_port=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.security.security.ArcGISTokenSecurityHandler" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">arcrest.security.security.</code><code class="descname">ArcGISTokenSecurityHandler</code><span class="sig-paren">(</span><em>proxy_url=None</em>, <em>proxy_port=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#ArcGISTokenSecurityHandler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.ArcGISTokenSecurityHandler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">arcrest._abstract.abstract.BaseSecurityHandler</span></code></p>
 <p>handles ArcGIS Maps Token Base Security</p>
 <dl class="method">
+<dt id="arcrest.security.security.ArcGISTokenSecurityHandler._generateForServerTokenSecurity">
+<code class="descname">_generateForServerTokenSecurity</code><span class="sig-paren">(</span><em>serverURL</em>, <em>token</em>, <em>expiration=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#ArcGISTokenSecurityHandler._generateForServerTokenSecurity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.ArcGISTokenSecurityHandler._generateForServerTokenSecurity" title="Permalink to this definition">¶</a></dt>
+<dd><p>generates a token for a feature service</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="arcrest.security.security.ArcGISTokenSecurityHandler._initURL">
+<code class="descname">_initURL</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#ArcGISTokenSecurityHandler._initURL"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.ArcGISTokenSecurityHandler._initURL" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets proper URLs for AGOL</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="arcrest.security.security.ArcGISTokenSecurityHandler.check_portal">
-<code class="descname">check_portal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.security.security.ArcGISTokenSecurityHandler.check_portal" title="Permalink to this definition">¶</a></dt>
+<code class="descname">check_portal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#ArcGISTokenSecurityHandler.check_portal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.ArcGISTokenSecurityHandler.check_portal" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -282,7 +330,7 @@ proxy_port - optional - port of the proxy server</p>
 
 <dl class="method">
 <dt id="arcrest.security.security.ArcGISTokenSecurityHandler.servertoken">
-<code class="descname">servertoken</code><span class="sig-paren">(</span><em>serverURL</em>, <em>referer</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.security.security.ArcGISTokenSecurityHandler.servertoken" title="Permalink to this definition">¶</a></dt>
+<code class="descname">servertoken</code><span class="sig-paren">(</span><em>serverURL</em>, <em>referer</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#ArcGISTokenSecurityHandler.servertoken"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.ArcGISTokenSecurityHandler.servertoken" title="Permalink to this definition">¶</a></dt>
 <dd><p>returns the server token for the server</p>
 </dd></dl>
 
@@ -308,9 +356,15 @@ proxy_port - optional - port of the proxy server</p>
 
 <dl class="class">
 <dt id="arcrest.security.security.CommunityMapsSecurityHandler">
-<em class="property">class </em><code class="descclassname">arcrest.security.security.</code><code class="descname">CommunityMapsSecurityHandler</code><span class="sig-paren">(</span><em>url</em>, <em>username</em>, <em>password</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.security.security.CommunityMapsSecurityHandler" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">arcrest.security.security.</code><code class="descname">CommunityMapsSecurityHandler</code><span class="sig-paren">(</span><em>url</em>, <em>username</em>, <em>password</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#CommunityMapsSecurityHandler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.CommunityMapsSecurityHandler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">arcrest._abstract.abstract.BaseSecurityHandler</span></code></p>
 <p>Handler that allows access to the community maps program</p>
+<dl class="method">
+<dt id="arcrest.security.security.CommunityMapsSecurityHandler._generateForTokenSecurity">
+<code class="descname">_generateForTokenSecurity</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#CommunityMapsSecurityHandler._generateForTokenSecurity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.CommunityMapsSecurityHandler._generateForTokenSecurity" title="Permalink to this definition">¶</a></dt>
+<dd><p>generates a token for a feature service</p>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="arcrest.security.security.CommunityMapsSecurityHandler.securityhandler">
 <code class="descname">securityhandler</code><a class="headerlink" href="#arcrest.security.security.CommunityMapsSecurityHandler.securityhandler" title="Permalink to this definition">¶</a></dt>
@@ -327,12 +381,18 @@ proxy_port - optional - port of the proxy server</p>
 
 <dl class="class">
 <dt id="arcrest.security.security.LDAPSecurityHandler">
-<em class="property">class </em><code class="descclassname">arcrest.security.security.</code><code class="descname">LDAPSecurityHandler</code><span class="sig-paren">(</span><em>org_url</em>, <em>username</em>, <em>password</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em>, <em>referer_url=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.security.security.LDAPSecurityHandler" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">arcrest.security.security.</code><code class="descname">LDAPSecurityHandler</code><span class="sig-paren">(</span><em>org_url</em>, <em>username</em>, <em>password</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em>, <em>referer_url=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#LDAPSecurityHandler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.LDAPSecurityHandler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">arcrest._abstract.abstract.BaseSecurityHandler</span></code></p>
 <p>This Security Handler handles LDAP based security.</p>
 <dl class="method">
+<dt id="arcrest.security.security.LDAPSecurityHandler._initURL">
+<code class="descname">_initURL</code><span class="sig-paren">(</span><em>org_url</em>, <em>referer_url</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#LDAPSecurityHandler._initURL"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.LDAPSecurityHandler._initURL" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets proper URLs for AGOL</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="arcrest.security.security.LDAPSecurityHandler.check_portal">
-<code class="descname">check_portal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.security.security.LDAPSecurityHandler.check_portal" title="Permalink to this definition">¶</a></dt>
+<code class="descname">check_portal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#LDAPSecurityHandler.check_portal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.LDAPSecurityHandler.check_portal" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -354,7 +414,7 @@ proxy_port - optional - port of the proxy server</p>
 
 <dl class="method">
 <dt id="arcrest.security.security.LDAPSecurityHandler.loadusername">
-<code class="descname">loadusername</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.security.security.LDAPSecurityHandler.loadusername" title="Permalink to this definition">¶</a></dt>
+<code class="descname">loadusername</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#LDAPSecurityHandler.loadusername"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.LDAPSecurityHandler.loadusername" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -377,7 +437,7 @@ proxy_port - optional - port of the proxy server</p>
 
 <dl class="method">
 <dt id="arcrest.security.security.LDAPSecurityHandler.portalServerHandler">
-<code class="descname">portalServerHandler</code><span class="sig-paren">(</span><em>serverUrl</em>, <em>username=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.security.security.LDAPSecurityHandler.portalServerHandler" title="Permalink to this definition">¶</a></dt>
+<code class="descname">portalServerHandler</code><span class="sig-paren">(</span><em>serverUrl</em>, <em>username=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#LDAPSecurityHandler.portalServerHandler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.LDAPSecurityHandler.portalServerHandler" title="Permalink to this definition">¶</a></dt>
 <dd><p>returns a handler to access a federated server</p>
 <dl class="docutils">
 <dt>serverUrl - url to the server. Example:</dt>
@@ -437,7 +497,7 @@ proxy_port - optional - port of the proxy server</p>
 
 <dl class="class">
 <dt id="arcrest.security.security.NTLMSecurityHandler">
-<em class="property">class </em><code class="descclassname">arcrest.security.security.</code><code class="descname">NTLMSecurityHandler</code><span class="sig-paren">(</span><em>org_url</em>, <em>username</em>, <em>password</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em>, <em>referer_url=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.security.security.NTLMSecurityHandler" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">arcrest.security.security.</code><code class="descname">NTLMSecurityHandler</code><span class="sig-paren">(</span><em>org_url</em>, <em>username</em>, <em>password</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em>, <em>referer_url=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#NTLMSecurityHandler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.NTLMSecurityHandler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#arcrest.security.security.LDAPSecurityHandler" title="arcrest.security.security.LDAPSecurityHandler"><code class="xref py py-class docutils literal"><span class="pre">arcrest.security.security.LDAPSecurityHandler</span></code></a></p>
 <p>performs NTLM/Kerberos security handling</p>
 <dl class="attribute">
@@ -456,7 +516,7 @@ proxy_port - optional - port of the proxy server</p>
 
 <dl class="class">
 <dt id="arcrest.security.security.OAuthSecurityHandler">
-<em class="property">class </em><code class="descclassname">arcrest.security.security.</code><code class="descname">OAuthSecurityHandler</code><span class="sig-paren">(</span><em>client_id</em>, <em>secret_id</em>, <em>org_url</em>, <em>token_url=None</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.security.security.OAuthSecurityHandler" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">arcrest.security.security.</code><code class="descname">OAuthSecurityHandler</code><span class="sig-paren">(</span><em>client_id</em>, <em>secret_id</em>, <em>org_url</em>, <em>token_url=None</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#OAuthSecurityHandler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.OAuthSecurityHandler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">arcrest._abstract.abstract.BaseSecurityHandler</span></code></p>
 <p>Handles AGOL OAuth Security
 Inputs:</p>
@@ -488,8 +548,20 @@ proxy_port - optional - proxy port as integer</p>
 <dd>OAuthSecurityHandler Class Object</dd>
 </dl>
 <dl class="method">
+<dt id="arcrest.security.security.OAuthSecurityHandler._generateForOAuthSecurity">
+<code class="descname">_generateForOAuthSecurity</code><span class="sig-paren">(</span><em>client_id</em>, <em>secret_id</em>, <em>token_url=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#OAuthSecurityHandler._generateForOAuthSecurity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.OAuthSecurityHandler._generateForOAuthSecurity" title="Permalink to this definition">¶</a></dt>
+<dd><p>generates a token based on the OAuth security model</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="arcrest.security.security.OAuthSecurityHandler._initURL">
+<code class="descname">_initURL</code><span class="sig-paren">(</span><em>org_url=None</em>, <em>token_url=None</em>, <em>referer_url=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#OAuthSecurityHandler._initURL"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.OAuthSecurityHandler._initURL" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets proper URLs for AGOL</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="arcrest.security.security.OAuthSecurityHandler.check_portal">
-<code class="descname">check_portal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.security.security.OAuthSecurityHandler.check_portal" title="Permalink to this definition">¶</a></dt>
+<code class="descname">check_portal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#OAuthSecurityHandler.check_portal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.OAuthSecurityHandler.check_portal" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -535,7 +607,7 @@ proxy_port - optional - proxy port as integer</p>
 
 <dl class="method">
 <dt id="arcrest.security.security.OAuthSecurityHandler.resetTokenURLToDefault">
-<code class="descname">resetTokenURLToDefault</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.security.security.OAuthSecurityHandler.resetTokenURLToDefault" title="Permalink to this definition">¶</a></dt>
+<code class="descname">resetTokenURLToDefault</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#OAuthSecurityHandler.resetTokenURLToDefault"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.OAuthSecurityHandler.resetTokenURLToDefault" title="Permalink to this definition">¶</a></dt>
 <dd><p>resets the token url to the default url</p>
 </dd></dl>
 
@@ -573,16 +645,16 @@ proxy_port - optional - proxy port as integer</p>
 
 <dl class="class">
 <dt id="arcrest.security.security.PKISecurityHandler">
-<em class="property">class </em><code class="descclassname">arcrest.security.security.</code><code class="descname">PKISecurityHandler</code><span class="sig-paren">(</span><em>org_url</em>, <em>keyfile</em>, <em>certificatefile</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em>, <em>referer_url=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.security.security.PKISecurityHandler" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">arcrest.security.security.</code><code class="descname">PKISecurityHandler</code><span class="sig-paren">(</span><em>org_url</em>, <em>keyfile</em>, <em>certificatefile</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em>, <em>referer_url=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#PKISecurityHandler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.PKISecurityHandler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">arcrest._abstract.abstract.BaseSecurityHandler</span></code></p>
 <p>This Security Handler handles PKI based security</p>
 <dl class="class">
 <dt id="arcrest.security.security.PKISecurityHandler.HTTPSClientAuthHandler">
-<em class="property">class </em><code class="descname">HTTPSClientAuthHandler</code><span class="sig-paren">(</span><em>key</em>, <em>cert</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.security.security.PKISecurityHandler.HTTPSClientAuthHandler" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descname">HTTPSClientAuthHandler</code><span class="sig-paren">(</span><em>key</em>, <em>cert</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#PKISecurityHandler.HTTPSClientAuthHandler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.PKISecurityHandler.HTTPSClientAuthHandler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">urllib2.HTTPSHandler</span></code></p>
 <dl class="method">
 <dt id="arcrest.security.security.PKISecurityHandler.HTTPSClientAuthHandler.getConnection">
-<code class="descname">getConnection</code><span class="sig-paren">(</span><em>host</em>, <em>timeout=300</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.security.security.PKISecurityHandler.HTTPSClientAuthHandler.getConnection" title="Permalink to this definition">¶</a></dt>
+<code class="descname">getConnection</code><span class="sig-paren">(</span><em>host</em>, <em>timeout=300</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#PKISecurityHandler.HTTPSClientAuthHandler.getConnection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.PKISecurityHandler.HTTPSClientAuthHandler.getConnection" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -592,9 +664,15 @@ proxy_port - optional - proxy port as integer</p>
 
 <dl class="method">
 <dt id="arcrest.security.security.PKISecurityHandler.HTTPSClientAuthHandler.https_open">
-<code class="descname">https_open</code><span class="sig-paren">(</span><em>req</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.security.security.PKISecurityHandler.HTTPSClientAuthHandler.https_open" title="Permalink to this definition">¶</a></dt>
+<code class="descname">https_open</code><span class="sig-paren">(</span><em>req</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#PKISecurityHandler.HTTPSClientAuthHandler.https_open"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.PKISecurityHandler.HTTPSClientAuthHandler.https_open" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+</dd></dl>
+
+<dl class="method">
+<dt id="arcrest.security.security.PKISecurityHandler._initURL">
+<code class="descclassname">PKISecurityHandler.</code><code class="descname">_initURL</code><span class="sig-paren">(</span><em>org_url</em>, <em>referer_url</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#PKISecurityHandler._initURL"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.PKISecurityHandler._initURL" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets proper URLs for AGOL</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -605,7 +683,7 @@ proxy_port - optional - proxy port as integer</p>
 
 <dl class="method">
 <dt id="arcrest.security.security.PKISecurityHandler.check_portal">
-<code class="descclassname">PKISecurityHandler.</code><code class="descname">check_portal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.security.security.PKISecurityHandler.check_portal" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">PKISecurityHandler.</code><code class="descname">check_portal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#PKISecurityHandler.check_portal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.PKISecurityHandler.check_portal" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -677,13 +755,19 @@ proxy_port - optional - proxy port as integer</p>
 
 <dl class="class">
 <dt id="arcrest.security.security.PortalServerSecurityHandler">
-<em class="property">class </em><code class="descclassname">arcrest.security.security.</code><code class="descname">PortalServerSecurityHandler</code><span class="sig-paren">(</span><em>tokenHandler</em>, <em>serverUrl</em>, <em>referer</em>, <em>handler=None</em>, <em>jar=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.security.security.PortalServerSecurityHandler" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">arcrest.security.security.</code><code class="descname">PortalServerSecurityHandler</code><span class="sig-paren">(</span><em>tokenHandler</em>, <em>serverUrl</em>, <em>referer</em>, <em>handler=None</em>, <em>jar=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#PortalServerSecurityHandler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.PortalServerSecurityHandler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">arcrest._abstract.abstract.BaseSecurityHandler</span></code></p>
 <p>This service is designed to allow users manage a server from a Portal
 site credentials.  This means a user can get an ArcGIS Server Token
 from a Portal login to manage and use secure services.  It is not
 designed for users to create this object through code, but rather it is
 generated by the system.</p>
+<dl class="method">
+<dt id="arcrest.security.security.PortalServerSecurityHandler._initURL">
+<code class="descname">_initURL</code><span class="sig-paren">(</span><em>serverUrl=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#PortalServerSecurityHandler._initURL"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.PortalServerSecurityHandler._initURL" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets proper URLs for AGOL</p>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="arcrest.security.security.PortalServerSecurityHandler.cookiejar">
 <code class="descname">cookiejar</code><a class="headerlink" href="#arcrest.security.security.PortalServerSecurityHandler.cookiejar" title="Permalink to this definition">¶</a></dt>
@@ -729,7 +813,7 @@ generated by the system.</p>
 
 <dl class="class">
 <dt id="arcrest.security.security.PortalTokenSecurityHandler">
-<em class="property">class </em><code class="descclassname">arcrest.security.security.</code><code class="descname">PortalTokenSecurityHandler</code><span class="sig-paren">(</span><em>username</em>, <em>password</em>, <em>org_url</em>, <em>token_url=None</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em>, <em>handler=None</em>, <em>jar=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.security.security.PortalTokenSecurityHandler" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">arcrest.security.security.</code><code class="descname">PortalTokenSecurityHandler</code><span class="sig-paren">(</span><em>username</em>, <em>password</em>, <em>org_url</em>, <em>token_url=None</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em>, <em>handler=None</em>, <em>jar=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#PortalTokenSecurityHandler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.PortalTokenSecurityHandler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">arcrest._abstract.abstract.BaseSecurityHandler</span></code></p>
 <p>Handles connection to a Portal Site</p>
 <dl class="docutils">
@@ -754,8 +838,26 @@ proxy_port - proxy port</p>
 </dd>
 </dl>
 <dl class="method">
+<dt id="arcrest.security.security.PortalTokenSecurityHandler._generateForServerTokenSecurity">
+<code class="descname">_generateForServerTokenSecurity</code><span class="sig-paren">(</span><em>serverURL</em>, <em>token</em>, <em>tokenUrl</em>, <em>referer</em>, <em>expiration=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#PortalTokenSecurityHandler._generateForServerTokenSecurity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.PortalTokenSecurityHandler._generateForServerTokenSecurity" title="Permalink to this definition">¶</a></dt>
+<dd><p>generates a token for a feature service</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="arcrest.security.security.PortalTokenSecurityHandler._generateForTokenSecurity">
+<code class="descname">_generateForTokenSecurity</code><span class="sig-paren">(</span><em>username</em>, <em>password</em>, <em>tokenUrl</em>, <em>expiration=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#PortalTokenSecurityHandler._generateForTokenSecurity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.PortalTokenSecurityHandler._generateForTokenSecurity" title="Permalink to this definition">¶</a></dt>
+<dd><p>generates a token for a feature service</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="arcrest.security.security.PortalTokenSecurityHandler._initURL">
+<code class="descname">_initURL</code><span class="sig-paren">(</span><em>org_url=None</em>, <em>token_url=None</em>, <em>referer_url=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#PortalTokenSecurityHandler._initURL"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.PortalTokenSecurityHandler._initURL" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets proper URLs for AGOL</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="arcrest.security.security.PortalTokenSecurityHandler.check_portal">
-<code class="descname">check_portal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.security.security.PortalTokenSecurityHandler.check_portal" title="Permalink to this definition">¶</a></dt>
+<code class="descname">check_portal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#PortalTokenSecurityHandler.check_portal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.PortalTokenSecurityHandler.check_portal" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -795,7 +897,7 @@ proxy_port - proxy port</p>
 
 <dl class="method">
 <dt id="arcrest.security.security.PortalTokenSecurityHandler.portalServerHandler">
-<code class="descname">portalServerHandler</code><span class="sig-paren">(</span><em>serverUrl</em>, <em>username=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.security.security.PortalTokenSecurityHandler.portalServerHandler" title="Permalink to this definition">¶</a></dt>
+<code class="descname">portalServerHandler</code><span class="sig-paren">(</span><em>serverUrl</em>, <em>username=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#PortalTokenSecurityHandler.portalServerHandler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.PortalTokenSecurityHandler.portalServerHandler" title="Permalink to this definition">¶</a></dt>
 <dd><p>returns a handler to access a federated server</p>
 <dl class="docutils">
 <dt>serverUrl - url to the server. Example:</dt>
@@ -841,7 +943,7 @@ proxy_port - proxy port</p>
 
 <dl class="method">
 <dt id="arcrest.security.security.PortalTokenSecurityHandler.servertoken">
-<code class="descname">servertoken</code><span class="sig-paren">(</span><em>serverURL</em>, <em>referer</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.security.security.PortalTokenSecurityHandler.servertoken" title="Permalink to this definition">¶</a></dt>
+<code class="descname">servertoken</code><span class="sig-paren">(</span><em>serverURL</em>, <em>referer</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#PortalTokenSecurityHandler.servertoken"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.PortalTokenSecurityHandler.servertoken" title="Permalink to this definition">¶</a></dt>
 <dd><p>returns the server token for the server</p>
 </dd></dl>
 
@@ -899,6 +1001,12 @@ proxy_port - proxy port</p>
 </li>
 </ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="arcrest.packages.ntlm3.html"
+                        title="previous chapter">arcrest.packages.ntlm3 package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="arcrest.web.html"
+                        title="next chapter">arcrest.web package</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -932,7 +1040,15 @@ proxy_port - proxy port</p>
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">atlantis 1 documentation</a> &raquo;</li> 
+        <li class="right" >
+          <a href="arcrest.web.html" title="arcrest.web package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="arcrest.packages.ntlm3.html" title="arcrest.packages.ntlm3 package"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">atlantis 1 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >src</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="arcrest.html" >arcrest package</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

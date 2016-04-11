@@ -6,3 +6,6 @@ src
 
    arcrest
    arcresthelper
+   example_google
+   setup
+   setup_wheel

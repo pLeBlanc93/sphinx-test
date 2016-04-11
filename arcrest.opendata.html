@@ -23,7 +23,10 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="atlantis 1 documentation" href="index.html" /> 
+    <link rel="top" title="atlantis 1 documentation" href="index.html" />
+    <link rel="up" title="arcrest package" href="arcrest.html" />
+    <link rel="next" title="arcrest.packages package" href="arcrest.packages.html" />
+    <link rel="prev" title="arcrest.manageportal package" href="arcrest.manageportal.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -35,7 +38,15 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">atlantis 1 documentation</a> &raquo;</li> 
+        <li class="right" >
+          <a href="arcrest.packages.html" title="arcrest.packages package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="arcrest.manageportal.html" title="arcrest.manageportal package"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">atlantis 1 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >src</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="arcrest.html" accesskey="U">arcrest package</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -54,15 +65,15 @@
 <p>OpenData Operations</p>
 <dl class="class">
 <dt id="arcrest.opendata.opendata.OpenData">
-<em class="property">class </em><code class="descclassname">arcrest.opendata.opendata.</code><code class="descname">OpenData</code><span class="sig-paren">(</span><em>url</em>, <em>securityHandler=None</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.opendata.opendata.OpenData" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">arcrest.opendata._base.BaseOpenData</span></code>, <code class="xref py py-class docutils literal"><span class="pre">arcrest.opendata._web.WebOperations</span></code></p>
+<em class="property">class </em><code class="descclassname">arcrest.opendata.opendata.</code><code class="descname">OpenData</code><span class="sig-paren">(</span><em>url</em>, <em>securityHandler=None</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/opendata/opendata.html#OpenData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.opendata.opendata.OpenData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">arcrest.opendata._base.BaseOpenData</span></code>, <code class="xref py py-class docutils literal"><span class="pre">arcrest.web._base.BaseWebOperations</span></code></p>
 <p>Represents an open data site
 Inputs:</p>
 <blockquote>
 <div>url - web address of the open data site</div></blockquote>
 <dl class="method">
 <dt id="arcrest.opendata.opendata.OpenData.getDataset">
-<code class="descname">getDataset</code><span class="sig-paren">(</span><em>itemId</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.opendata.opendata.OpenData.getDataset" title="Permalink to this definition">¶</a></dt>
+<code class="descname">getDataset</code><span class="sig-paren">(</span><em>itemId</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/opendata/opendata.html#OpenData.getDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.opendata.opendata.OpenData.getDataset" title="Permalink to this definition">¶</a></dt>
 <dd><p>gets a dataset class</p>
 </dd></dl>
 
@@ -74,7 +85,7 @@ Inputs:</p>
 
 <dl class="method">
 <dt id="arcrest.opendata.opendata.OpenData.search">
-<code class="descname">search</code><span class="sig-paren">(</span><em>q=None</em>, <em>per_page=None</em>, <em>page=None</em>, <em>bbox=None</em>, <em>sort_by='relavance'</em>, <em>sort_order='asc'</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.opendata.opendata.OpenData.search" title="Permalink to this definition">¶</a></dt>
+<code class="descname">search</code><span class="sig-paren">(</span><em>q=None</em>, <em>per_page=None</em>, <em>page=None</em>, <em>bbox=None</em>, <em>sort_by='relavance'</em>, <em>sort_order='asc'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/opendata/opendata.html#OpenData.search"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.opendata.opendata.OpenData.search" title="Permalink to this definition">¶</a></dt>
 <dd><p>searches the opendata site and returns the dataset results</p>
 </dd></dl>
 
@@ -82,12 +93,18 @@ Inputs:</p>
 
 <dl class="class">
 <dt id="arcrest.opendata.opendata.OpenDataItem">
-<em class="property">class </em><code class="descclassname">arcrest.opendata.opendata.</code><code class="descname">OpenDataItem</code><span class="sig-paren">(</span><em>url</em>, <em>itemId</em>, <em>securityHandler=None</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em>, <em>initialize=False</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.opendata.opendata.OpenDataItem" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">arcrest.opendata._base.BaseOpenData</span></code>, <code class="xref py py-class docutils literal"><span class="pre">arcrest.opendata._web.WebOperations</span></code></p>
+<em class="property">class </em><code class="descclassname">arcrest.opendata.opendata.</code><code class="descname">OpenDataItem</code><span class="sig-paren">(</span><em>url</em>, <em>itemId</em>, <em>securityHandler=None</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em>, <em>initialize=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/opendata/opendata.html#OpenDataItem"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.opendata.opendata.OpenDataItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">arcrest.opendata._base.BaseOpenData</span></code>, <code class="xref py py-class docutils literal"><span class="pre">arcrest.web._base.BaseWebOperations</span></code></p>
 <p>represents a single data object</p>
 <dl class="method">
+<dt id="arcrest.opendata.opendata.OpenDataItem._OpenDataItem__init">
+<code class="descname">_OpenDataItem__init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.opendata.opendata.OpenDataItem._OpenDataItem__init" title="Permalink to this definition">¶</a></dt>
+<dd><p>gets the properties for the site</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="arcrest.opendata.opendata.OpenDataItem.export">
-<code class="descname">export</code><span class="sig-paren">(</span><em>outFormat='shp'</em>, <em>outFolder=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.opendata.opendata.OpenDataItem.export" title="Permalink to this definition">¶</a></dt>
+<code class="descname">export</code><span class="sig-paren">(</span><em>outFormat='shp'</em>, <em>outFolder=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/opendata/opendata.html#OpenDataItem.export"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.opendata.opendata.OpenDataItem.export" title="Permalink to this definition">¶</a></dt>
 <dd><p>exports a dataset t</p>
 </dd></dl>
 
@@ -121,6 +138,12 @@ Inputs:</p>
 </li>
 </ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="arcrest.manageportal.html"
+                        title="previous chapter">arcrest.manageportal package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="arcrest.packages.html"
+                        title="next chapter">arcrest.packages package</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -154,7 +177,15 @@ Inputs:</p>
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">atlantis 1 documentation</a> &raquo;</li> 
+        <li class="right" >
+          <a href="arcrest.packages.html" title="arcrest.packages package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="arcrest.manageportal.html" title="arcrest.manageportal package"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">atlantis 1 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >src</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="arcrest.html" >arcrest package</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

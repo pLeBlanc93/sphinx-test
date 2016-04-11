@@ -121,15 +121,15 @@
         <span class="k">del</span> <span class="n">X</span>
 
 
-<span class="k">def</span> <span class="nf">_add_doc</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">doc</span><span class="p">):</span>
+<div class="viewcode-block" id="_add_doc"><a class="viewcode-back" href="../../../arcresthelper.packages.html#arcresthelper.packages.six._add_doc">[docs]</a><span class="k">def</span> <span class="nf">_add_doc</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">doc</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Add documentation to a function.&quot;&quot;&quot;</span>
-    <span class="n">func</span><span class="o">.</span><span class="n">__doc__</span> <span class="o">=</span> <span class="n">doc</span>
+    <span class="n">func</span><span class="o">.</span><span class="n">__doc__</span> <span class="o">=</span> <span class="n">doc</span></div>
 
 
-<span class="k">def</span> <span class="nf">_import_module</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+<div class="viewcode-block" id="_import_module"><a class="viewcode-back" href="../../../arcresthelper.packages.html#arcresthelper.packages.six._import_module">[docs]</a><span class="k">def</span> <span class="nf">_import_module</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Import module, returning the module after the last dot.&quot;&quot;&quot;</span>
     <span class="nb">__import__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">name</span><span class="p">]</span></div>
 
 
 <span class="k">class</span> <span class="nc">_LazyDescr</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -210,7 +210,7 @@
         <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">attr</span><span class="p">)</span></div>
 
 
-<span class="k">class</span> <span class="nc">_SixMetaPathImporter</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="_SixMetaPathImporter"><a class="viewcode-back" href="../../../arcresthelper.packages.html#arcresthelper.packages.six._SixMetaPathImporter">[docs]</a><span class="k">class</span> <span class="nc">_SixMetaPathImporter</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A meta path importer to import six.moves and its submodules.</span>
@@ -230,10 +230,10 @@
     <span class="k">def</span> <span class="nf">_get_module</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fullname</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">known_modules</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span> <span class="o">+</span> <span class="n">fullname</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">find_module</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fullname</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="_SixMetaPathImporter.find_module"><a class="viewcode-back" href="../../../arcresthelper.packages.html#arcresthelper.packages.six._SixMetaPathImporter.find_module">[docs]</a>    <span class="k">def</span> <span class="nf">find_module</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fullname</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">fullname</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">known_modules</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span>
-        <span class="k">return</span> <span class="bp">None</span>
+        <span class="k">return</span> <span class="bp">None</span></div>
 
     <span class="k">def</span> <span class="nf">__get_module</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fullname</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
@@ -241,7 +241,7 @@
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;This loader does not know module &quot;</span> <span class="o">+</span> <span class="n">fullname</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">load_module</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fullname</span><span class="p">):</span>
+<div class="viewcode-block" id="_SixMetaPathImporter.load_module"><a class="viewcode-back" href="../../../arcresthelper.packages.html#arcresthelper.packages.six._SixMetaPathImporter.load_module">[docs]</a>    <span class="k">def</span> <span class="nf">load_module</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fullname</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="c1"># in case of a reload</span>
             <span class="k">return</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">fullname</span><span class="p">]</span>
@@ -253,32 +253,32 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">mod</span><span class="o">.</span><span class="n">__loader__</span> <span class="o">=</span> <span class="bp">self</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">fullname</span><span class="p">]</span> <span class="o">=</span> <span class="n">mod</span>
-        <span class="k">return</span> <span class="n">mod</span>
+        <span class="k">return</span> <span class="n">mod</span></div>
 
-    <span class="k">def</span> <span class="nf">is_package</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fullname</span><span class="p">):</span>
+<div class="viewcode-block" id="_SixMetaPathImporter.is_package"><a class="viewcode-back" href="../../../arcresthelper.packages.html#arcresthelper.packages.six._SixMetaPathImporter.is_package">[docs]</a>    <span class="k">def</span> <span class="nf">is_package</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fullname</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return true, if the named module is a package.</span>
 
 <span class="sd">        We need this method to get correct spec objects with</span>
 <span class="sd">        Python 3.4 (see PEP451)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__get_module</span><span class="p">(</span><span class="n">fullname</span><span class="p">),</span> <span class="s2">&quot;__path__&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__get_module</span><span class="p">(</span><span class="n">fullname</span><span class="p">),</span> <span class="s2">&quot;__path__&quot;</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">get_code</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fullname</span><span class="p">):</span>
+<div class="viewcode-block" id="_SixMetaPathImporter.get_code"><a class="viewcode-back" href="../../../arcresthelper.packages.html#arcresthelper.packages.six._SixMetaPathImporter.get_code">[docs]</a>    <span class="k">def</span> <span class="nf">get_code</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fullname</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return None</span>
 
 <span class="sd">        Required, if is_package is implemented&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__get_module</span><span class="p">(</span><span class="n">fullname</span><span class="p">)</span>  <span class="c1"># eventually raises ImportError</span>
-        <span class="k">return</span> <span class="bp">None</span>
-    <span class="n">get_source</span> <span class="o">=</span> <span class="n">get_code</span>  <span class="c1"># same as get_code</span>
+        <span class="k">return</span> <span class="bp">None</span></div>
+    <span class="n">get_source</span> <span class="o">=</span> <span class="n">get_code</span>  <span class="c1"># same as get_code</span></div>
 
 <span class="n">_importer</span> <span class="o">=</span> <span class="n">_SixMetaPathImporter</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">_MovedItems</span><span class="p">(</span><span class="n">_LazyModule</span><span class="p">):</span>
+<div class="viewcode-block" id="_MovedItems"><a class="viewcode-back" href="../../../arcresthelper.packages.html#arcresthelper.packages.six._MovedItems">[docs]</a><span class="k">class</span> <span class="nc">_MovedItems</span><span class="p">(</span><span class="n">_LazyModule</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;Lazy loading of moved objects&quot;&quot;&quot;</span>
-    <span class="n">__path__</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># mark as package</span>
+    <span class="n">__path__</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># mark as package</span></div>
 
 
 <span class="n">_moved_attributes</span> <span class="o">=</span> <span class="p">[</span>

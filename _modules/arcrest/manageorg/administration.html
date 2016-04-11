@@ -58,6 +58,8 @@
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">_community</span><span class="p">,</span> <span class="n">_content</span><span class="p">,</span> <span class="n">_portals</span><span class="p">,</span> <span class="n">_oauth2</span>
 <span class="kn">from</span> <span class="nn">..hostedservice</span> <span class="kn">import</span> <span class="n">Services</span>
 <span class="kn">from</span> <span class="nn">..manageags</span> <span class="kn">import</span> <span class="n">AGSAdministration</span>
+<span class="kn">from</span> <span class="nn">..packages.six.moves.urllib_parse</span> <span class="kn">import</span> <span class="n">urlparse</span><span class="p">,</span> <span class="n">urlunparse</span>
+
 <span class="c1">########################################################################</span>
 <div class="viewcode-block" id="Administration"><a class="viewcode-back" href="../../../arcrest.manageorg.html#arcrest.manageorg.administration.Administration">[docs]</a><span class="k">class</span> <span class="nc">Administration</span><span class="p">(</span><span class="n">BaseAGOLClass</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;  Administers the AGOL/Portal Site &quot;&quot;&quot;</span>
@@ -82,32 +84,39 @@
             <span class="n">url</span> <span class="o">=</span> <span class="n">securityHandler</span><span class="o">.</span><span class="n">org_url</span>
         <span class="k">if</span> <span class="n">url</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">url</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;URL or Security Handler needs to be specified&quot;</span><span class="p">)</span>
-
         <span class="k">if</span> <span class="n">url</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;/sharing&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
-            <span class="k">pass</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">url</span> <span class="o">=</span> <span class="n">url</span> <span class="o">+</span> <span class="s2">&quot;/sharing&quot;</span>
-
-        <span class="k">if</span> <span class="n">url</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;/rest&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_url</span> <span class="o">=</span> <span class="n">url</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_url</span> <span class="o">=</span> <span class="n">url</span> <span class="o">+</span> <span class="s2">&quot;/rest&quot;</span>
-
+            <span class="bp">self</span><span class="o">.</span><span class="n">_url</span> <span class="o">=</span> <span class="n">url</span> <span class="o">+</span> <span class="s2">&quot;/sharing&quot;</span>
+        <span class="c1">#if url.lower().find(&quot;/rest&quot;) &gt; -1:</span>
+            <span class="c1">#self._url = url</span>
+        <span class="c1">#else:</span>
+            <span class="c1">#self._url = url + &quot;/rest&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span> <span class="o">=</span> <span class="n">proxy_url</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_proxy_port</span> <span class="o">=</span> <span class="n">proxy_port</span>
         <span class="k">if</span> <span class="n">securityHandler</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-
             <span class="bp">self</span><span class="o">.</span><span class="n">_referer_url</span> <span class="o">=</span> <span class="n">securityHandler</span><span class="o">.</span><span class="n">referer_url</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;Security Handler is required for the administration function&quot;</span><span class="p">)</span>
+
+        <span class="n">urlInfo</span> <span class="o">=</span> <span class="n">urlparse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_url</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">urlInfo</span><span class="o">.</span><span class="n">netloc</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;www.arcgis.com&quot;</span><span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">portalSelf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">portals</span><span class="o">.</span><span class="n">portalSelf</span>
+            <span class="n">urlInfo</span><span class="o">=</span><span class="n">urlInfo</span><span class="o">.</span><span class="n">_replace</span><span class="p">(</span><span class="n">netloc</span><span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">portalSelf</span><span class="o">.</span><span class="n">urlKey</span><span class="p">,</span> <span class="n">portalSelf</span><span class="o">.</span><span class="n">customBaseUrl</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_url</span> <span class="o">=</span> <span class="n">urlunparse</span><span class="p">(</span><span class="n">urlInfo</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_url</span> <span class="o">=</span> <span class="s2">&quot;https://</span><span class="si">%s</span><span class="s2">.</span><span class="si">%s</span><span class="s2">/sharing&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">portalSelf</span><span class="o">.</span><span class="n">urlKey</span><span class="p">,</span> <span class="n">portalSelf</span><span class="o">.</span><span class="n">customBaseUrl</span><span class="p">)</span>
+            <span class="k">del</span> <span class="n">portalSelf</span>
+
         <span class="k">if</span> <span class="n">initialize</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">__init</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__init</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_url</span><span class="p">)</span>
     <span class="c1">#----------------------------------------------------------------------</span>
-    <span class="k">def</span> <span class="nf">__init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; initializes the site properties &quot;&quot;&quot;</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;f&quot;</span> <span class="p">:</span> <span class="s2">&quot;json&quot;</span>
         <span class="p">}</span>
+        <span class="k">if</span> <span class="n">url</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_url</span>
         <span class="n">json_dict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
                                  <span class="n">param_dict</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
                                  <span class="n">securityHandler</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_securityHandler</span><span class="p">,</span>

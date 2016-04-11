@@ -62,7 +62,7 @@
 <span class="kn">from</span> <span class="nn">.._abstract.abstract</span> <span class="kn">import</span> <span class="n">BaseAGOLClass</span>
 <span class="kn">from</span> <span class="nn">..security</span> <span class="kn">import</span> <span class="n">PortalTokenSecurityHandler</span><span class="p">,</span><span class="n">ArcGISTokenSecurityHandler</span><span class="p">,</span><span class="n">OAuthSecurityHandler</span>
 <span class="c1">########################################################################</span>
-<span class="k">class</span> <span class="nc">_log</span><span class="p">(</span><span class="n">BaseAGOLClass</span><span class="p">):</span>
+<div class="viewcode-block" id="_log"><a class="viewcode-back" href="../../../arcrest.manageportal.html#arcrest.manageportal.administration._log">[docs]</a><span class="k">class</span> <span class="nc">_log</span><span class="p">(</span><span class="n">BaseAGOLClass</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;handles the portal log information at 10.3.1+&quot;&quot;&quot;</span>
     <span class="n">_url</span> <span class="o">=</span> <span class="bp">None</span>
     <span class="n">_securityHandler</span> <span class="o">=</span> <span class="bp">None</span>
@@ -141,7 +141,7 @@
                             <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">,</span>
                             <span class="n">proxy_port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_port</span><span class="p">)</span>
     <span class="c1">#----------------------------------------------------------------------</span>
-    <span class="k">def</span> <span class="nf">editLogSettings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logLocation</span><span class="p">,</span> <span class="n">logLevel</span><span class="o">=</span><span class="s2">&quot;WARNING&quot;</span><span class="p">,</span> <span class="n">maxLogFileAge</span><span class="o">=</span><span class="mi">90</span><span class="p">):</span>
+<div class="viewcode-block" id="_log.editLogSettings"><a class="viewcode-back" href="../../../arcrest.manageportal.html#arcrest.manageportal.administration._log.editLogSettings">[docs]</a>    <span class="k">def</span> <span class="nf">editLogSettings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logLocation</span><span class="p">,</span> <span class="n">logLevel</span><span class="o">=</span><span class="s2">&quot;WARNING&quot;</span><span class="p">,</span> <span class="n">maxLogFileAge</span><span class="o">=</span><span class="mi">90</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           edits the log settings for the portal site</span>
 
@@ -164,9 +164,9 @@
                              <span class="n">param_dict</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
                              <span class="n">securityHandler</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_securityHandler</span><span class="p">,</span>
                              <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">,</span>
-                             <span class="n">proxy_port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_port</span><span class="p">)</span>
+                             <span class="n">proxy_port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_port</span><span class="p">)</span></div>
     <span class="c1">#----------------------------------------------------------------------</span>
-    <span class="k">def</span> <span class="nf">query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logLevel</span><span class="o">=</span><span class="s2">&quot;WARNING&quot;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;ALL&quot;</span><span class="p">,</span>
+<div class="viewcode-block" id="_log.query"><a class="viewcode-back" href="../../../arcrest.manageportal.html#arcrest.manageportal.administration._log.query">[docs]</a>    <span class="k">def</span> <span class="nf">query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logLevel</span><span class="o">=</span><span class="s2">&quot;WARNING&quot;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;ALL&quot;</span><span class="p">,</span>
               <span class="n">startTime</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">endTime</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
               <span class="n">logCodes</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">users</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">messageCount</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -217,9 +217,9 @@
                             <span class="n">param_dict</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
                             <span class="n">securityHandler</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_securityHandler</span><span class="p">,</span>
                             <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">,</span>
-                            <span class="n">proxy_port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_port</span><span class="p">)</span>
+                            <span class="n">proxy_port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_port</span><span class="p">)</span></div>
     <span class="c1">#----------------------------------------------------------------------</span>
-    <span class="k">def</span> <span class="nf">cleanLogs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="_log.cleanLogs"><a class="viewcode-back" href="../../../arcrest.manageportal.html#arcrest.manageportal.administration._log.cleanLogs">[docs]</a>    <span class="k">def</span> <span class="nf">cleanLogs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;erases all the log data&quot;&quot;&quot;</span>
         <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_url</span> <span class="o">+</span> <span class="s2">&quot;/clean&quot;</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
@@ -229,9 +229,9 @@
                              <span class="n">param_dict</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
                              <span class="n">securityHandler</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_securityHandler</span><span class="p">,</span>
                              <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">,</span>
-                             <span class="n">proxy_port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_port</span><span class="p">)</span>
+                             <span class="n">proxy_port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_port</span><span class="p">)</span></div></div>
 <span class="c1">########################################################################</span>
-<span class="k">class</span> <span class="nc">_Security</span><span class="p">(</span><span class="n">BaseAGOLClass</span><span class="p">):</span>
+<div class="viewcode-block" id="_Security"><a class="viewcode-back" href="../../../arcrest.manageportal.html#arcrest.manageportal.administration._Security">[docs]</a><span class="k">class</span> <span class="nc">_Security</span><span class="p">(</span><span class="n">BaseAGOLClass</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">       The security resource is the root of all the security configurations</span>
 <span class="sd">       and operations in the portal. Through this resource, you can change</span>
@@ -297,7 +297,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">__init</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resources</span>
     <span class="c1">#----------------------------------------------------------------------</span>
-    <span class="k">def</span> <span class="nf">createUser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<div class="viewcode-block" id="_Security.createUser"><a class="viewcode-back" href="../../../arcrest.manageportal.html#arcrest.manageportal.administration._Security.createUser">[docs]</a>    <span class="k">def</span> <span class="nf">createUser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                    <span class="n">username</span><span class="p">,</span>
                    <span class="n">password</span><span class="p">,</span>
                    <span class="n">fullname</span><span class="p">,</span>
@@ -343,10 +343,10 @@
                              <span class="n">param_dict</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
                              <span class="n">securityHandler</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_securityHandler</span><span class="p">,</span>
                              <span class="n">proxy_port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_port</span><span class="p">,</span>
-                             <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">)</span>
+                             <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">)</span></div>
 
     <span class="c1">#----------------------------------------------------------------------</span>
-    <span class="k">def</span> <span class="nf">updateSecurityConfiguration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<div class="viewcode-block" id="_Security.updateSecurityConfiguration"><a class="viewcode-back" href="../../../arcrest.manageportal.html#arcrest.manageportal.administration._Security.updateSecurityConfiguration">[docs]</a>    <span class="k">def</span> <span class="nf">updateSecurityConfiguration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                                     <span class="n">enableAutomaticAccountCreation</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
                                     <span class="n">disableServicesDirectory</span><span class="o">=</span><span class="bp">False</span>
                                     <span class="p">):</span>
@@ -385,9 +385,9 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">param_dict</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
                              <span class="n">securityHandler</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_securityHandler</span><span class="p">,</span>
                              <span class="n">proxy_port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_port</span><span class="p">,</span>
-                             <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">)</span>
+                             <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">)</span></div>
     <span class="c1">#----------------------------------------------------------------------</span>
-    <span class="k">def</span> <span class="nf">updateIdenityStore</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<div class="viewcode-block" id="_Security.updateIdenityStore"><a class="viewcode-back" href="../../../arcrest.manageportal.html#arcrest.manageportal.administration._Security.updateIdenityStore">[docs]</a>    <span class="k">def</span> <span class="nf">updateIdenityStore</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                            <span class="n">userPassword</span><span class="p">,</span>
                            <span class="n">user</span><span class="p">,</span>
                            <span class="n">userFullnameAttribute</span><span class="p">,</span>
@@ -456,9 +456,9 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">param_dict</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
                              <span class="n">securityHandler</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_securityHandler</span><span class="p">,</span>
                              <span class="n">proxy_port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_port</span><span class="p">,</span>
-                             <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">)</span>
+                             <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">)</span></div>
     <span class="c1">#----------------------------------------------------------------------</span>
-    <span class="k">def</span> <span class="nf">updateTokenConfiguration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sharedKey</span><span class="p">):</span>
+<div class="viewcode-block" id="_Security.updateTokenConfiguration"><a class="viewcode-back" href="../../../arcrest.manageportal.html#arcrest.manageportal.administration._Security.updateTokenConfiguration">[docs]</a>    <span class="k">def</span> <span class="nf">updateTokenConfiguration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sharedKey</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        You can use this operation to change the shared key for the token</span>
 <span class="sd">        configuration. Shared keys are used to generate tokens and must be</span>
@@ -475,7 +475,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">param_dict</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
                              <span class="n">securityHandler</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_securityHandler</span><span class="p">,</span>
                              <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">,</span>
-                             <span class="n">proxy_port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_port</span><span class="p">)</span>
+                             <span class="n">proxy_port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_port</span><span class="p">)</span></div>
     <span class="c1">#----------------------------------------------------------------------</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">tokenConfigurations</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -527,9 +527,9 @@
                             <span class="n">param_dict</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
                             <span class="n">securityHandler</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_securityHandler</span><span class="p">,</span>
                             <span class="n">proxy_port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_port</span><span class="p">,</span>
-                            <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">)</span>
+                            <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">)</span></div>
 <span class="c1">########################################################################</span>
-<span class="k">class</span> <span class="nc">_System</span><span class="p">(</span><span class="n">BaseAGOLClass</span><span class="p">):</span>
+<div class="viewcode-block" id="_System"><a class="viewcode-back" href="../../../arcrest.manageportal.html#arcrest.manageportal.administration._System">[docs]</a><span class="k">class</span> <span class="nc">_System</span><span class="p">(</span><span class="n">BaseAGOLClass</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">       This resource is an umbrella for a collection of system-wide</span>
 <span class="sd">       resources for your portal. This resource provides access to the</span>
@@ -572,7 +572,7 @@
                             <span class="n">proxy_port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_port</span><span class="p">,</span>
                             <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">)</span>
     <span class="c1">#----------------------------------------------------------------------</span>
-    <span class="k">def</span> <span class="nf">webAdaptor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">webAdaptorID</span><span class="p">):</span>
+<div class="viewcode-block" id="_System.webAdaptor"><a class="viewcode-back" href="../../../arcrest.manageportal.html#arcrest.manageportal.administration._System.webAdaptor">[docs]</a>    <span class="k">def</span> <span class="nf">webAdaptor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">webAdaptorID</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        The ArcGIS Web Adaptor is a web application that runs in a</span>
 <span class="sd">        front-end web server. One of the Web Adaptor&#39;s primary</span>
@@ -604,10 +604,10 @@
                             <span class="n">param_dict</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
                             <span class="n">securityHandler</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_securityHandler</span><span class="p">,</span>
                             <span class="n">proxy_port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_port</span><span class="p">,</span>
-                            <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">)</span>
+                            <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">)</span></div>
 
     <span class="c1">#----------------------------------------------------------------------</span>
-    <span class="k">def</span> <span class="nf">unregisterWebAdaptor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">webAdaptorID</span><span class="p">):</span>
+<div class="viewcode-block" id="_System.unregisterWebAdaptor"><a class="viewcode-back" href="../../../arcrest.manageportal.html#arcrest.manageportal.administration._System.unregisterWebAdaptor">[docs]</a>    <span class="k">def</span> <span class="nf">unregisterWebAdaptor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">webAdaptorID</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        You can use this operation to unregister the ArcGIS Web Adaptor</span>
 <span class="sd">        from your portal. Once a Web Adaptor has been unregistered, your</span>
@@ -627,9 +627,9 @@
                              <span class="n">param_dict</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
                              <span class="n">securityHandler</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_securityHandler</span><span class="p">,</span>
                              <span class="n">proxy_port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_port</span><span class="p">,</span>
-                             <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">)</span>
+                             <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">)</span></div>
     <span class="c1">#----------------------------------------------------------------------</span>
-    <span class="k">def</span> <span class="nf">updateWebAdaptorsConfiguration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">webAdaptorsConfig</span><span class="p">):</span>
+<div class="viewcode-block" id="_System.updateWebAdaptorsConfiguration"><a class="viewcode-back" href="../../../arcrest.manageportal.html#arcrest.manageportal.administration._System.updateWebAdaptorsConfiguration">[docs]</a>    <span class="k">def</span> <span class="nf">updateWebAdaptorsConfiguration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">webAdaptorsConfig</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This operation is used to change the common properties and</span>
 <span class="sd">        configuration of the ArcGIS Web Adaptor configured with the portal.</span>
@@ -648,7 +648,7 @@
                              <span class="n">param_dict</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
                              <span class="n">securityHandler</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_securityHandler</span><span class="p">,</span>
                              <span class="n">proxy_port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_port</span><span class="p">,</span>
-                             <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">)</span>
+                             <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">)</span></div>
     <span class="c1">#----------------------------------------------------------------------</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">webAdaptorsConfiguration</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -706,7 +706,7 @@
                             <span class="n">proxy_port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_port</span><span class="p">,</span>
                             <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">)</span>
     <span class="c1">#----------------------------------------------------------------------</span>
-    <span class="k">def</span> <span class="nf">directory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directoryName</span><span class="p">):</span>
+<div class="viewcode-block" id="_System.directory"><a class="viewcode-back" href="../../../arcrest.manageportal.html#arcrest.manageportal.administration._System.directory">[docs]</a>    <span class="k">def</span> <span class="nf">directory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directoryName</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        A directory is a file system-based folder that contains a specific</span>
 <span class="sd">        type of content for the portal. The physicalPath property of a</span>
@@ -729,9 +729,9 @@
                             <span class="n">param_dict</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
                             <span class="n">securityHandler</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_securityHandler</span><span class="p">,</span>
                             <span class="n">proxy_port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_port</span><span class="p">,</span>
-                            <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">)</span>
+                            <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">)</span></div>
     <span class="c1">#----------------------------------------------------------------------</span>
-    <span class="k">def</span> <span class="nf">editDirectory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directoryName</span><span class="p">,</span> <span class="n">physicalPath</span><span class="p">,</span> <span class="n">description</span><span class="p">):</span>
+<div class="viewcode-block" id="_System.editDirectory"><a class="viewcode-back" href="../../../arcrest.manageportal.html#arcrest.manageportal.administration._System.editDirectory">[docs]</a>    <span class="k">def</span> <span class="nf">editDirectory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directoryName</span><span class="p">,</span> <span class="n">physicalPath</span><span class="p">,</span> <span class="n">description</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        The edit operation on a directory can be used to change the</span>
 <span class="sd">        physical path and description properties of the directory. This is</span>
@@ -755,7 +755,7 @@
                             <span class="n">param_dict</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
                             <span class="n">securityHandler</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_securityHandler</span><span class="p">,</span>
                             <span class="n">proxy_port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_port</span><span class="p">,</span>
-                            <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">)</span>
+                            <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">)</span></div>
     <span class="c1">#----------------------------------------------------------------------</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">database</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -778,7 +778,7 @@
                             <span class="n">proxy_port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_port</span><span class="p">,</span>
                             <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">)</span>
     <span class="c1">#----------------------------------------------------------------------</span>
-    <span class="k">def</span> <span class="nf">updateDatabaseAccount</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span>
+<div class="viewcode-block" id="_System.updateDatabaseAccount"><a class="viewcode-back" href="../../../arcrest.manageportal.html#arcrest.manageportal.administration._System.updateDatabaseAccount">[docs]</a>    <span class="k">def</span> <span class="nf">updateDatabaseAccount</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span>
                               <span class="n">password</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        By default, the initial administrator account you define during the</span>
@@ -803,7 +803,7 @@
                              <span class="n">param_dict</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
                              <span class="n">securityHandler</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_securityHandler</span><span class="p">,</span>
                              <span class="n">proxy_port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_port</span><span class="p">,</span>
-                             <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">)</span>
+                             <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">)</span></div>
     <span class="c1">#----------------------------------------------------------------------</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">indexer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -844,7 +844,7 @@
                             <span class="n">proxy_port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_port</span><span class="p">,</span>
                             <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">)</span>
     <span class="c1">#----------------------------------------------------------------------</span>
-    <span class="k">def</span> <span class="nf">reindex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">includes</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+<div class="viewcode-block" id="_System.reindex"><a class="viewcode-back" href="../../../arcrest.manageportal.html#arcrest.manageportal.administration._System.reindex">[docs]</a>    <span class="k">def</span> <span class="nf">reindex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">includes</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This operation allows you to generate or update the indexes for</span>
 <span class="sd">        content; such as users, groups, and items stored in the database</span>
@@ -871,9 +871,9 @@
                             <span class="n">param_dict</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
                             <span class="n">securityHandler</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_securityHandler</span><span class="p">,</span>
                             <span class="n">proxy_port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_port</span><span class="p">,</span>
-                            <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">)</span>
+                            <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">)</span></div>
     <span class="c1">#----------------------------------------------------------------------</span>
-    <span class="k">def</span> <span class="nf">updateIndexConfiguration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<div class="viewcode-block" id="_System.updateIndexConfiguration"><a class="viewcode-back" href="../../../arcrest.manageportal.html#arcrest.manageportal.administration._System.updateIndexConfiguration">[docs]</a>    <span class="k">def</span> <span class="nf">updateIndexConfiguration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                                  <span class="n">indexerHost</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
                                  <span class="n">indexerPort</span><span class="o">=</span><span class="mi">7199</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -899,7 +899,7 @@
                             <span class="n">param_dict</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
                             <span class="n">securityHandler</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_securityHandler</span><span class="p">,</span>
                             <span class="n">proxy_port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_port</span><span class="p">,</span>
-                            <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">)</span>
+                            <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">)</span></div>
     <span class="c1">#----------------------------------------------------------------------</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">licenses</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -915,7 +915,7 @@
                             <span class="n">param_dict</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
                             <span class="n">securityHandler</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_securityHandler</span><span class="p">,</span>
                             <span class="n">proxy_port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_port</span><span class="p">,</span>
-                            <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">)</span>
+                            <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">)</span></div>
 
 <span class="c1">########################################################################</span>
 <div class="viewcode-block" id="PortalAdministration"><a class="viewcode-back" href="../../../arcrest.manageportal.html#arcrest.manageportal.administration.PortalAdministration">[docs]</a><span class="k">class</span> <span class="nc">PortalAdministration</span><span class="p">(</span><span class="n">BaseAGOLClass</span><span class="p">):</span>

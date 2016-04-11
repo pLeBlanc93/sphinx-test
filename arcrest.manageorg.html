@@ -23,7 +23,10 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="atlantis 1 documentation" href="index.html" /> 
+    <link rel="top" title="atlantis 1 documentation" href="index.html" />
+    <link rel="up" title="arcrest package" href="arcrest.html" />
+    <link rel="next" title="arcrest.manageportal package" href="arcrest.manageportal.html" />
+    <link rel="prev" title="arcrest.manageags package" href="arcrest.manageags.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -35,7 +38,15 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">atlantis 1 documentation</a> &raquo;</li> 
+        <li class="right" >
+          <a href="arcrest.manageportal.html" title="arcrest.manageportal package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="arcrest.manageags.html" title="arcrest.manageags package"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">atlantis 1 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >src</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="arcrest.html" accesskey="U">arcrest package</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -54,9 +65,15 @@
 <p>Manages Portal/AGOL content, users, items, etc..</p>
 <dl class="class">
 <dt id="arcrest.manageorg.administration.Administration">
-<em class="property">class </em><code class="descclassname">arcrest.manageorg.administration.</code><code class="descname">Administration</code><span class="sig-paren">(</span><em>url=None</em>, <em>securityHandler=None</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em>, <em>initialize=False</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.manageorg.administration.Administration" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">arcrest.manageorg.administration.</code><code class="descname">Administration</code><span class="sig-paren">(</span><em>url=None</em>, <em>securityHandler=None</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em>, <em>initialize=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/manageorg/administration.html#Administration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.manageorg.administration.Administration" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">arcrest._abstract.abstract.BaseAGOLClass</span></code></p>
 <p>Administers the AGOL/Portal Site</p>
+<dl class="method">
+<dt id="arcrest.manageorg.administration.Administration._Administration__init">
+<code class="descname">_Administration__init</code><span class="sig-paren">(</span><em>url=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.manageorg.administration.Administration._Administration__init" title="Permalink to this definition">¶</a></dt>
+<dd><p>initializes the site properties</p>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="arcrest.manageorg.administration.Administration.asDictionary">
 <code class="descname">asDictionary</code><a class="headerlink" href="#arcrest.manageorg.administration.Administration.asDictionary" title="Permalink to this definition">¶</a></dt>
@@ -84,7 +101,7 @@ operations.</p>
 
 <dl class="method">
 <dt id="arcrest.manageorg.administration.Administration.hostingServers">
-<code class="descname">hostingServers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.manageorg.administration.Administration.hostingServers" title="Permalink to this definition">¶</a></dt>
+<code class="descname">hostingServers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/manageorg/administration.html#Administration.hostingServers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.manageorg.administration.Administration.hostingServers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the objects to manage site&#8217;s hosted services. It returns
 AGSAdministration object if the site is Portal and it returns a
 hostedservice.Services object if it is AGOL.</p>
@@ -111,7 +128,7 @@ into a given organization</p>
 
 <dl class="method">
 <dt id="arcrest.manageorg.administration.Administration.search">
-<code class="descname">search</code><span class="sig-paren">(</span><em>q</em>, <em>t=None</em>, <em>focus=None</em>, <em>bbox=None</em>, <em>start=1</em>, <em>num=10</em>, <em>sortField=None</em>, <em>sortOrder='asc'</em>, <em>useSecurity=True</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.manageorg.administration.Administration.search" title="Permalink to this definition">¶</a></dt>
+<code class="descname">search</code><span class="sig-paren">(</span><em>q</em>, <em>t=None</em>, <em>focus=None</em>, <em>bbox=None</em>, <em>start=1</em>, <em>num=10</em>, <em>sortField=None</em>, <em>sortOrder='asc'</em>, <em>useSecurity=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/manageorg/administration.html#Administration.search"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.manageorg.administration.Administration.search" title="Permalink to this definition">¶</a></dt>
 <dd><p>This operation searches for content items in the portal. The
 searches are performed against a high performance index that
 indexes the most popular fields of an item. See the Search
@@ -203,6 +220,12 @@ query passed will be returned.</dd>
 </li>
 </ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="arcrest.manageags.html"
+                        title="previous chapter">arcrest.manageags package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="arcrest.manageportal.html"
+                        title="next chapter">arcrest.manageportal package</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -236,7 +259,15 @@ query passed will be returned.</dd>
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">atlantis 1 documentation</a> &raquo;</li> 
+        <li class="right" >
+          <a href="arcrest.manageportal.html" title="arcrest.manageportal package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="arcrest.manageags.html" title="arcrest.manageags package"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">atlantis 1 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >src</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="arcrest.html" >arcrest package</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

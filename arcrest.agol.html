@@ -23,7 +23,10 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="atlantis 1 documentation" href="index.html" /> 
+    <link rel="top" title="atlantis 1 documentation" href="index.html" />
+    <link rel="up" title="arcrest package" href="arcrest.html" />
+    <link rel="next" title="arcrest.agol.helperservices package" href="arcrest.agol.helperservices.html" />
+    <link rel="prev" title="arcrest package" href="arcrest.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -35,7 +38,15 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">atlantis 1 documentation</a> &raquo;</li> 
+        <li class="right" >
+          <a href="arcrest.agol.helperservices.html" title="arcrest.agol.helperservices package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="arcrest.html" title="arcrest package"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">atlantis 1 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >src</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="arcrest.html" accesskey="U">arcrest package</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -54,6 +65,7 @@
 <li class="toctree-l2"><a class="reference internal" href="arcrest.agol.helperservices.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="arcrest.agol.helperservices.html#module-arcrest.agol.helperservices.analysis">arcrest.agol.helperservices.analysis module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="arcrest.agol.helperservices.html#module-arcrest.agol.helperservices.elevation">arcrest.agol.helperservices.elevation module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arcrest.agol.helperservices.html#module-arcrest.agol.helperservices.geocoder">arcrest.agol.helperservices.geocoder module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="arcrest.agol.helperservices.html#module-arcrest.agol.helperservices.hydrology">arcrest.agol.helperservices.hydrology module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="arcrest.agol.helperservices.html#module-arcrest.agol.helperservices">Module contents</a></li>
 </ul>
@@ -68,12 +80,24 @@
 <span id="arcrest-agol-services-module"></span><h2>arcrest.agol.services module<a class="headerlink" href="#module-arcrest.agol.services" title="Permalink to this headline">¶</a></h2>
 <span class="target" id="module-services.py"></span><dl class="class">
 <dt id="arcrest.agol.services.FeatureLayer">
-<em class="property">class </em><code class="descclassname">arcrest.agol.services.</code><code class="descname">FeatureLayer</code><span class="sig-paren">(</span><em>url</em>, <em>securityHandler=None</em>, <em>initialize=False</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.agol.services.FeatureLayer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">arcrest.agol.services.</code><code class="descname">FeatureLayer</code><span class="sig-paren">(</span><em>url</em>, <em>securityHandler=None</em>, <em>initialize=False</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/services.html#FeatureLayer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.services.FeatureLayer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">arcrest._abstract.abstract.BaseAGOLClass</span></code></p>
 <p>This contains information about a feature service&#8217;s layer.</p>
 <dl class="method">
+<dt id="arcrest.agol.services.FeatureLayer._FeatureLayer__init">
+<code class="descname">_FeatureLayer__init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.agol.services.FeatureLayer._FeatureLayer__init" title="Permalink to this definition">¶</a></dt>
+<dd><p>initializes the service</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="arcrest.agol.services.FeatureLayer._chunks">
+<code class="descname">_chunks</code><span class="sig-paren">(</span><em>l</em>, <em>n</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/services.html#FeatureLayer._chunks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.services.FeatureLayer._chunks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Yield n successive chunks from a list l.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="arcrest.agol.services.FeatureLayer.addAttachment">
-<code class="descname">addAttachment</code><span class="sig-paren">(</span><em>oid</em>, <em>file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.addAttachment" title="Permalink to this definition">¶</a></dt>
+<code class="descname">addAttachment</code><span class="sig-paren">(</span><em>oid</em>, <em>file_path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/services.html#FeatureLayer.addAttachment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.addAttachment" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds an attachment to a feature service
 Input:</p>
 <blockquote>
@@ -87,7 +111,7 @@ file_path - string - path to file</div></blockquote>
 
 <dl class="method">
 <dt id="arcrest.agol.services.FeatureLayer.addFeature">
-<code class="descname">addFeature</code><span class="sig-paren">(</span><em>features</em>, <em>gdbVersion=None</em>, <em>rollbackOnFailure=True</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.addFeature" title="Permalink to this definition">¶</a></dt>
+<code class="descname">addFeature</code><span class="sig-paren">(</span><em>features</em>, <em>gdbVersion=None</em>, <em>rollbackOnFailure=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/services.html#FeatureLayer.addFeature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.addFeature" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds a single feature to the service
 Inputs:</p>
 <blockquote>
@@ -114,7 +138,7 @@ value is true.</div></blockquote>
 
 <dl class="method">
 <dt id="arcrest.agol.services.FeatureLayer.addFeatures">
-<code class="descname">addFeatures</code><span class="sig-paren">(</span><em>fc</em>, <em>attachmentTable=None</em>, <em>nameField='ATT_NAME'</em>, <em>blobField='DATA'</em>, <em>contentTypeField='CONTENT_TYPE'</em>, <em>rel_object_field='REL_OBJECTID'</em>, <em>lowerCaseFieldNames=False</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.addFeatures" title="Permalink to this definition">¶</a></dt>
+<code class="descname">addFeatures</code><span class="sig-paren">(</span><em>fc</em>, <em>attachmentTable=None</em>, <em>nameField='ATT_NAME'</em>, <em>blobField='DATA'</em>, <em>contentTypeField='CONTENT_TYPE'</em>, <em>rel_object_field='REL_OBJECTID'</em>, <em>lowerCaseFieldNames=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/services.html#FeatureLayer.addFeatures"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.addFeatures" title="Permalink to this definition">¶</a></dt>
 <dd><p>adds a feature to the feature service
 Inputs:</p>
 <blockquote>
@@ -150,7 +174,7 @@ rel_object_field - string - (optional) name of field with OID of feature class</
 
 <dl class="method">
 <dt id="arcrest.agol.services.FeatureLayer.applyEdits">
-<code class="descname">applyEdits</code><span class="sig-paren">(</span><em>addFeatures=[]</em>, <em>updateFeatures=[]</em>, <em>deleteFeatures=None</em>, <em>gdbVersion=None</em>, <em>rollbackOnFailure=True</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.applyEdits" title="Permalink to this definition">¶</a></dt>
+<code class="descname">applyEdits</code><span class="sig-paren">(</span><em>addFeatures=[]</em>, <em>updateFeatures=[]</em>, <em>deleteFeatures=None</em>, <em>gdbVersion=None</em>, <em>useGlobalIds=False</em>, <em>rollbackOnFailure=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/services.html#FeatureLayer.applyEdits"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.applyEdits" title="Permalink to this definition">¶</a></dt>
 <dd><p>This operation adds, updates, and deletes features to the
 associated feature layer or table in a single call.
 Inputs:</p>
@@ -164,15 +188,22 @@ objects</dd>
 </dl>
 <p>deleteFeatures - string of OIDs to remove from service
 gdbVersion - Geodatabase version to apply the edits.
-rollbackOnFailure - Optional parameter to specify if the</p>
+useGlobalIds - instead of referencing the default Object ID</p>
 <blockquote>
-<div>edits should be applied only if all
+<div>field, the service will look at a GUID field
+to track changes.  This means the GUIDs will
+be passed instead of OIDs for delete,
+update or add features.</div></blockquote>
+<dl class="docutils">
+<dt>rollbackOnFailure - Optional parameter to specify if the</dt>
+<dd>edits should be applied only if all
 submitted edits succeed. If false, the
 server will apply the edits that succeed
 even if some of the submitted edits fail.
 If true, the server will apply the edits
 only if all edits succeed. The default
-value is true.</div></blockquote>
+value is true.</dd>
+</dl>
 </div></blockquote>
 <dl class="docutils">
 <dt>Output:</dt>
@@ -182,7 +213,7 @@ value is true.</div></blockquote>
 
 <dl class="method">
 <dt id="arcrest.agol.services.FeatureLayer.calculate">
-<code class="descname">calculate</code><span class="sig-paren">(</span><em>where</em>, <em>calcExpression</em>, <em>sqlFormat='standard'</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.calculate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">calculate</code><span class="sig-paren">(</span><em>where</em>, <em>calcExpression</em>, <em>sqlFormat='standard'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/services.html#FeatureLayer.calculate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.calculate" title="Permalink to this definition">¶</a></dt>
 <dd><p>The calculate operation is performed on a feature service layer
 resource. It updates the values of one or more fields in an
 existing feature service layer based on SQL expressions or scalar
@@ -258,13 +289,13 @@ Values: standard, native</dd>
 
 <dl class="method">
 <dt id="arcrest.agol.services.FeatureLayer.create_fc_template">
-<code class="descname">create_fc_template</code><span class="sig-paren">(</span><em>out_path</em>, <em>out_name</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.create_fc_template" title="Permalink to this definition">¶</a></dt>
+<code class="descname">create_fc_template</code><span class="sig-paren">(</span><em>out_path</em>, <em>out_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/services.html#FeatureLayer.create_fc_template"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.create_fc_template" title="Permalink to this definition">¶</a></dt>
 <dd><p>creates a featureclass template on local disk</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="arcrest.agol.services.FeatureLayer.create_feature_template">
-<code class="descname">create_feature_template</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.create_feature_template" title="Permalink to this definition">¶</a></dt>
+<code class="descname">create_feature_template</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/services.html#FeatureLayer.create_feature_template"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.create_feature_template" title="Permalink to this definition">¶</a></dt>
 <dd><p>creates a feature template</p>
 </dd></dl>
 
@@ -288,7 +319,7 @@ Values: standard, native</dd>
 
 <dl class="method">
 <dt id="arcrest.agol.services.FeatureLayer.deleteAttachment">
-<code class="descname">deleteAttachment</code><span class="sig-paren">(</span><em>oid</em>, <em>attachment_id</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.deleteAttachment" title="Permalink to this definition">¶</a></dt>
+<code class="descname">deleteAttachment</code><span class="sig-paren">(</span><em>oid</em>, <em>attachment_id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/services.html#FeatureLayer.deleteAttachment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.deleteAttachment" title="Permalink to this definition">¶</a></dt>
 <dd><p>removes an attachment from a feature service feature
 Input:</p>
 <blockquote>
@@ -302,7 +333,7 @@ attachment_id - integer - id of attachment to erase</div></blockquote>
 
 <dl class="method">
 <dt id="arcrest.agol.services.FeatureLayer.deleteFeatures">
-<code class="descname">deleteFeatures</code><span class="sig-paren">(</span><em>objectIds=''</em>, <em>where=''</em>, <em>geometryFilter=None</em>, <em>gdbVersion=None</em>, <em>rollbackOnFailure=True</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.deleteFeatures" title="Permalink to this definition">¶</a></dt>
+<code class="descname">deleteFeatures</code><span class="sig-paren">(</span><em>objectIds=''</em>, <em>where=''</em>, <em>geometryFilter=None</em>, <em>gdbVersion=None</em>, <em>rollbackOnFailure=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/services.html#FeatureLayer.deleteFeatures"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.deleteFeatures" title="Permalink to this definition">¶</a></dt>
 <dd><p>removes 1:n features based on a sql statement
 Input:</p>
 <blockquote>
@@ -395,7 +426,7 @@ edits succeed. The default value is true.</dd>
 
 <dl class="method">
 <dt id="arcrest.agol.services.FeatureLayer.getHTMLPopup">
-<code class="descname">getHTMLPopup</code><span class="sig-paren">(</span><em>oid</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.getHTMLPopup" title="Permalink to this definition">¶</a></dt>
+<code class="descname">getHTMLPopup</code><span class="sig-paren">(</span><em>oid</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/services.html#FeatureLayer.getHTMLPopup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.getHTMLPopup" title="Permalink to this definition">¶</a></dt>
 <dd><p>The htmlPopup resource provides details about the HTML pop-up
 authored by the user using ArcGIS for Desktop.
 Input:</p>
@@ -406,7 +437,7 @@ Input:</p>
 
 <dl class="method">
 <dt id="arcrest.agol.services.FeatureLayer.get_local_copy">
-<code class="descname">get_local_copy</code><span class="sig-paren">(</span><em>out_path</em>, <em>includeAttachments=False</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.get_local_copy" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_local_copy</code><span class="sig-paren">(</span><em>out_path</em>, <em>includeAttachments=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/services.html#FeatureLayer.get_local_copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.get_local_copy" title="Permalink to this definition">¶</a></dt>
 <dd><p>exports the whole feature service to a feature class
 Input:</p>
 <blockquote>
@@ -483,7 +514,7 @@ includeAttachments - default False. If sync is not supported</p>
 
 <dl class="method">
 <dt id="arcrest.agol.services.FeatureLayer.listAttachments">
-<code class="descname">listAttachments</code><span class="sig-paren">(</span><em>oid</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.listAttachments" title="Permalink to this definition">¶</a></dt>
+<code class="descname">listAttachments</code><span class="sig-paren">(</span><em>oid</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/services.html#FeatureLayer.listAttachments"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.listAttachments" title="Permalink to this definition">¶</a></dt>
 <dd><p>list attachements for a given OBJECT ID</p>
 </dd></dl>
 
@@ -491,6 +522,12 @@ includeAttachments - default False. If sync is not supported</p>
 <dt id="arcrest.agol.services.FeatureLayer.maxRecordCount">
 <code class="descname">maxRecordCount</code><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.maxRecordCount" title="Permalink to this definition">¶</a></dt>
 <dd><p>returns the maximum returned records</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="arcrest.agol.services.FeatureLayer.maxRecordCountFactor">
+<code class="descname">maxRecordCountFactor</code><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.maxRecordCountFactor" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns the maxRecordCountFactor for the feature layer</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -530,7 +567,7 @@ includeAttachments - default False. If sync is not supported</p>
 
 <dl class="method">
 <dt id="arcrest.agol.services.FeatureLayer.query">
-<code class="descname">query</code><span class="sig-paren">(</span><em>where='1=1'</em>, <em>out_fields='*'</em>, <em>timeFilter=None</em>, <em>geometryFilter=None</em>, <em>returnGeometry=True</em>, <em>returnIDsOnly=False</em>, <em>returnCountOnly=False</em>, <em>returnFeatureClass=False</em>, <em>returnDistinctValues=False</em>, <em>returnExtentOnly=False</em>, <em>groupByFieldsForStatistics=None</em>, <em>statisticFilter=None</em>, <em>resultOffset=''</em>, <em>resultRecordCount=''</em>, <em>out_fc=None</em>, <em>objectIds=''</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.query" title="Permalink to this definition">¶</a></dt>
+<code class="descname">query</code><span class="sig-paren">(</span><em>where='1=1'</em>, <em>out_fields='*'</em>, <em>timeFilter=None</em>, <em>geometryFilter=None</em>, <em>returnGeometry=True</em>, <em>returnIDsOnly=False</em>, <em>returnCountOnly=False</em>, <em>returnFeatureClass=False</em>, <em>returnDistinctValues=False</em>, <em>returnExtentOnly=False</em>, <em>groupByFieldsForStatistics=None</em>, <em>statisticFilter=None</em>, <em>resultOffset=''</em>, <em>resultRecordCount=''</em>, <em>out_fc=None</em>, <em>objectIds=''</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/services.html#FeatureLayer.query"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.query" title="Permalink to this definition">¶</a></dt>
 <dd><p>queries a feature service based on a sql statement
 Inputs:</p>
 <blockquote>
@@ -586,7 +623,7 @@ returnFeatureClass is set to True.</dd>
 
 <dl class="method">
 <dt id="arcrest.agol.services.FeatureLayer.query_related_records">
-<code class="descname">query_related_records</code><span class="sig-paren">(</span><em>objectIds</em>, <em>relationshipId</em>, <em>outFields='*'</em>, <em>definitionExpression=None</em>, <em>returnGeometry=True</em>, <em>maxAllowableOffset=None</em>, <em>geometryPrecision=None</em>, <em>outWKID=None</em>, <em>gdbVersion=None</em>, <em>returnZ=False</em>, <em>returnM=False</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.query_related_records" title="Permalink to this definition">¶</a></dt>
+<code class="descname">query_related_records</code><span class="sig-paren">(</span><em>objectIds</em>, <em>relationshipId</em>, <em>outFields='*'</em>, <em>definitionExpression=None</em>, <em>returnGeometry=True</em>, <em>maxAllowableOffset=None</em>, <em>geometryPrecision=None</em>, <em>outWKID=None</em>, <em>gdbVersion=None</em>, <em>returnZ=False</em>, <em>returnM=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/services.html#FeatureLayer.query_related_records"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.query_related_records" title="Permalink to this definition">¶</a></dt>
 <dd><p>The Query operation is performed on a feature service layer
 resource. The result of this operation are feature sets grouped
 by source layer/table object IDs. Each feature set contains
@@ -650,7 +687,7 @@ not returned. The default is false.</dd>
 
 <dl class="method">
 <dt id="arcrest.agol.services.FeatureLayer.refresh">
-<code class="descname">refresh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.refresh" title="Permalink to this definition">¶</a></dt>
+<code class="descname">refresh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/services.html#FeatureLayer.refresh"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.refresh" title="Permalink to this definition">¶</a></dt>
 <dd><p>refreshes all the properties of the service</p>
 </dd></dl>
 
@@ -670,6 +707,12 @@ not returned. The default is false.</dd>
 <dt id="arcrest.agol.services.FeatureLayer.serviceItemId">
 <code class="descname">serviceItemId</code><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.serviceItemId" title="Permalink to this definition">¶</a></dt>
 <dd><p>returns the service item id</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="arcrest.agol.services.FeatureLayer.standardMaxRecordCount">
+<code class="descname">standardMaxRecordCount</code><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.standardMaxRecordCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns the standardMaxRecordCount for the feature layer</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -739,6 +782,12 @@ not returned. The default is false.</dd>
 </dd></dl>
 
 <dl class="attribute">
+<dt id="arcrest.agol.services.FeatureLayer.tileMaxRecordCount">
+<code class="descname">tileMaxRecordCount</code><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.tileMaxRecordCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns the tileMaxRecordCount for the feature layer</p>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="arcrest.agol.services.FeatureLayer.timeInfo">
 <code class="descname">timeInfo</code><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.timeInfo" title="Permalink to this definition">¶</a></dt>
 <dd><p>returns the time information about the layer</p>
@@ -764,7 +813,7 @@ not returned. The default is false.</dd>
 
 <dl class="method">
 <dt id="arcrest.agol.services.FeatureLayer.updateAttachment">
-<code class="descname">updateAttachment</code><span class="sig-paren">(</span><em>oid</em>, <em>attachment_id</em>, <em>file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.updateAttachment" title="Permalink to this definition">¶</a></dt>
+<code class="descname">updateAttachment</code><span class="sig-paren">(</span><em>oid</em>, <em>attachment_id</em>, <em>file_path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/services.html#FeatureLayer.updateAttachment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.updateAttachment" title="Permalink to this definition">¶</a></dt>
 <dd><p>updates an existing attachment with a new file
 Inputs:</p>
 <blockquote>
@@ -779,7 +828,7 @@ file_path - string - path to new attachment</div></blockquote>
 
 <dl class="method">
 <dt id="arcrest.agol.services.FeatureLayer.updateFeature">
-<code class="descname">updateFeature</code><span class="sig-paren">(</span><em>features</em>, <em>gdbVersion=None</em>, <em>rollbackOnFailure=True</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.updateFeature" title="Permalink to this definition">¶</a></dt>
+<code class="descname">updateFeature</code><span class="sig-paren">(</span><em>features</em>, <em>gdbVersion=None</em>, <em>rollbackOnFailure=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/services.html#FeatureLayer.updateFeature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.services.FeatureLayer.updateFeature" title="Permalink to this definition">¶</a></dt>
 <dd><p>updates an existing feature in a feature service layer
 Input:</p>
 <blockquote>
@@ -811,9 +860,27 @@ or a FeatureSet object.</dd>
 
 <dl class="class">
 <dt id="arcrest.agol.services.FeatureService">
-<em class="property">class </em><code class="descclassname">arcrest.agol.services.</code><code class="descname">FeatureService</code><span class="sig-paren">(</span><em>url</em>, <em>securityHandler=None</em>, <em>initialize=False</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.agol.services.FeatureService" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">arcrest.agol.services.</code><code class="descname">FeatureService</code><span class="sig-paren">(</span><em>url</em>, <em>securityHandler=None</em>, <em>initialize=False</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/services.html#FeatureService"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.services.FeatureService" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">arcrest._abstract.abstract.BaseAGOLClass</span></code></p>
 <p>contains information about a feature service</p>
+<dl class="method">
+<dt id="arcrest.agol.services.FeatureService._FeatureService__init">
+<code class="descname">_FeatureService__init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.agol.services.FeatureService._FeatureService__init" title="Permalink to this definition">¶</a></dt>
+<dd><p>loads the data into the class</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="arcrest.agol.services.FeatureService._getLayers">
+<code class="descname">_getLayers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/services.html#FeatureService._getLayers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.services.FeatureService._getLayers" title="Permalink to this definition">¶</a></dt>
+<dd><p>gets layers for the featuer service</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="arcrest.agol.services.FeatureService._getTables">
+<code class="descname">_getTables</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/services.html#FeatureService._getTables"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.services.FeatureService._getTables" title="Permalink to this definition">¶</a></dt>
+<dd><p>gets layers for the featuer service</p>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="arcrest.agol.services.FeatureService.administration">
 <code class="descname">administration</code><a class="headerlink" href="#arcrest.agol.services.FeatureService.administration" title="Permalink to this definition">¶</a></dt>
@@ -840,7 +907,7 @@ or a FeatureSet object.</dd>
 
 <dl class="method">
 <dt id="arcrest.agol.services.FeatureService.createReplica">
-<code class="descname">createReplica</code><span class="sig-paren">(</span><em>replicaName</em>, <em>layers</em>, <em>layerQueries=None</em>, <em>geometryFilter=None</em>, <em>replicaSR=None</em>, <em>transportType='esriTransportTypeUrl'</em>, <em>returnAttachments=False</em>, <em>returnAttachmentsDatabyURL=False</em>, <em>async=False</em>, <em>attachmentsSyncDirection='none'</em>, <em>syncModel='none'</em>, <em>dataFormat='json'</em>, <em>replicaOptions=None</em>, <em>wait=False</em>, <em>out_path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.agol.services.FeatureService.createReplica" title="Permalink to this definition">¶</a></dt>
+<code class="descname">createReplica</code><span class="sig-paren">(</span><em>replicaName</em>, <em>layers</em>, <em>layerQueries=None</em>, <em>geometryFilter=None</em>, <em>replicaSR=None</em>, <em>transportType='esriTransportTypeUrl'</em>, <em>returnAttachments=False</em>, <em>returnAttachmentsDatabyURL=False</em>, <em>async=False</em>, <em>attachmentsSyncDirection='none'</em>, <em>syncModel='none'</em>, <em>dataFormat='json'</em>, <em>replicaOptions=None</em>, <em>wait=False</em>, <em>out_path=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/services.html#FeatureService.createReplica"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.services.FeatureService.createReplica" title="Permalink to this definition">¶</a></dt>
 <dd><p>The createReplica operation is performed on a feature service
 resource. This operation creates the replica between the feature
 service and a client based on a client-supplied replica definition.
@@ -995,13 +1062,13 @@ out_path - folder path to save the file</p>
 
 <dl class="method">
 <dt id="arcrest.agol.services.FeatureService.query">
-<code class="descname">query</code><span class="sig-paren">(</span><em>layerDefsFilter=None</em>, <em>geometryFilter=None</em>, <em>timeFilter=None</em>, <em>returnGeometry=True</em>, <em>returnIdsOnly=False</em>, <em>returnCountOnly=False</em>, <em>returnZ=False</em>, <em>returnM=False</em>, <em>outSR=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.agol.services.FeatureService.query" title="Permalink to this definition">¶</a></dt>
+<code class="descname">query</code><span class="sig-paren">(</span><em>layerDefsFilter=None</em>, <em>geometryFilter=None</em>, <em>timeFilter=None</em>, <em>returnGeometry=True</em>, <em>returnIdsOnly=False</em>, <em>returnCountOnly=False</em>, <em>returnZ=False</em>, <em>returnM=False</em>, <em>outSR=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/services.html#FeatureService.query"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.services.FeatureService.query" title="Permalink to this definition">¶</a></dt>
 <dd><p>The Query operation is performed on a feature service resource</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="arcrest.agol.services.FeatureService.query_related_records">
-<code class="descname">query_related_records</code><span class="sig-paren">(</span><em>objectIds</em>, <em>relationshipId</em>, <em>outFields='*'</em>, <em>definitionExpression=None</em>, <em>returnGeometry=True</em>, <em>maxAllowableOffset=None</em>, <em>geometryPrecision=None</em>, <em>outWKID=None</em>, <em>gdbVersion=None</em>, <em>returnZ=False</em>, <em>returnM=False</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.agol.services.FeatureService.query_related_records" title="Permalink to this definition">¶</a></dt>
+<code class="descname">query_related_records</code><span class="sig-paren">(</span><em>objectIds</em>, <em>relationshipId</em>, <em>outFields='*'</em>, <em>definitionExpression=None</em>, <em>returnGeometry=True</em>, <em>maxAllowableOffset=None</em>, <em>geometryPrecision=None</em>, <em>outWKID=None</em>, <em>gdbVersion=None</em>, <em>returnZ=False</em>, <em>returnM=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/services.html#FeatureService.query_related_records"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.services.FeatureService.query_related_records" title="Permalink to this definition">¶</a></dt>
 <dd><p>The Query operation is performed on a feature service layer
 resource. The result of this operation are feature sets grouped
 by source layer/table object IDs. Each feature set contains
@@ -1065,13 +1132,13 @@ not returned. The default is false.</dd>
 
 <dl class="method">
 <dt id="arcrest.agol.services.FeatureService.refresh_service">
-<code class="descname">refresh_service</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.agol.services.FeatureService.refresh_service" title="Permalink to this definition">¶</a></dt>
+<code class="descname">refresh_service</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/services.html#FeatureService.refresh_service"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.services.FeatureService.refresh_service" title="Permalink to this definition">¶</a></dt>
 <dd><p>repopulates the properties of the service</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="arcrest.agol.services.FeatureService.replicaInfo">
-<code class="descname">replicaInfo</code><span class="sig-paren">(</span><em>replica_id</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.agol.services.FeatureService.replicaInfo" title="Permalink to this definition">¶</a></dt>
+<code class="descname">replicaInfo</code><span class="sig-paren">(</span><em>replica_id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/services.html#FeatureService.replicaInfo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.services.FeatureService.replicaInfo" title="Permalink to this definition">¶</a></dt>
 <dd><p>The replica info resources lists replica metadata for a specific
 replica.
 Inputs:</p>
@@ -1085,7 +1152,7 @@ Inputs:</p>
 
 <dl class="method">
 <dt id="arcrest.agol.services.FeatureService.replicaStatus">
-<code class="descname">replicaStatus</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.agol.services.FeatureService.replicaStatus" title="Permalink to this definition">¶</a></dt>
+<code class="descname">replicaStatus</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/services.html#FeatureService.replicaStatus"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.services.FeatureService.replicaStatus" title="Permalink to this definition">¶</a></dt>
 <dd><p>gets the replica status when exported async set to True</p>
 </dd></dl>
 
@@ -1157,7 +1224,7 @@ Inputs:</p>
 
 <dl class="method">
 <dt id="arcrest.agol.services.FeatureService.synchronizeReplica">
-<code class="descname">synchronizeReplica</code><span class="sig-paren">(</span><em>replicaID</em>, <em>transportType='esriTransportTypeUrl'</em>, <em>replicaServerGen=None</em>, <em>returnIdsForAdds=False</em>, <em>edits=None</em>, <em>returnAttachmentDatabyURL=False</em>, <em>async=False</em>, <em>syncDirection='snapshot'</em>, <em>syncLayers='perReplica'</em>, <em>editsUploadID=None</em>, <em>editsUploadFormat=None</em>, <em>dataFormat='json'</em>, <em>rollbackOnFailure=True</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.agol.services.FeatureService.synchronizeReplica" title="Permalink to this definition">¶</a></dt>
+<code class="descname">synchronizeReplica</code><span class="sig-paren">(</span><em>replicaID</em>, <em>transportType='esriTransportTypeUrl'</em>, <em>replicaServerGen=None</em>, <em>returnIdsForAdds=False</em>, <em>edits=None</em>, <em>returnAttachmentDatabyURL=False</em>, <em>async=False</em>, <em>syncDirection='snapshot'</em>, <em>syncLayers='perReplica'</em>, <em>editsUploadID=None</em>, <em>editsUploadFormat=None</em>, <em>dataFormat='json'</em>, <em>rollbackOnFailure=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/services.html#FeatureService.synchronizeReplica"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.services.FeatureService.synchronizeReplica" title="Permalink to this definition">¶</a></dt>
 <dd><p>TODO: implement synchronize replica
 <a class="reference external" href="http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#//02r3000000vv000000">http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#//02r3000000vv000000</a></p>
 </dd></dl>
@@ -1170,7 +1237,7 @@ Inputs:</p>
 
 <dl class="method">
 <dt id="arcrest.agol.services.FeatureService.unRegisterReplica">
-<code class="descname">unRegisterReplica</code><span class="sig-paren">(</span><em>replica_id</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.agol.services.FeatureService.unRegisterReplica" title="Permalink to this definition">¶</a></dt>
+<code class="descname">unRegisterReplica</code><span class="sig-paren">(</span><em>replica_id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/services.html#FeatureService.unRegisterReplica"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.services.FeatureService.unRegisterReplica" title="Permalink to this definition">¶</a></dt>
 <dd><p>removes a replica from a feature service
 Inputs:</p>
 <blockquote>
@@ -1216,16 +1283,22 @@ only return the uploads class if syncEnabled is True.</p>
 
 <dl class="class">
 <dt id="arcrest.agol.services.TableLayer">
-<em class="property">class </em><code class="descclassname">arcrest.agol.services.</code><code class="descname">TableLayer</code><span class="sig-paren">(</span><em>url</em>, <em>securityHandler=None</em>, <em>initialize=False</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.agol.services.TableLayer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">arcrest.agol.services.</code><code class="descname">TableLayer</code><span class="sig-paren">(</span><em>url</em>, <em>securityHandler=None</em>, <em>initialize=False</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/services.html#TableLayer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.services.TableLayer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#arcrest.agol.services.FeatureLayer" title="arcrest.agol.services.FeatureLayer"><code class="xref py py-class docutils literal"><span class="pre">arcrest.agol.services.FeatureLayer</span></code></a></p>
 <p>Table object is exactly like FeatureLayer object</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="arcrest.agol.services.TiledService">
-<em class="property">class </em><code class="descclassname">arcrest.agol.services.</code><code class="descname">TiledService</code><span class="sig-paren">(</span><em>url</em>, <em>securityHandler</em>, <em>initialize=False</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.agol.services.TiledService" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">arcrest.agol.services.</code><code class="descname">TiledService</code><span class="sig-paren">(</span><em>url</em>, <em>securityHandler</em>, <em>initialize=False</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/services.html#TiledService"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.services.TiledService" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">arcrest._abstract.abstract.BaseAGOLClass</span></code></p>
 <p>AGOL Tiled Map Service</p>
+<dl class="method">
+<dt id="arcrest.agol.services.TiledService._TiledService__init">
+<code class="descname">_TiledService__init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.agol.services.TiledService._TiledService__init" title="Permalink to this definition">¶</a></dt>
+<dd><p>loads the data into the class</p>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="arcrest.agol.services.TiledService.access">
 <code class="descname">access</code><a class="headerlink" href="#arcrest.agol.services.TiledService.access" title="Permalink to this definition">¶</a></dt>
@@ -1437,6 +1510,12 @@ only return the uploads class if syncEnabled is True.</p>
 </li>
 </ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="arcrest.html"
+                        title="previous chapter">arcrest package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="arcrest.agol.helperservices.html"
+                        title="next chapter">arcrest.agol.helperservices package</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -1470,7 +1549,15 @@ only return the uploads class if syncEnabled is True.</p>
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">atlantis 1 documentation</a> &raquo;</li> 
+        <li class="right" >
+          <a href="arcrest.agol.helperservices.html" title="arcrest.agol.helperservices package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="arcrest.html" title="arcrest package"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">atlantis 1 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >src</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="arcrest.html" >arcrest package</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

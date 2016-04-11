@@ -23,7 +23,10 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="atlantis 1 documentation" href="index.html" /> 
+    <link rel="top" title="atlantis 1 documentation" href="index.html" />
+    <link rel="up" title="arcrest package" href="arcrest.html" />
+    <link rel="next" title="arcrest.enrichment package" href="arcrest.enrichment.html" />
+    <link rel="prev" title="arcrest.cmp package" href="arcrest.cmp.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -35,7 +38,15 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">atlantis 1 documentation</a> &raquo;</li> 
+        <li class="right" >
+          <a href="arcrest.enrichment.html" title="arcrest.enrichment package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="arcrest.cmp.html" title="arcrest.cmp package"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">atlantis 1 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >src</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="arcrest.html" accesskey="U">arcrest package</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -55,14 +66,14 @@
 Domains specify the set of valid values for a field.</p>
 <dl class="class">
 <dt id="arcrest.common.domain.CodedValueDomain">
-<em class="property">class </em><code class="descclassname">arcrest.common.domain.</code><code class="descname">CodedValueDomain</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.domain.CodedValueDomain" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<em class="property">class </em><code class="descclassname">arcrest.common.domain.</code><code class="descname">CodedValueDomain</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/domain.html#CodedValueDomain"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.domain.CodedValueDomain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.4/library/functions.html#object" title="(in Python v3.4)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Coded value domain specifies an explicit set of valid values for a
 field. Each valid value is assigned a unique name. The type property
 for coded value domains is codedValue.</p>
 <dl class="method">
 <dt id="arcrest.common.domain.CodedValueDomain.addCodedValue">
-<code class="descname">addCodedValue</code><span class="sig-paren">(</span><em>name</em>, <em>code</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.domain.CodedValueDomain.addCodedValue" title="Permalink to this definition">¶</a></dt>
+<code class="descname">addCodedValue</code><span class="sig-paren">(</span><em>name</em>, <em>code</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/domain.html#CodedValueDomain.addCodedValue"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.domain.CodedValueDomain.addCodedValue" title="Permalink to this definition">¶</a></dt>
 <dd><p>adds a coded value to the domain</p>
 <dl class="docutils">
 <dt>Inputs:</dt>
@@ -85,7 +96,7 @@ code - value</dd>
 
 <dl class="method">
 <dt id="arcrest.common.domain.CodedValueDomain.removeCodedValue">
-<code class="descname">removeCodedValue</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.domain.CodedValueDomain.removeCodedValue" title="Permalink to this definition">¶</a></dt>
+<code class="descname">removeCodedValue</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/domain.html#CodedValueDomain.removeCodedValue"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.domain.CodedValueDomain.removeCodedValue" title="Permalink to this definition">¶</a></dt>
 <dd><p>removes a codedValue by name</p>
 </dd></dl>
 
@@ -105,8 +116,8 @@ code - value</dd>
 
 <dl class="class">
 <dt id="arcrest.common.domain.InheritedDomain">
-<em class="property">class </em><code class="descclassname">arcrest.common.domain.</code><code class="descname">InheritedDomain</code><a class="headerlink" href="#arcrest.common.domain.InheritedDomain" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<em class="property">class </em><code class="descclassname">arcrest.common.domain.</code><code class="descname">InheritedDomain</code><a class="reference internal" href="_modules/arcrest/common/domain.html#InheritedDomain"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.domain.InheritedDomain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.4/library/functions.html#object" title="(in Python v3.4)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Inherited domains apply to domains on subtypes. It implies that the
 domain for a field at the subtype level is the same as the domain for
 the field at the layer level.</p>
@@ -126,8 +137,8 @@ the field at the layer level.</p>
 
 <dl class="class">
 <dt id="arcrest.common.domain.RangeDomain">
-<em class="property">class </em><code class="descclassname">arcrest.common.domain.</code><code class="descname">RangeDomain</code><span class="sig-paren">(</span><em>name</em>, <em>minValue</em>, <em>maxValue</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.domain.RangeDomain" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<em class="property">class </em><code class="descclassname">arcrest.common.domain.</code><code class="descname">RangeDomain</code><span class="sig-paren">(</span><em>name</em>, <em>minValue</em>, <em>maxValue</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/domain.html#RangeDomain"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.domain.RangeDomain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.4/library/functions.html#object" title="(in Python v3.4)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Range domain specifies a range of valid values for a field. The type
 property for range domains is range.</p>
 <dl class="attribute">
@@ -168,14 +179,14 @@ property for range domains is range.</p>
 <p>contains all error handlers for ArcREST</p>
 <dl class="exception">
 <dt id="arcrest.common.errorhandlers.ArcRESTError">
-<em class="property">exception </em><code class="descclassname">arcrest.common.errorhandlers.</code><code class="descname">ArcRESTError</code><a class="headerlink" href="#arcrest.common.errorhandlers.ArcRESTError" title="Permalink to this definition">¶</a></dt>
+<em class="property">exception </em><code class="descclassname">arcrest.common.errorhandlers.</code><code class="descname">ArcRESTError</code><a class="reference internal" href="_modules/arcrest/common/errorhandlers.html#ArcRESTError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.errorhandlers.ArcRESTError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></p>
 <p>default type of error handler raised</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="arcrest.common.errorhandlers.trace">
-<code class="descclassname">arcrest.common.errorhandlers.</code><code class="descname">trace</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.errorhandlers.trace" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">arcrest.common.errorhandlers.</code><code class="descname">trace</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/errorhandlers.html#trace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.errorhandlers.trace" title="Permalink to this definition">¶</a></dt>
 <dd><p>trace finds the line, the filename
 and error message and returns it
 to the user</p>
@@ -186,7 +197,7 @@ to the user</p>
 <span id="arcrest-common-filters-module"></span><h2>arcrest.common.filters module<a class="headerlink" href="#module-arcrest.common.filters" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="arcrest.common.filters.GeometryFilter">
-<em class="property">class </em><code class="descclassname">arcrest.common.filters.</code><code class="descname">GeometryFilter</code><span class="sig-paren">(</span><em>geomObject</em>, <em>spatialFilter='esriSpatialRelIntersects'</em>, <em>bufferDistance=None</em>, <em>units='esriSRUnit_Meter'</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.filters.GeometryFilter" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">arcrest.common.filters.</code><code class="descname">GeometryFilter</code><span class="sig-paren">(</span><em>geomObject</em>, <em>spatialFilter='esriSpatialRelIntersects'</em>, <em>bufferDistance=None</em>, <em>units='esriSRUnit_Meter'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/filters.html#GeometryFilter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.filters.GeometryFilter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">arcrest._abstract.abstract.BaseFilter</span></code></p>
 <dl class="docutils">
 <dt>creates a geometry filter for queries</dt>
@@ -257,7 +268,7 @@ Can be of type integer or float.</dd>
 
 <dl class="class">
 <dt id="arcrest.common.filters.LayerDefinitionFilter">
-<em class="property">class </em><code class="descclassname">arcrest.common.filters.</code><code class="descname">LayerDefinitionFilter</code><a class="headerlink" href="#arcrest.common.filters.LayerDefinitionFilter" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">arcrest.common.filters.</code><code class="descname">LayerDefinitionFilter</code><a class="reference internal" href="_modules/arcrest/common/filters.html#LayerDefinitionFilter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.filters.LayerDefinitionFilter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">arcrest._abstract.abstract.BaseFilter</span></code></p>
 <p>Allows you to filter the features of individual layers in the
 query by specifying definition expressions for those layers. A
@@ -265,7 +276,7 @@ definition expression for a layer that is published with the
 service will always be honored.</p>
 <dl class="method">
 <dt id="arcrest.common.filters.LayerDefinitionFilter.addFilter">
-<code class="descname">addFilter</code><span class="sig-paren">(</span><em>layer_id</em>, <em>where=None</em>, <em>outFields='*'</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.filters.LayerDefinitionFilter.addFilter" title="Permalink to this definition">¶</a></dt>
+<code class="descname">addFilter</code><span class="sig-paren">(</span><em>layer_id</em>, <em>where=None</em>, <em>outFields='*'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/filters.html#LayerDefinitionFilter.addFilter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.filters.LayerDefinitionFilter.addFilter" title="Permalink to this definition">¶</a></dt>
 <dd><p>adds a layer definition filter</p>
 </dd></dl>
 
@@ -277,13 +288,13 @@ service will always be honored.</p>
 
 <dl class="method">
 <dt id="arcrest.common.filters.LayerDefinitionFilter.removeAll">
-<code class="descname">removeAll</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.filters.LayerDefinitionFilter.removeAll" title="Permalink to this definition">¶</a></dt>
+<code class="descname">removeAll</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/filters.html#LayerDefinitionFilter.removeAll"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.filters.LayerDefinitionFilter.removeAll" title="Permalink to this definition">¶</a></dt>
 <dd><p>removes all items from the filter</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="arcrest.common.filters.LayerDefinitionFilter.removeFilter">
-<code class="descname">removeFilter</code><span class="sig-paren">(</span><em>filter_index</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.filters.LayerDefinitionFilter.removeFilter" title="Permalink to this definition">¶</a></dt>
+<code class="descname">removeFilter</code><span class="sig-paren">(</span><em>filter_index</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/filters.html#LayerDefinitionFilter.removeFilter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.filters.LayerDefinitionFilter.removeFilter" title="Permalink to this definition">¶</a></dt>
 <dd><p>removes a layer filter based on position in filter list</p>
 </dd></dl>
 
@@ -291,12 +302,12 @@ service will always be honored.</p>
 
 <dl class="class">
 <dt id="arcrest.common.filters.StatisticFilter">
-<em class="property">class </em><code class="descclassname">arcrest.common.filters.</code><code class="descname">StatisticFilter</code><a class="headerlink" href="#arcrest.common.filters.StatisticFilter" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">arcrest.common.filters.</code><code class="descname">StatisticFilter</code><a class="reference internal" href="_modules/arcrest/common/filters.html#StatisticFilter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.filters.StatisticFilter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">arcrest._abstract.abstract.BaseFilter</span></code></p>
 <p>The definitions for one or more field-based statistics to be calculated</p>
 <dl class="method">
 <dt id="arcrest.common.filters.StatisticFilter.add">
-<code class="descname">add</code><span class="sig-paren">(</span><em>statisticType</em>, <em>onStatisticField</em>, <em>outStatisticFieldName=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.filters.StatisticFilter.add" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add</code><span class="sig-paren">(</span><em>statisticType</em>, <em>onStatisticField</em>, <em>outStatisticFieldName=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/filters.html#StatisticFilter.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.filters.StatisticFilter.add" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds the statistics group to the filter.</p>
 <dl class="docutils">
 <dt>outStatistics - is supported on only those layers/tables that</dt>
@@ -314,7 +325,7 @@ orderByFields, time, and where.</dd>
 
 <dl class="method">
 <dt id="arcrest.common.filters.StatisticFilter.clear">
-<code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.filters.StatisticFilter.clear" title="Permalink to this definition">¶</a></dt>
+<code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/filters.html#StatisticFilter.clear"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.filters.StatisticFilter.clear" title="Permalink to this definition">¶</a></dt>
 <dd><p>removes all the filters</p>
 </dd></dl>
 
@@ -326,7 +337,7 @@ orderByFields, time, and where.</dd>
 
 <dl class="method">
 <dt id="arcrest.common.filters.StatisticFilter.remove">
-<code class="descname">remove</code><span class="sig-paren">(</span><em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.filters.StatisticFilter.remove" title="Permalink to this definition">¶</a></dt>
+<code class="descname">remove</code><span class="sig-paren">(</span><em>index</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/filters.html#StatisticFilter.remove"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.filters.StatisticFilter.remove" title="Permalink to this definition">¶</a></dt>
 <dd><p>removes the filter by index</p>
 </dd></dl>
 
@@ -334,7 +345,7 @@ orderByFields, time, and where.</dd>
 
 <dl class="class">
 <dt id="arcrest.common.filters.TimeFilter">
-<em class="property">class </em><code class="descclassname">arcrest.common.filters.</code><code class="descname">TimeFilter</code><span class="sig-paren">(</span><em>start_time</em>, <em>time_zone='UTC'</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.filters.TimeFilter" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">arcrest.common.filters.</code><code class="descname">TimeFilter</code><span class="sig-paren">(</span><em>start_time</em>, <em>time_zone='UTC'</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/filters.html#TimeFilter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.filters.TimeFilter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">arcrest._abstract.abstract.BaseFilter</span></code></p>
 <p>Implements the time filter</p>
 <dl class="attribute">
@@ -349,11 +360,11 @@ orderByFields, time, and where.</dd>
 <span id="arcrest-common-find-module"></span><h2>arcrest.common.find module<a class="headerlink" href="#module-arcrest.common.find" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="arcrest.common.find.search">
-<em class="property">class </em><code class="descclassname">arcrest.common.find.</code><code class="descname">search</code><span class="sig-paren">(</span><em>url=None</em>, <em>securityHandler=None</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.find.search" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">arcrest.common.find.</code><code class="descname">search</code><span class="sig-paren">(</span><em>url=None</em>, <em>securityHandler=None</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/find.html#search"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.find.search" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">arcrest.web._base.BaseWebOperations</span></code></p>
 <dl class="method">
 <dt id="arcrest.common.find.search.findItem">
-<code class="descname">findItem</code><span class="sig-paren">(</span><em>title</em>, <em>itemType</em>, <em>username=None</em>, <em>searchorg=False</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.find.search.findItem" title="Permalink to this definition">¶</a></dt>
+<code class="descname">findItem</code><span class="sig-paren">(</span><em>title</em>, <em>itemType</em>, <em>username=None</em>, <em>searchorg=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/find.html#search.findItem"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.find.search.findItem" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -361,10 +372,16 @@ orderByFields, time, and where.</dd>
 </div>
 <div class="section" id="module-arcrest.common.general">
 <span id="arcrest-common-general-module"></span><h2>arcrest.common.general module<a class="headerlink" href="#module-arcrest.common.general" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="arcrest.common.general._unicode_convert">
+<code class="descclassname">arcrest.common.general.</code><code class="descname">_unicode_convert</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/general.html#_unicode_convert"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.general._unicode_convert" title="Permalink to this definition">¶</a></dt>
+<dd><p>converts unicode to anscii</p>
+</dd></dl>
+
 <dl class="class">
 <dt id="arcrest.common.general.Feature">
-<em class="property">class </em><code class="descclassname">arcrest.common.general.</code><code class="descname">Feature</code><span class="sig-paren">(</span><em>json_string</em>, <em>wkid=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.general.Feature" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<em class="property">class </em><code class="descclassname">arcrest.common.general.</code><code class="descname">Feature</code><span class="sig-paren">(</span><em>json_string</em>, <em>wkid=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/general.html#Feature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.general.Feature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.4/library/functions.html#object" title="(in Python v3.4)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>returns a feature</p>
 <dl class="attribute">
 <dt id="arcrest.common.general.Feature.asDictionary">
@@ -384,7 +401,7 @@ returns a list of fields and the row object</div></blockquote>
 
 <dl class="staticmethod">
 <dt id="arcrest.common.general.Feature.fc_to_features">
-<em class="property">static </em><code class="descname">fc_to_features</code><span class="sig-paren">(</span><em>dataset</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.general.Feature.fc_to_features" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">fc_to_features</code><span class="sig-paren">(</span><em>dataset</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/general.html#Feature.fc_to_features"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.general.Feature.fc_to_features" title="Permalink to this definition">¶</a></dt>
 <dd><p>converts a dataset to a list of feature objects
 Input:</p>
 <blockquote>
@@ -415,13 +432,13 @@ Input:</p>
 
 <dl class="method">
 <dt id="arcrest.common.general.Feature.get_value">
-<code class="descname">get_value</code><span class="sig-paren">(</span><em>field_name</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.general.Feature.get_value" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_value</code><span class="sig-paren">(</span><em>field_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/general.html#Feature.get_value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.general.Feature.get_value" title="Permalink to this definition">¶</a></dt>
 <dd><p>returns a value for a given field name</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="arcrest.common.general.Feature.set_value">
-<code class="descname">set_value</code><span class="sig-paren">(</span><em>field_name</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.general.Feature.set_value" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_value</code><span class="sig-paren">(</span><em>field_name</em>, <em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/general.html#Feature.set_value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.general.Feature.set_value" title="Permalink to this definition">¶</a></dt>
 <dd><p>sets an attribute value for a given field name</p>
 </dd></dl>
 
@@ -429,8 +446,8 @@ Input:</p>
 
 <dl class="class">
 <dt id="arcrest.common.general.FeatureSet">
-<em class="property">class </em><code class="descclassname">arcrest.common.general.</code><code class="descname">FeatureSet</code><span class="sig-paren">(</span><em>fields</em>, <em>features</em>, <em>hasZ=False</em>, <em>hasM=False</em>, <em>geometryType=None</em>, <em>spatialReference=None</em>, <em>displayFieldName=None</em>, <em>objectIdFieldName=None</em>, <em>globalIdFieldName=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.general.FeatureSet" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<em class="property">class </em><code class="descclassname">arcrest.common.general.</code><code class="descname">FeatureSet</code><span class="sig-paren">(</span><em>fields</em>, <em>features</em>, <em>hasZ=False</em>, <em>hasM=False</em>, <em>geometryType=None</em>, <em>spatialReference=None</em>, <em>displayFieldName=None</em>, <em>objectIdFieldName=None</em>, <em>globalIdFieldName=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/general.html#FeatureSet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.general.FeatureSet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.4/library/functions.html#object" title="(in Python v3.4)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>This featureSet contains Feature objects, including the values for the
 fields requested by the user. For layers, if you request geometry
 information, the geometry of each feature is also returned in the
@@ -459,7 +476,7 @@ spatial reference will be UnknownCoordinateSystem.</p>
 
 <dl class="staticmethod">
 <dt id="arcrest.common.general.FeatureSet.fromJSON">
-<em class="property">static </em><code class="descname">fromJSON</code><span class="sig-paren">(</span><em>jsonValue</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.general.FeatureSet.fromJSON" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">fromJSON</code><span class="sig-paren">(</span><em>jsonValue</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/general.html#FeatureSet.fromJSON"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.general.FeatureSet.fromJSON" title="Permalink to this definition">¶</a></dt>
 <dd><p>returns a featureset from a JSON string</p>
 </dd></dl>
 
@@ -495,7 +512,7 @@ spatial reference will be UnknownCoordinateSystem.</p>
 
 <dl class="method">
 <dt id="arcrest.common.general.FeatureSet.save">
-<code class="descname">save</code><span class="sig-paren">(</span><em>saveLocation</em>, <em>outName</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.general.FeatureSet.save" title="Permalink to this definition">¶</a></dt>
+<code class="descname">save</code><span class="sig-paren">(</span><em>saveLocation</em>, <em>outName</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/general.html#FeatureSet.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.general.FeatureSet.save" title="Permalink to this definition">¶</a></dt>
 <dd><p>Saves a featureset object to a feature class
 Input:</p>
 <blockquote>
@@ -525,7 +542,7 @@ outName - name of the table the data will be saved to</div></blockquote>
 
 <dl class="function">
 <dt id="arcrest.common.general.local_time_to_online">
-<code class="descclassname">arcrest.common.general.</code><code class="descname">local_time_to_online</code><span class="sig-paren">(</span><em>dt=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.general.local_time_to_online" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">arcrest.common.general.</code><code class="descname">local_time_to_online</code><span class="sig-paren">(</span><em>dt=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/general.html#local_time_to_online"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.general.local_time_to_online" title="Permalink to this definition">¶</a></dt>
 <dd><p>converts datetime object to a UTC timestamp for AGOL
 Inputs:</p>
 <blockquote>
@@ -538,7 +555,7 @@ Inputs:</p>
 
 <dl class="function">
 <dt id="arcrest.common.general.online_time_to_string">
-<code class="descclassname">arcrest.common.general.</code><code class="descname">online_time_to_string</code><span class="sig-paren">(</span><em>value</em>, <em>timeFormat</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.general.online_time_to_string" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">arcrest.common.general.</code><code class="descname">online_time_to_string</code><span class="sig-paren">(</span><em>value</em>, <em>timeFormat</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/general.html#online_time_to_string"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.general.online_time_to_string" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts a timestamp to date/time string
 Inputs:</p>
 <blockquote>
@@ -552,7 +569,7 @@ timeFormat - output date/time format</div></blockquote>
 
 <dl class="function">
 <dt id="arcrest.common.general.timestamp_to_datetime">
-<code class="descclassname">arcrest.common.general.</code><code class="descname">timestamp_to_datetime</code><span class="sig-paren">(</span><em>timestamp</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.general.timestamp_to_datetime" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">arcrest.common.general.</code><code class="descname">timestamp_to_datetime</code><span class="sig-paren">(</span><em>timestamp</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/general.html#timestamp_to_datetime"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.general.timestamp_to_datetime" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts a timestamp to a datetime object
 Inputs:</p>
 <blockquote>
@@ -565,8 +582,8 @@ Inputs:</p>
 
 <dl class="class">
 <dt id="arcrest.common.general.MosaicRuleObject">
-<em class="property">class </em><code class="descclassname">arcrest.common.general.</code><code class="descname">MosaicRuleObject</code><span class="sig-paren">(</span><em>mosaicMethod</em>, <em>where=''</em>, <em>sortField=''</em>, <em>sortValue=''</em>, <em>ascending=True</em>, <em>lockRasterIds=[]</em>, <em>viewpoint=None</em>, <em>fids=[]</em>, <em>mosaicOperation=None</em>, <em>itemRenderingRule=''</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.general.MosaicRuleObject" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<em class="property">class </em><code class="descclassname">arcrest.common.general.</code><code class="descname">MosaicRuleObject</code><span class="sig-paren">(</span><em>mosaicMethod</em>, <em>where=''</em>, <em>sortField=''</em>, <em>sortValue=''</em>, <em>ascending=True</em>, <em>lockRasterIds=[]</em>, <em>viewpoint=None</em>, <em>fids=[]</em>, <em>mosaicOperation=None</em>, <em>itemRenderingRule=''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/general.html#MosaicRuleObject"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.general.MosaicRuleObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.4/library/functions.html#object" title="(in Python v3.4)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>The image service uses a mosaic rule to mosaick multiple rasters on the
 fly. The mosaic rule parameter is used by many image service operations,
 for example, export image and identify operations.</p>
@@ -636,7 +653,7 @@ be aware that the rasters may not be visible at all scales</p>
 <span id="arcrest-common-geometry-module"></span><h2>arcrest.common.geometry module<a class="headerlink" href="#module-arcrest.common.geometry" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="arcrest.common.geometry.Envelope">
-<em class="property">class </em><code class="descclassname">arcrest.common.geometry.</code><code class="descname">Envelope</code><span class="sig-paren">(</span><em>xmin</em>, <em>ymin</em>, <em>xmax</em>, <em>ymax</em>, <em>wkid=None</em>, <em>wkt=None</em>, <em>zmin=None</em>, <em>zmax=None</em>, <em>mmin=None</em>, <em>mmax=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.geometry.Envelope" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">arcrest.common.geometry.</code><code class="descname">Envelope</code><span class="sig-paren">(</span><em>xmin</em>, <em>ymin</em>, <em>xmax</em>, <em>ymax</em>, <em>wkid=None</em>, <em>wkt=None</em>, <em>zmin=None</em>, <em>zmax=None</em>, <em>mmin=None</em>, <em>mmax=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/geometry.html#Envelope"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.geometry.Envelope" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">arcrest._abstract.abstract.AbstractGeometry</span></code></p>
 <p>An envelope is a rectangle defined by a range of values for each
 coordinate and attribute. It also has a spatialReference field.
@@ -681,9 +698,15 @@ The fields for the z and m ranges are optional.</p>
 
 <dl class="class">
 <dt id="arcrest.common.geometry.MultiPoint">
-<em class="property">class </em><code class="descclassname">arcrest.common.geometry.</code><code class="descname">MultiPoint</code><span class="sig-paren">(</span><em>points</em>, <em>wkid=None</em>, <em>wkt=None</em>, <em>hasZ=False</em>, <em>hasM=False</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.geometry.MultiPoint" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">arcrest.common.geometry.</code><code class="descname">MultiPoint</code><span class="sig-paren">(</span><em>points</em>, <em>wkid=None</em>, <em>wkt=None</em>, <em>hasZ=False</em>, <em>hasM=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/geometry.html#MultiPoint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.geometry.MultiPoint" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">arcrest._abstract.abstract.AbstractGeometry</span></code></p>
 <p>Implements the ArcGIS JSON MultiPoint Geometry Object</p>
+<dl class="method">
+<dt id="arcrest.common.geometry.MultiPoint._MultiPoint__geomToPointList">
+<code class="descname">_MultiPoint__geomToPointList</code><span class="sig-paren">(</span><em>geom</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.geometry.MultiPoint._MultiPoint__geomToPointList" title="Permalink to this definition">¶</a></dt>
+<dd><p>converts a geometry object to a common.Geometry object</p>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="arcrest.common.geometry.MultiPoint.asArcPyObject">
 <code class="descname">asArcPyObject</code><a class="headerlink" href="#arcrest.common.geometry.MultiPoint.asArcPyObject" title="Permalink to this definition">¶</a></dt>
@@ -718,7 +741,7 @@ The fields for the z and m ranges are optional.</p>
 
 <dl class="class">
 <dt id="arcrest.common.geometry.Point">
-<em class="property">class </em><code class="descclassname">arcrest.common.geometry.</code><code class="descname">Point</code><span class="sig-paren">(</span><em>coord</em>, <em>wkid=None</em>, <em>wkt=None</em>, <em>z=None</em>, <em>m=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.geometry.Point" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">arcrest.common.geometry.</code><code class="descname">Point</code><span class="sig-paren">(</span><em>coord</em>, <em>wkid=None</em>, <em>wkt=None</em>, <em>z=None</em>, <em>m=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/geometry.html#Point"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.geometry.Point" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">arcrest._abstract.abstract.AbstractGeometry</span></code></p>
 <p>Point Geometry
 Inputs:</p>
@@ -797,9 +820,15 @@ m - m value</div></blockquote>
 
 <dl class="class">
 <dt id="arcrest.common.geometry.Polygon">
-<em class="property">class </em><code class="descclassname">arcrest.common.geometry.</code><code class="descname">Polygon</code><span class="sig-paren">(</span><em>rings</em>, <em>wkid=None</em>, <em>wkt=None</em>, <em>hasZ=False</em>, <em>hasM=False</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.geometry.Polygon" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">arcrest.common.geometry.</code><code class="descname">Polygon</code><span class="sig-paren">(</span><em>rings</em>, <em>wkid=None</em>, <em>wkt=None</em>, <em>hasZ=False</em>, <em>hasM=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/geometry.html#Polygon"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.geometry.Polygon" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">arcrest._abstract.abstract.AbstractGeometry</span></code></p>
 <p>Implements the ArcGIS REST JSON for Polygon Object</p>
+<dl class="method">
+<dt id="arcrest.common.geometry.Polygon._Polygon__geomToPointList">
+<code class="descname">_Polygon__geomToPointList</code><span class="sig-paren">(</span><em>geom</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.geometry.Polygon._Polygon__geomToPointList" title="Permalink to this definition">¶</a></dt>
+<dd><p>converts a geometry object to a common.Geometry object</p>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="arcrest.common.geometry.Polygon.asArcPyObject">
 <code class="descname">asArcPyObject</code><a class="headerlink" href="#arcrest.common.geometry.Polygon.asArcPyObject" title="Permalink to this definition">¶</a></dt>
@@ -834,7 +863,7 @@ m - m value</div></blockquote>
 
 <dl class="class">
 <dt id="arcrest.common.geometry.Polyline">
-<em class="property">class </em><code class="descclassname">arcrest.common.geometry.</code><code class="descname">Polyline</code><span class="sig-paren">(</span><em>paths</em>, <em>wkid=None</em>, <em>wkt=None</em>, <em>hasZ=False</em>, <em>hasM=False</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.geometry.Polyline" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">arcrest.common.geometry.</code><code class="descname">Polyline</code><span class="sig-paren">(</span><em>paths</em>, <em>wkid=None</em>, <em>wkt=None</em>, <em>hasZ=False</em>, <em>hasM=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/geometry.html#Polyline"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.geometry.Polyline" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">arcrest._abstract.abstract.AbstractGeometry</span></code></p>
 <p>Implements the ArcGIS REST API Polyline Object
 Inputs:</p>
@@ -843,6 +872,12 @@ Inputs:</p>
 wkid - integer - well know spatial reference id
 hasZ - boolean -
 hasM - boolean -</div></blockquote>
+<dl class="method">
+<dt id="arcrest.common.geometry.Polyline._Polyline__geomToPointList">
+<code class="descname">_Polyline__geomToPointList</code><span class="sig-paren">(</span><em>geom</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.geometry.Polyline._Polyline__geomToPointList" title="Permalink to this definition">¶</a></dt>
+<dd><p>converts a geometry object to a common.Geometry object</p>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="arcrest.common.geometry.Polyline.asArcPyObject">
 <code class="descname">asArcPyObject</code><a class="headerlink" href="#arcrest.common.geometry.Polyline.asArcPyObject" title="Permalink to this definition">¶</a></dt>
@@ -877,7 +912,7 @@ hasM - boolean -</div></blockquote>
 
 <dl class="class">
 <dt id="arcrest.common.geometry.SpatialReference">
-<em class="property">class </em><code class="descclassname">arcrest.common.geometry.</code><code class="descname">SpatialReference</code><span class="sig-paren">(</span><em>wkid=None</em>, <em>wkt=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.geometry.SpatialReference" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">arcrest.common.geometry.</code><code class="descname">SpatialReference</code><span class="sig-paren">(</span><em>wkid=None</em>, <em>wkt=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/geometry.html#SpatialReference"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.geometry.SpatialReference" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">arcrest._abstract.abstract.AbstractGeometry</span></code></p>
 <p>creates a spatial reference instance</p>
 <dl class="attribute">
@@ -911,19 +946,19 @@ hasM - boolean -</div></blockquote>
 <span id="arcrest-common-renderer-module"></span><h2>arcrest.common.renderer module<a class="headerlink" href="#module-arcrest.common.renderer" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="arcrest.common.renderer.BaseRenderer">
-<em class="property">class </em><code class="descclassname">arcrest.common.renderer.</code><code class="descname">BaseRenderer</code><a class="headerlink" href="#arcrest.common.renderer.BaseRenderer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<em class="property">class </em><code class="descclassname">arcrest.common.renderer.</code><code class="descname">BaseRenderer</code><a class="reference internal" href="_modules/arcrest/common/renderer.html#BaseRenderer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.renderer.BaseRenderer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.4/library/functions.html#object" title="(in Python v3.4)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>base renderer object</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="arcrest.common.renderer.ClassBreakRenderer">
-<em class="property">class </em><code class="descclassname">arcrest.common.renderer.</code><code class="descname">ClassBreakRenderer</code><span class="sig-paren">(</span><em>defaultSymbol</em>, <em>defaultLabel</em>, <em>field</em>, <em>classificationMethod</em>, <em>normalizationType=None</em>, <em>normalizationField=None</em>, <em>normalizationTotal=None</em>, <em>backgroundFillSymbol=None</em>, <em>minValue=None</em>, <em>rotationType='aritmetic'</em>, <em>rotationExpression=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.renderer.ClassBreakRenderer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">arcrest.common.renderer.</code><code class="descname">ClassBreakRenderer</code><span class="sig-paren">(</span><em>defaultSymbol</em>, <em>defaultLabel</em>, <em>field</em>, <em>classificationMethod</em>, <em>normalizationType=None</em>, <em>normalizationField=None</em>, <em>normalizationTotal=None</em>, <em>backgroundFillSymbol=None</em>, <em>minValue=None</em>, <em>rotationType='aritmetic'</em>, <em>rotationExpression=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/renderer.html#ClassBreakRenderer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.renderer.ClassBreakRenderer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#arcrest.common.renderer.BaseRenderer" title="arcrest.common.renderer.BaseRenderer"><code class="xref py py-class docutils literal"><span class="pre">arcrest.common.renderer.BaseRenderer</span></code></a></p>
 <p>A simple renderer is a renderer that uses one symbol only</p>
 <dl class="method">
 <dt id="arcrest.common.renderer.ClassBreakRenderer.addClassBreak">
-<code class="descname">addClassBreak</code><span class="sig-paren">(</span><em>classMinValue</em>, <em>classMaxValue</em>, <em>label</em>, <em>description</em>, <em>symbol</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.renderer.ClassBreakRenderer.addClassBreak" title="Permalink to this definition">¶</a></dt>
+<code class="descname">addClassBreak</code><span class="sig-paren">(</span><em>classMinValue</em>, <em>classMaxValue</em>, <em>label</em>, <em>description</em>, <em>symbol</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/renderer.html#ClassBreakRenderer.addClassBreak"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.renderer.ClassBreakRenderer.addClassBreak" title="Permalink to this definition">¶</a></dt>
 <dd><p>adds a classification break value to the renderer</p>
 </dd></dl>
 
@@ -983,7 +1018,7 @@ hasM - boolean -</div></blockquote>
 
 <dl class="method">
 <dt id="arcrest.common.renderer.ClassBreakRenderer.removeClassBreak">
-<code class="descname">removeClassBreak</code><span class="sig-paren">(</span><em>label</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.renderer.ClassBreakRenderer.removeClassBreak" title="Permalink to this definition">¶</a></dt>
+<code class="descname">removeClassBreak</code><span class="sig-paren">(</span><em>label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/renderer.html#ClassBreakRenderer.removeClassBreak"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.renderer.ClassBreakRenderer.removeClassBreak" title="Permalink to this definition">¶</a></dt>
 <dd><p>removes a classification break value to the renderer</p>
 </dd></dl>
 
@@ -1015,7 +1050,7 @@ hasM - boolean -</div></blockquote>
 
 <dl class="class">
 <dt id="arcrest.common.renderer.SimpleRenderer">
-<em class="property">class </em><code class="descclassname">arcrest.common.renderer.</code><code class="descname">SimpleRenderer</code><span class="sig-paren">(</span><em>symbol</em>, <em>label=None</em>, <em>description=None</em>, <em>rotationType='aritmetic'</em>, <em>rotationExpression=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.renderer.SimpleRenderer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">arcrest.common.renderer.</code><code class="descname">SimpleRenderer</code><span class="sig-paren">(</span><em>symbol</em>, <em>label=None</em>, <em>description=None</em>, <em>rotationType='aritmetic'</em>, <em>rotationExpression=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/renderer.html#SimpleRenderer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.renderer.SimpleRenderer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#arcrest.common.renderer.BaseRenderer" title="arcrest.common.renderer.BaseRenderer"><code class="xref py py-class docutils literal"><span class="pre">arcrest.common.renderer.BaseRenderer</span></code></a></p>
 <p>A simple renderer is a renderer that uses one symbol only</p>
 <dl class="attribute">
@@ -1064,12 +1099,12 @@ hasM - boolean -</div></blockquote>
 
 <dl class="class">
 <dt id="arcrest.common.renderer.UniqueValueRenderer">
-<em class="property">class </em><code class="descclassname">arcrest.common.renderer.</code><code class="descname">UniqueValueRenderer</code><span class="sig-paren">(</span><em>defaultSymbol</em>, <em>defaultLabel</em>, <em>field1</em>, <em>field2=None</em>, <em>field3=None</em>, <em>fieldDelimiter=None</em>, <em>rotationType='aritmetic'</em>, <em>rotationExpression=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.renderer.UniqueValueRenderer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">arcrest.common.renderer.</code><code class="descname">UniqueValueRenderer</code><span class="sig-paren">(</span><em>defaultSymbol</em>, <em>defaultLabel</em>, <em>field1</em>, <em>field2=None</em>, <em>field3=None</em>, <em>fieldDelimiter=None</em>, <em>rotationType='aritmetic'</em>, <em>rotationExpression=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/renderer.html#UniqueValueRenderer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.renderer.UniqueValueRenderer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#arcrest.common.renderer.BaseRenderer" title="arcrest.common.renderer.BaseRenderer"><code class="xref py py-class docutils literal"><span class="pre">arcrest.common.renderer.BaseRenderer</span></code></a></p>
 <p>A simple renderer is a renderer that uses one symbol only</p>
 <dl class="method">
 <dt id="arcrest.common.renderer.UniqueValueRenderer.addUniqueValue">
-<code class="descname">addUniqueValue</code><span class="sig-paren">(</span><em>value</em>, <em>label</em>, <em>description</em>, <em>symbol</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.renderer.UniqueValueRenderer.addUniqueValue" title="Permalink to this definition">¶</a></dt>
+<code class="descname">addUniqueValue</code><span class="sig-paren">(</span><em>value</em>, <em>label</em>, <em>description</em>, <em>symbol</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/renderer.html#UniqueValueRenderer.addUniqueValue"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.renderer.UniqueValueRenderer.addUniqueValue" title="Permalink to this definition">¶</a></dt>
 <dd><p>adds a unique value to the renderer</p>
 </dd></dl>
 
@@ -1111,7 +1146,7 @@ hasM - boolean -</div></blockquote>
 
 <dl class="method">
 <dt id="arcrest.common.renderer.UniqueValueRenderer.removeUniqueValue">
-<code class="descname">removeUniqueValue</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.renderer.UniqueValueRenderer.removeUniqueValue" title="Permalink to this definition">¶</a></dt>
+<code class="descname">removeUniqueValue</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/renderer.html#UniqueValueRenderer.removeUniqueValue"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.renderer.UniqueValueRenderer.removeUniqueValue" title="Permalink to this definition">¶</a></dt>
 <dd><p>removes a unique value in unique Value Info</p>
 </dd></dl>
 
@@ -1152,34 +1187,46 @@ hasM - boolean -</div></blockquote>
 <span id="arcrest-common-servicedef-module"></span><h2>arcrest.common.servicedef module<a class="headerlink" href="#module-arcrest.common.servicedef" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="arcrest.common.servicedef.MXDtoFeatureServiceDef">
-<code class="descclassname">arcrest.common.servicedef.</code><code class="descname">MXDtoFeatureServiceDef</code><span class="sig-paren">(</span><em>mxd_path</em>, <em>service_name=None</em>, <em>tags=None</em>, <em>description=None</em>, <em>folder_name=None</em>, <em>capabilities='Query</em>, <em>Create</em>, <em>Update</em>, <em>Delete</em>, <em>Uploads</em>, <em>Editing</em>, <em>Sync'</em>, <em>maxRecordCount=1000</em>, <em>server_type='MY_HOSTED_SERVICES'</em>, <em>url='http://www.arcgis.com'</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.servicedef.MXDtoFeatureServiceDef" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">arcrest.common.servicedef.</code><code class="descname">MXDtoFeatureServiceDef</code><span class="sig-paren">(</span><em>mxd_path</em>, <em>service_name=None</em>, <em>tags=None</em>, <em>description=None</em>, <em>folder_name=None</em>, <em>capabilities='Query</em>, <em>Create</em>, <em>Update</em>, <em>Delete</em>, <em>Uploads</em>, <em>Editing</em>, <em>Sync'</em>, <em>maxRecordCount=1000</em>, <em>server_type='MY_HOSTED_SERVICES'</em>, <em>url='http://www.arcgis.com'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/servicedef.html#MXDtoFeatureServiceDef"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.servicedef.MXDtoFeatureServiceDef" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="function">
+<dt id="arcrest.common.servicedef._modify_sddraft">
+<code class="descclassname">arcrest.common.servicedef.</code><code class="descname">_modify_sddraft</code><span class="sig-paren">(</span><em>sddraft</em>, <em>capabilities</em>, <em>maxRecordCount='1000'</em>, <em>url='http://www.arcgis.com'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/servicedef.html#_modify_sddraft"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.servicedef._modify_sddraft" title="Permalink to this definition">¶</a></dt>
+<dd><p>modifies the sddraft for agol publishing</p>
+</dd></dl>
 
 </div>
 <div class="section" id="module-arcrest.common.spatial">
 <span id="arcrest-common-spatial-module"></span><h2>arcrest.common.spatial module<a class="headerlink" href="#module-arcrest.common.spatial" title="Permalink to this headline">¶</a></h2>
 <p>Contains all the spatial functions</p>
 <dl class="function">
+<dt id="arcrest.common.spatial._unicode_convert">
+<code class="descclassname">arcrest.common.spatial.</code><code class="descname">_unicode_convert</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/spatial.html#_unicode_convert"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.spatial._unicode_convert" title="Permalink to this definition">¶</a></dt>
+<dd><p>converts unicode to anscii</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="arcrest.common.spatial.create_feature_class">
-<code class="descclassname">arcrest.common.spatial.</code><code class="descname">create_feature_class</code><span class="sig-paren">(</span><em>out_path</em>, <em>out_name</em>, <em>geom_type</em>, <em>wkid</em>, <em>fields</em>, <em>objectIdField</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.spatial.create_feature_class" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">arcrest.common.spatial.</code><code class="descname">create_feature_class</code><span class="sig-paren">(</span><em>out_path</em>, <em>out_name</em>, <em>geom_type</em>, <em>wkid</em>, <em>fields</em>, <em>objectIdField</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/spatial.html#create_feature_class"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.spatial.create_feature_class" title="Permalink to this definition">¶</a></dt>
 <dd><p>creates a feature class in a given gdb or folder</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="arcrest.common.spatial.create_feature_layer">
-<code class="descclassname">arcrest.common.spatial.</code><code class="descname">create_feature_layer</code><span class="sig-paren">(</span><em>ds</em>, <em>sql</em>, <em>name='layer'</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.spatial.create_feature_layer" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">arcrest.common.spatial.</code><code class="descname">create_feature_layer</code><span class="sig-paren">(</span><em>ds</em>, <em>sql</em>, <em>name='layer'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/spatial.html#create_feature_layer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.spatial.create_feature_layer" title="Permalink to this definition">¶</a></dt>
 <dd><p>creates a feature layer object</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="arcrest.common.spatial.featureclass_to_json">
-<code class="descclassname">arcrest.common.spatial.</code><code class="descname">featureclass_to_json</code><span class="sig-paren">(</span><em>fc</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.spatial.featureclass_to_json" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">arcrest.common.spatial.</code><code class="descname">featureclass_to_json</code><span class="sig-paren">(</span><em>fc</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/spatial.html#featureclass_to_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.spatial.featureclass_to_json" title="Permalink to this definition">¶</a></dt>
 <dd><p>converts a feature class to JSON</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="arcrest.common.spatial.getDateFields">
-<code class="descclassname">arcrest.common.spatial.</code><code class="descname">getDateFields</code><span class="sig-paren">(</span><em>fc</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.spatial.getDateFields" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">arcrest.common.spatial.</code><code class="descname">getDateFields</code><span class="sig-paren">(</span><em>fc</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/spatial.html#getDateFields"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.spatial.getDateFields" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a list of fields that are of type DATE
 Input:</p>
 <blockquote>
@@ -1192,36 +1239,36 @@ Input:</p>
 
 <dl class="function">
 <dt id="arcrest.common.spatial.get_OID_field">
-<code class="descclassname">arcrest.common.spatial.</code><code class="descname">get_OID_field</code><span class="sig-paren">(</span><em>fs</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.spatial.get_OID_field" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">arcrest.common.spatial.</code><code class="descname">get_OID_field</code><span class="sig-paren">(</span><em>fs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/spatial.html#get_OID_field"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.spatial.get_OID_field" title="Permalink to this definition">¶</a></dt>
 <dd><p>returns a featureset&#8217;s object id field</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="arcrest.common.spatial.get_attachment_data">
-<code class="descclassname">arcrest.common.spatial.</code><code class="descname">get_attachment_data</code><span class="sig-paren">(</span><em>attachmentTable</em>, <em>sql</em>, <em>nameField='ATT_NAME'</em>, <em>blobField='DATA'</em>, <em>contentTypeField='CONTENT_TYPE'</em>, <em>rel_object_field='REL_OBJECTID'</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.spatial.get_attachment_data" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">arcrest.common.spatial.</code><code class="descname">get_attachment_data</code><span class="sig-paren">(</span><em>attachmentTable</em>, <em>sql</em>, <em>nameField='ATT_NAME'</em>, <em>blobField='DATA'</em>, <em>contentTypeField='CONTENT_TYPE'</em>, <em>rel_object_field='REL_OBJECTID'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/spatial.html#get_attachment_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.spatial.get_attachment_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>gets all the data to pass to a feature service</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="arcrest.common.spatial.get_records_with_attachments">
-<code class="descclassname">arcrest.common.spatial.</code><code class="descname">get_records_with_attachments</code><span class="sig-paren">(</span><em>attachment_table</em>, <em>rel_object_field='REL_OBJECTID'</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.spatial.get_records_with_attachments" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">arcrest.common.spatial.</code><code class="descname">get_records_with_attachments</code><span class="sig-paren">(</span><em>attachment_table</em>, <em>rel_object_field='REL_OBJECTID'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/spatial.html#get_records_with_attachments"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.spatial.get_records_with_attachments" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="arcrest.common.spatial.insert_rows">
-<code class="descclassname">arcrest.common.spatial.</code><code class="descname">insert_rows</code><span class="sig-paren">(</span><em>fc</em>, <em>features</em>, <em>fields</em>, <em>includeOIDField=False</em>, <em>oidField=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.spatial.insert_rows" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">arcrest.common.spatial.</code><code class="descname">insert_rows</code><span class="sig-paren">(</span><em>fc</em>, <em>features</em>, <em>fields</em>, <em>includeOIDField=False</em>, <em>oidField=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/spatial.html#insert_rows"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.spatial.insert_rows" title="Permalink to this definition">¶</a></dt>
 <dd><p>inserts rows based on a list features object</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="arcrest.common.spatial.json_to_featureclass">
-<code class="descclassname">arcrest.common.spatial.</code><code class="descname">json_to_featureclass</code><span class="sig-paren">(</span><em>json_file</em>, <em>out_fc</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.spatial.json_to_featureclass" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">arcrest.common.spatial.</code><code class="descname">json_to_featureclass</code><span class="sig-paren">(</span><em>json_file</em>, <em>out_fc</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/spatial.html#json_to_featureclass"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.spatial.json_to_featureclass" title="Permalink to this definition">¶</a></dt>
 <dd><p>converts a json file (.json) to a feature class</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="arcrest.common.spatial.lookUpFieldType">
-<code class="descclassname">arcrest.common.spatial.</code><code class="descname">lookUpFieldType</code><span class="sig-paren">(</span><em>field_type</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.spatial.lookUpFieldType" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">arcrest.common.spatial.</code><code class="descname">lookUpFieldType</code><span class="sig-paren">(</span><em>field_type</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/spatial.html#lookUpFieldType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.spatial.lookUpFieldType" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts the ArcGIS REST field types to Python Types
 Input:</p>
 <blockquote>
@@ -1234,7 +1281,7 @@ Input:</p>
 
 <dl class="function">
 <dt id="arcrest.common.spatial.lookUpGeometry">
-<code class="descclassname">arcrest.common.spatial.</code><code class="descname">lookUpGeometry</code><span class="sig-paren">(</span><em>geom_type</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.spatial.lookUpGeometry" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">arcrest.common.spatial.</code><code class="descname">lookUpGeometry</code><span class="sig-paren">(</span><em>geom_type</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/spatial.html#lookUpGeometry"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.spatial.lookUpGeometry" title="Permalink to this definition">¶</a></dt>
 <dd><p>converts ArcRest API geometry name to Python names
 Input:</p>
 <blockquote>
@@ -1247,37 +1294,37 @@ Input:</p>
 
 <dl class="function">
 <dt id="arcrest.common.spatial.merge_feature_class">
-<code class="descclassname">arcrest.common.spatial.</code><code class="descname">merge_feature_class</code><span class="sig-paren">(</span><em>merges</em>, <em>out_fc</em>, <em>cleanUp=True</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.spatial.merge_feature_class" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">arcrest.common.spatial.</code><code class="descname">merge_feature_class</code><span class="sig-paren">(</span><em>merges</em>, <em>out_fc</em>, <em>cleanUp=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/spatial.html#merge_feature_class"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.spatial.merge_feature_class" title="Permalink to this definition">¶</a></dt>
 <dd><p>merges featureclass into a single feature class</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="arcrest.common.spatial.recordset_to_json">
-<code class="descclassname">arcrest.common.spatial.</code><code class="descname">recordset_to_json</code><span class="sig-paren">(</span><em>table</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.spatial.recordset_to_json" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">arcrest.common.spatial.</code><code class="descname">recordset_to_json</code><span class="sig-paren">(</span><em>table</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/spatial.html#recordset_to_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.spatial.recordset_to_json" title="Permalink to this definition">¶</a></dt>
 <dd><p>converts the table to JSON</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="arcrest.common.spatial.scratchFolder">
-<code class="descclassname">arcrest.common.spatial.</code><code class="descname">scratchFolder</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.spatial.scratchFolder" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">arcrest.common.spatial.</code><code class="descname">scratchFolder</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/spatial.html#scratchFolder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.spatial.scratchFolder" title="Permalink to this definition">¶</a></dt>
 <dd><p>returns the scratch foldre</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="arcrest.common.spatial.scratchGDB">
-<code class="descclassname">arcrest.common.spatial.</code><code class="descname">scratchGDB</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.spatial.scratchGDB" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">arcrest.common.spatial.</code><code class="descname">scratchGDB</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/spatial.html#scratchGDB"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.spatial.scratchGDB" title="Permalink to this definition">¶</a></dt>
 <dd><p>returns the arcpy scratch file geodatabase</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="arcrest.common.spatial.table_to_json">
-<code class="descclassname">arcrest.common.spatial.</code><code class="descname">table_to_json</code><span class="sig-paren">(</span><em>table</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.spatial.table_to_json" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">arcrest.common.spatial.</code><code class="descname">table_to_json</code><span class="sig-paren">(</span><em>table</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/spatial.html#table_to_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.spatial.table_to_json" title="Permalink to this definition">¶</a></dt>
 <dd><p>returns a table as JSON</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="arcrest.common.spatial.toDateTime">
-<code class="descclassname">arcrest.common.spatial.</code><code class="descname">toDateTime</code><span class="sig-paren">(</span><em>unix_timestamp</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.spatial.toDateTime" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">arcrest.common.spatial.</code><code class="descname">toDateTime</code><span class="sig-paren">(</span><em>unix_timestamp</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/spatial.html#toDateTime"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.spatial.toDateTime" title="Permalink to this definition">¶</a></dt>
 <dd><p>converts a unix time stamp to a datetime object</p>
 </dd></dl>
 
@@ -1286,15 +1333,15 @@ Input:</p>
 <span id="arcrest-common-symbology-module"></span><h2>arcrest.common.symbology module<a class="headerlink" href="#module-arcrest.common.symbology" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="arcrest.common.symbology.BaseSymbol">
-<em class="property">class </em><code class="descclassname">arcrest.common.symbology.</code><code class="descname">BaseSymbol</code><a class="headerlink" href="#arcrest.common.symbology.BaseSymbol" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<em class="property">class </em><code class="descclassname">arcrest.common.symbology.</code><code class="descname">BaseSymbol</code><a class="reference internal" href="_modules/arcrest/common/symbology.html#BaseSymbol"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.symbology.BaseSymbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.4/library/functions.html#object" title="(in Python v3.4)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>base symbol class</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="arcrest.common.symbology.Color">
-<em class="property">class </em><code class="descclassname">arcrest.common.symbology.</code><code class="descname">Color</code><span class="sig-paren">(</span><em>red</em>, <em>green</em>, <em>blue</em>, <em>alpha=255</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.symbology.Color" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<em class="property">class </em><code class="descclassname">arcrest.common.symbology.</code><code class="descname">Color</code><span class="sig-paren">(</span><em>red</em>, <em>green</em>, <em>blue</em>, <em>alpha=255</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/symbology.html#Color"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.symbology.Color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.4/library/functions.html#object" title="(in Python v3.4)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Color is represented as a four-element array. The four elements
 represent values for red, green, blue, and alpha in that order. Values
 range from 0 through 255. If color is undefined for a symbol, the color
@@ -1333,7 +1380,7 @@ value is null.</p>
 
 <dl class="class">
 <dt id="arcrest.common.symbology.SimpleFillSymbol">
-<em class="property">class </em><code class="descclassname">arcrest.common.symbology.</code><code class="descname">SimpleFillSymbol</code><span class="sig-paren">(</span><em>style</em>, <em>color</em>, <em>outline=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.symbology.SimpleFillSymbol" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">arcrest.common.symbology.</code><code class="descname">SimpleFillSymbol</code><span class="sig-paren">(</span><em>style</em>, <em>color</em>, <em>outline=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/symbology.html#SimpleFillSymbol"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.symbology.SimpleFillSymbol" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#arcrest.common.symbology.BaseSymbol" title="arcrest.common.symbology.BaseSymbol"><code class="xref py py-class docutils literal"><span class="pre">arcrest.common.symbology.BaseSymbol</span></code></a></p>
 <p>Simple fill symbols can be used to symbolize polygon geometries. The
 type property for simple fill symbols is esriSFS.</p>
@@ -1365,7 +1412,7 @@ type property for simple fill symbols is esriSFS.</p>
 
 <dl class="class">
 <dt id="arcrest.common.symbology.SimpleLineSymbol">
-<em class="property">class </em><code class="descclassname">arcrest.common.symbology.</code><code class="descname">SimpleLineSymbol</code><span class="sig-paren">(</span><em>style</em>, <em>color</em>, <em>width=1</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.symbology.SimpleLineSymbol" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">arcrest.common.symbology.</code><code class="descname">SimpleLineSymbol</code><span class="sig-paren">(</span><em>style</em>, <em>color</em>, <em>width=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/symbology.html#SimpleLineSymbol"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.symbology.SimpleLineSymbol" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#arcrest.common.symbology.BaseSymbol" title="arcrest.common.symbology.BaseSymbol"><code class="xref py py-class docutils literal"><span class="pre">arcrest.common.symbology.BaseSymbol</span></code></a></p>
 <p>Simple line symbols can be used to symbolize polyline geometries or
 outlines for polygon fills. The type property for simple line symbols
@@ -1392,7 +1439,7 @@ is esriSLS.</p>
 
 <dl class="class">
 <dt id="arcrest.common.symbology.SimpleMarkerSymbol">
-<em class="property">class </em><code class="descclassname">arcrest.common.symbology.</code><code class="descname">SimpleMarkerSymbol</code><span class="sig-paren">(</span><em>style</em>, <em>color</em>, <em>size</em>, <em>angle=0</em>, <em>xoffset=0</em>, <em>yoffset=0</em>, <em>outlineColor=None</em>, <em>outlineWidth=1</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.common.symbology.SimpleMarkerSymbol" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">arcrest.common.symbology.</code><code class="descname">SimpleMarkerSymbol</code><span class="sig-paren">(</span><em>style</em>, <em>color</em>, <em>size</em>, <em>angle=0</em>, <em>xoffset=0</em>, <em>yoffset=0</em>, <em>outlineColor=None</em>, <em>outlineWidth=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/common/symbology.html#SimpleMarkerSymbol"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.common.symbology.SimpleMarkerSymbol" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#arcrest.common.symbology.BaseSymbol" title="arcrest.common.symbology.BaseSymbol"><code class="xref py py-class docutils literal"><span class="pre">arcrest.common.symbology.BaseSymbol</span></code></a></p>
 <p>Simple marker symbols can be used to symbolize point geometries. The
 type property for simple marker symbols is esriSMS. The angle property
@@ -1492,6 +1539,12 @@ where East is the 0 degrees axis.</p>
 </li>
 </ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="arcrest.cmp.html"
+                        title="previous chapter">arcrest.cmp package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="arcrest.enrichment.html"
+                        title="next chapter">arcrest.enrichment package</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -1525,7 +1578,15 @@ where East is the 0 degrees axis.</p>
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">atlantis 1 documentation</a> &raquo;</li> 
+        <li class="right" >
+          <a href="arcrest.enrichment.html" title="arcrest.enrichment package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="arcrest.cmp.html" title="arcrest.cmp package"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">atlantis 1 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >src</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="arcrest.html" >arcrest package</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

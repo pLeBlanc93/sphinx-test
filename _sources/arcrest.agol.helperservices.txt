@@ -20,6 +20,14 @@ arcrest.agol.helperservices.elevation module
     :undoc-members:
     :show-inheritance:
 
+arcrest.agol.helperservices.geocoder module
+-------------------------------------------
+
+.. automodule:: arcrest.agol.helperservices.geocoder
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 arcrest.agol.helperservices.hydrology module
 --------------------------------------------
 

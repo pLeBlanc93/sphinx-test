@@ -23,7 +23,10 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="atlantis 1 documentation" href="index.html" /> 
+    <link rel="top" title="atlantis 1 documentation" href="index.html" />
+    <link rel="up" title="arcrest package" href="arcrest.html" />
+    <link rel="next" title="arcrest.hostedservice package" href="arcrest.hostedservice.html" />
+    <link rel="prev" title="arcrest.enrichment package" href="arcrest.enrichment.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -35,7 +38,15 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">atlantis 1 documentation</a> &raquo;</li> 
+        <li class="right" >
+          <a href="arcrest.hostedservice.html" title="arcrest.hostedservice package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="arcrest.enrichment.html" title="arcrest.enrichment package"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">atlantis 1 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >src</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="arcrest.html" accesskey="U">arcrest package</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -53,15 +64,54 @@
 <span id="arcrest-geometryservice-geometryservice-module"></span><h2>arcrest.geometryservice.geometryservice module<a class="headerlink" href="#module-arcrest.geometryservice.geometryservice" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="arcrest.geometryservice.geometryservice.GeometryService">
-<em class="property">class </em><code class="descclassname">arcrest.geometryservice.geometryservice.</code><code class="descname">GeometryService</code><span class="sig-paren">(</span><em>url</em>, <em>securityHandler=None</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">arcrest.geometryservice.geometryservice.</code><code class="descname">GeometryService</code><span class="sig-paren">(</span><em>url</em>, <em>securityHandler=None</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/geometryservice/geometryservice.html#GeometryService"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">arcrest._abstract.abstract.BaseAGSServer</span></code></p>
 <p>A geometry service contains utility methods that provide access to
 sophisticated and frequently used geometric operations. An ArcGIS
 Server web site can only expose one geometry service with the static
 name &#8220;Geometry&#8221;.</p>
 <dl class="method">
+<dt id="arcrest.geometryservice.geometryservice.GeometryService._GeometryService__geomToStringArray">
+<code class="descname">_GeometryService__geomToStringArray</code><span class="sig-paren">(</span><em>geometries</em>, <em>returnType='str'</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService._GeometryService__geomToStringArray" title="Permalink to this definition">¶</a></dt>
+<dd><p>function to convert the geomtries to strings</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="arcrest.geometryservice.geometryservice.GeometryService._GeometryService__geometryListToGeomTemplate">
+<code class="descname">_GeometryService__geometryListToGeomTemplate</code><span class="sig-paren">(</span><em>geometries</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService._GeometryService__geometryListToGeomTemplate" title="Permalink to this definition">¶</a></dt>
+<dd><p>converts a list of common.Geometry objects to the geometry
+template value
+Input:</p>
+<blockquote>
+<div>geometries - list of common.Geometry objects</div></blockquote>
+<dl class="docutils">
+<dt>Output:</dt>
+<dd>Dictionary in geometry service template</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="arcrest.geometryservice.geometryservice.GeometryService._GeometryService__geometryToGeomTemplate">
+<code class="descname">_GeometryService__geometryToGeomTemplate</code><span class="sig-paren">(</span><em>geometry</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService._GeometryService__geometryToGeomTemplate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a single geometry object to a geometry service geometry
+template value.</p>
+<dl class="docutils">
+<dt>Input:</dt>
+<dd>geometry - ArcREST geometry object</dd>
+<dt>Output:</dt>
+<dd>python dictionary of geometry template</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="arcrest.geometryservice.geometryservice.GeometryService._GeometryService__init">
+<code class="descname">_GeometryService__init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService._GeometryService__init" title="Permalink to this definition">¶</a></dt>
+<dd><p>loads the json values</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="arcrest.geometryservice.geometryservice.GeometryService.areasAndLengths">
-<code class="descname">areasAndLengths</code><span class="sig-paren">(</span><em>polygons</em>, <em>lengthUnit</em>, <em>areaUnit</em>, <em>calculationType</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.areasAndLengths" title="Permalink to this definition">¶</a></dt>
+<code class="descname">areasAndLengths</code><span class="sig-paren">(</span><em>polygons</em>, <em>lengthUnit</em>, <em>areaUnit</em>, <em>calculationType</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/geometryservice/geometryservice.html#GeometryService.areasAndLengths"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.areasAndLengths" title="Permalink to this definition">¶</a></dt>
 <dd><p>The areasAndLengths operation is performed on a geometry service
 resource. This operation calculates areas and perimeter lengths
 for each polygon specified in the input array.</p>
@@ -136,7 +186,7 @@ is preserved.</dd>
 
 <dl class="method">
 <dt id="arcrest.geometryservice.geometryservice.GeometryService.autoComplete">
-<code class="descname">autoComplete</code><span class="sig-paren">(</span><em>polygons=[]</em>, <em>polylines=[]</em>, <em>sr=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.autoComplete" title="Permalink to this definition">¶</a></dt>
+<code class="descname">autoComplete</code><span class="sig-paren">(</span><em>polygons=[]</em>, <em>polylines=[]</em>, <em>sr=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/geometryservice/geometryservice.html#GeometryService.autoComplete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.autoComplete" title="Permalink to this definition">¶</a></dt>
 <dd><p>The autoComplete operation simplifies the process of
 constructing new polygons that are adjacent to other polygons.
 It constructs polygons that fill in the gaps between existing
@@ -151,7 +201,7 @@ sr - spatial reference of the input geometries WKID</dd>
 
 <dl class="method">
 <dt id="arcrest.geometryservice.geometryservice.GeometryService.buffer">
-<code class="descname">buffer</code><span class="sig-paren">(</span><em>geometries</em>, <em>inSR</em>, <em>distances</em>, <em>units</em>, <em>outSR=None</em>, <em>bufferSR=None</em>, <em>unionResults=True</em>, <em>geodesic=True</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.buffer" title="Permalink to this definition">¶</a></dt>
+<code class="descname">buffer</code><span class="sig-paren">(</span><em>geometries</em>, <em>inSR</em>, <em>distances</em>, <em>units</em>, <em>outSR=None</em>, <em>bufferSR=None</em>, <em>unionResults=True</em>, <em>geodesic=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/geometryservice/geometryservice.html#GeometryService.buffer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.buffer" title="Permalink to this definition">¶</a></dt>
 <dd><p>The buffer operation is performed on a geometry service resource
 The result of this operation is buffered polygons at the
 specified distances for the input geometry array. Options are
@@ -161,32 +211,32 @@ available to union buffers and to use geodesic distance.</p>
 
 <dl class="method">
 <dt id="arcrest.geometryservice.geometryservice.GeometryService.convexHull">
-<code class="descname">convexHull</code><span class="sig-paren">(</span><em>geometries</em>, <em>sr=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.convexHull" title="Permalink to this definition">¶</a></dt>
+<code class="descname">convexHull</code><span class="sig-paren">(</span><em>geometries</em>, <em>sr=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/geometryservice/geometryservice.html#GeometryService.convexHull"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.convexHull" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="arcrest.geometryservice.geometryservice.GeometryService.cut">
-<code class="descname">cut</code><span class="sig-paren">(</span><em>cutter</em>, <em>target</em>, <em>sr=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.cut" title="Permalink to this definition">¶</a></dt>
+<code class="descname">cut</code><span class="sig-paren">(</span><em>cutter</em>, <em>target</em>, <em>sr=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/geometryservice/geometryservice.html#GeometryService.cut"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.cut" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="arcrest.geometryservice.geometryservice.GeometryService.density">
-<code class="descname">density</code><span class="sig-paren">(</span><em>geometries</em>, <em>sr</em>, <em>maxSegmentLength</em>, <em>lengthUnit</em>, <em>geodesic=False</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.density" title="Permalink to this definition">¶</a></dt>
+<code class="descname">density</code><span class="sig-paren">(</span><em>geometries</em>, <em>sr</em>, <em>maxSegmentLength</em>, <em>lengthUnit</em>, <em>geodesic=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/geometryservice/geometryservice.html#GeometryService.density"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.density" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="arcrest.geometryservice.geometryservice.GeometryService.difference">
-<code class="descname">difference</code><span class="sig-paren">(</span><em>geometries</em>, <em>sr</em>, <em>geometry</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.difference" title="Permalink to this definition">¶</a></dt>
+<code class="descname">difference</code><span class="sig-paren">(</span><em>geometries</em>, <em>sr</em>, <em>geometry</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/geometryservice/geometryservice.html#GeometryService.difference"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.difference" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="arcrest.geometryservice.geometryservice.GeometryService.distance">
-<code class="descname">distance</code><span class="sig-paren">(</span><em>sr</em>, <em>geometry1</em>, <em>geometry2</em>, <em>distanceUnit=''</em>, <em>geodesic=False</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.distance" title="Permalink to this definition">¶</a></dt>
+<code class="descname">distance</code><span class="sig-paren">(</span><em>sr</em>, <em>geometry1</em>, <em>geometry2</em>, <em>distanceUnit=''</em>, <em>geodesic=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/geometryservice/geometryservice.html#GeometryService.distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.distance" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="arcrest.geometryservice.geometryservice.GeometryService.findTransformation">
-<code class="descname">findTransformation</code><span class="sig-paren">(</span><em>inSR</em>, <em>outSR</em>, <em>extentOfInterest=None</em>, <em>numOfResults=1</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.findTransformation" title="Permalink to this definition">¶</a></dt>
+<code class="descname">findTransformation</code><span class="sig-paren">(</span><em>inSR</em>, <em>outSR</em>, <em>extentOfInterest=None</em>, <em>numOfResults=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/geometryservice/geometryservice.html#GeometryService.findTransformation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.findTransformation" title="Permalink to this definition">¶</a></dt>
 <dd><p>The findTransformations operation is performed on a geometry
 service resource. This operation returns a list of applicable
 geographic transformations you should use when projecting
@@ -226,7 +276,7 @@ envelope.</dd>
 
 <dl class="method">
 <dt id="arcrest.geometryservice.geometryservice.GeometryService.fromGeoCoordinateString">
-<code class="descname">fromGeoCoordinateString</code><span class="sig-paren">(</span><em>sr</em>, <em>strings</em>, <em>conversionType</em>, <em>conversionMode=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.fromGeoCoordinateString" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fromGeoCoordinateString</code><span class="sig-paren">(</span><em>sr</em>, <em>strings</em>, <em>conversionType</em>, <em>conversionMode=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/geometryservice/geometryservice.html#GeometryService.fromGeoCoordinateString"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.fromGeoCoordinateString" title="Permalink to this definition">¶</a></dt>
 <dd><p>The fromGeoCoordinateString operation is performed on a geometry
 service resource. The operation converts an array of well-known
 strings into xy-coordinates based on the conversion type and
@@ -291,54 +341,54 @@ utmNorthSouth - Uses north/south latitude indicators instead of</p>
 
 <dl class="method">
 <dt id="arcrest.geometryservice.geometryservice.GeometryService.generalize">
-<code class="descname">generalize</code><span class="sig-paren">(</span><em>sr</em>, <em>geometries</em>, <em>maxDeviation</em>, <em>deviationUnit</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.generalize" title="Permalink to this definition">¶</a></dt>
+<code class="descname">generalize</code><span class="sig-paren">(</span><em>sr</em>, <em>geometries</em>, <em>maxDeviation</em>, <em>deviationUnit</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/geometryservice/geometryservice.html#GeometryService.generalize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.generalize" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="arcrest.geometryservice.geometryservice.GeometryService.intersect">
-<code class="descname">intersect</code><span class="sig-paren">(</span><em>sr</em>, <em>geometries</em>, <em>geometry</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.intersect" title="Permalink to this definition">¶</a></dt>
+<code class="descname">intersect</code><span class="sig-paren">(</span><em>sr</em>, <em>geometries</em>, <em>geometry</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/geometryservice/geometryservice.html#GeometryService.intersect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.intersect" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="arcrest.geometryservice.geometryservice.GeometryService.labelPoints">
-<code class="descname">labelPoints</code><span class="sig-paren">(</span><em>sr</em>, <em>polygons</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.labelPoints" title="Permalink to this definition">¶</a></dt>
+<code class="descname">labelPoints</code><span class="sig-paren">(</span><em>sr</em>, <em>polygons</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/geometryservice/geometryservice.html#GeometryService.labelPoints"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.labelPoints" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="arcrest.geometryservice.geometryservice.GeometryService.lengths">
-<code class="descname">lengths</code><span class="sig-paren">(</span><em>sr</em>, <em>polylines</em>, <em>lengthUnit</em>, <em>calculationType</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.lengths" title="Permalink to this definition">¶</a></dt>
+<code class="descname">lengths</code><span class="sig-paren">(</span><em>sr</em>, <em>polylines</em>, <em>lengthUnit</em>, <em>calculationType</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/geometryservice/geometryservice.html#GeometryService.lengths"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.lengths" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="arcrest.geometryservice.geometryservice.GeometryService.offset">
-<code class="descname">offset</code><span class="sig-paren">(</span><em>geometries</em>, <em>offsetDistance</em>, <em>offsetUnit</em>, <em>offsetHow='esriGeometryOffsetRounded'</em>, <em>bevelRatio=10</em>, <em>simplifyResult=False</em>, <em>sr=None</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.offset" title="Permalink to this definition">¶</a></dt>
+<code class="descname">offset</code><span class="sig-paren">(</span><em>geometries</em>, <em>offsetDistance</em>, <em>offsetUnit</em>, <em>offsetHow='esriGeometryOffsetRounded'</em>, <em>bevelRatio=10</em>, <em>simplifyResult=False</em>, <em>sr=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/geometryservice/geometryservice.html#GeometryService.offset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.offset" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="arcrest.geometryservice.geometryservice.GeometryService.project">
-<code class="descname">project</code><span class="sig-paren">(</span><em>geometries</em>, <em>inSR</em>, <em>outSR</em>, <em>transformation=''</em>, <em>transformFoward=False</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.project" title="Permalink to this definition">¶</a></dt>
+<code class="descname">project</code><span class="sig-paren">(</span><em>geometries</em>, <em>inSR</em>, <em>outSR</em>, <em>transformation=''</em>, <em>transformFoward=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/geometryservice/geometryservice.html#GeometryService.project"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.project" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="arcrest.geometryservice.geometryservice.GeometryService.relation">
-<code class="descname">relation</code><span class="sig-paren">(</span><em>geometries1</em>, <em>geometries2</em>, <em>sr</em>, <em>relation='esriGeometryRelationIntersection'</em>, <em>relationParam=''</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.relation" title="Permalink to this definition">¶</a></dt>
+<code class="descname">relation</code><span class="sig-paren">(</span><em>geometries1</em>, <em>geometries2</em>, <em>sr</em>, <em>relation='esriGeometryRelationIntersection'</em>, <em>relationParam=''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/geometryservice/geometryservice.html#GeometryService.relation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.relation" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="arcrest.geometryservice.geometryservice.GeometryService.reshape">
-<code class="descname">reshape</code><span class="sig-paren">(</span><em>sr</em>, <em>target</em>, <em>reshaper</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.reshape" title="Permalink to this definition">¶</a></dt>
+<code class="descname">reshape</code><span class="sig-paren">(</span><em>sr</em>, <em>target</em>, <em>reshaper</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/geometryservice/geometryservice.html#GeometryService.reshape"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.reshape" title="Permalink to this definition">¶</a></dt>
 <dd><p>calls the reshape command on a geometry service</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="arcrest.geometryservice.geometryservice.GeometryService.simplify">
-<code class="descname">simplify</code><span class="sig-paren">(</span><em>sr</em>, <em>geometries</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.simplify" title="Permalink to this definition">¶</a></dt>
+<code class="descname">simplify</code><span class="sig-paren">(</span><em>sr</em>, <em>geometries</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/geometryservice/geometryservice.html#GeometryService.simplify"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.simplify" title="Permalink to this definition">¶</a></dt>
 <dd><p>returns a simplied geometry object</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="arcrest.geometryservice.geometryservice.GeometryService.toGeoCoordinateString">
-<code class="descname">toGeoCoordinateString</code><span class="sig-paren">(</span><em>sr</em>, <em>coordinates</em>, <em>conversionType</em>, <em>conversionMode='mgrsDefault'</em>, <em>numOfDigits=None</em>, <em>rounding=True</em>, <em>addSpaces=True</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.toGeoCoordinateString" title="Permalink to this definition">¶</a></dt>
+<code class="descname">toGeoCoordinateString</code><span class="sig-paren">(</span><em>sr</em>, <em>coordinates</em>, <em>conversionType</em>, <em>conversionMode='mgrsDefault'</em>, <em>numOfDigits=None</em>, <em>rounding=True</em>, <em>addSpaces=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/geometryservice/geometryservice.html#GeometryService.toGeoCoordinateString"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.toGeoCoordinateString" title="Permalink to this definition">¶</a></dt>
 <dd><p>The toGeoCoordinateString operation is performed on a geometry
 service resource. The operation converts an array of
 xy-coordinates into well-known strings based on the conversion type
@@ -411,12 +461,12 @@ while the default value for both USNG and UTM is true.</dd>
 
 <dl class="method">
 <dt id="arcrest.geometryservice.geometryservice.GeometryService.trimExtend">
-<code class="descname">trimExtend</code><span class="sig-paren">(</span><em>sr</em>, <em>polylines</em>, <em>trimExtendTo</em>, <em>extendHow=0</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.trimExtend" title="Permalink to this definition">¶</a></dt>
+<code class="descname">trimExtend</code><span class="sig-paren">(</span><em>sr</em>, <em>polylines</em>, <em>trimExtendTo</em>, <em>extendHow=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/geometryservice/geometryservice.html#GeometryService.trimExtend"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.trimExtend" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="arcrest.geometryservice.geometryservice.GeometryService.union">
-<code class="descname">union</code><span class="sig-paren">(</span><em>sr</em>, <em>geometries</em><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.union" title="Permalink to this definition">¶</a></dt>
+<code class="descname">union</code><span class="sig-paren">(</span><em>sr</em>, <em>geometries</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/geometryservice/geometryservice.html#GeometryService.union"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.geometryservice.geometryservice.GeometryService.union" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -443,6 +493,12 @@ while the default value for both USNG and UTM is true.</dd>
 </li>
 </ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="arcrest.enrichment.html"
+                        title="previous chapter">arcrest.enrichment package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="arcrest.hostedservice.html"
+                        title="next chapter">arcrest.hostedservice package</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -476,7 +532,15 @@ while the default value for both USNG and UTM is true.</dd>
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">atlantis 1 documentation</a> &raquo;</li> 
+        <li class="right" >
+          <a href="arcrest.hostedservice.html" title="arcrest.hostedservice package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="arcrest.enrichment.html" title="arcrest.enrichment package"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">atlantis 1 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >src</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="arcrest.html" >arcrest package</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

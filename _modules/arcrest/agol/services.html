@@ -59,7 +59,7 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
-
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">uuid</span>
 <span class="kn">import</span> <span class="nn">json</span>
@@ -364,7 +364,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">__init</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_documentInfo</span>
     <span class="c1">#----------------------------------------------------------------------</span>
-    <span class="k">def</span> <span class="nf">_getLayers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="FeatureService._getLayers"><a class="viewcode-back" href="../../../arcrest.agol.html#arcrest.agol.services.FeatureService._getLayers">[docs]</a>    <span class="k">def</span> <span class="nf">_getLayers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; gets layers for the featuer service &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_layers</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_layers</span> <span class="o">=</span> <span class="p">[]</span>
@@ -381,9 +381,9 @@
                                                      <span class="n">proxy_port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_port</span><span class="p">,</span>
                                                      <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">))</span>
                     <span class="k">del</span> <span class="n">l</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_layers</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_layers</span></div>
     <span class="c1">#----------------------------------------------------------------------</span>
-    <span class="k">def</span> <span class="nf">_getTables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="FeatureService._getTables"><a class="viewcode-back" href="../../../arcrest.agol.html#arcrest.agol.services.FeatureService._getTables">[docs]</a>    <span class="k">def</span> <span class="nf">_getTables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; gets layers for the featuer service &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tables</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_tables</span> <span class="o">=</span> <span class="p">[]</span>
@@ -400,7 +400,7 @@
                                                      <span class="n">proxy_port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_port</span><span class="p">,</span>
                                                      <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">))</span>
                     <span class="k">del</span> <span class="n">l</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tables</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tables</span></div>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">url</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; returns the url for the feature service&quot;&quot;&quot;</span>
@@ -948,6 +948,9 @@
     <span class="n">_serviceItemId</span> <span class="o">=</span> <span class="bp">None</span>
     <span class="n">_json</span> <span class="o">=</span> <span class="bp">None</span>
     <span class="n">_json_dict</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">_standardMaxRecordCount</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">_tileMaxRecordCount</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">_maxRecordCountFactor</span> <span class="o">=</span> <span class="bp">None</span>
     <span class="c1">#----------------------------------------------------------------------</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span>
                  <span class="n">securityHandler</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
@@ -1022,6 +1025,28 @@
                       <span class="p">]</span>
         <span class="k">for</span> <span class="n">att</span> <span class="ow">in</span> <span class="n">attributes</span><span class="p">:</span>
             <span class="k">yield</span> <span class="p">(</span><span class="n">att</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">att</span><span class="p">))</span>
+    <span class="c1">#----------------------------------------------------------------------</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">standardMaxRecordCount</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; returns the standardMaxRecordCount for the feature layer&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_standardMaxRecordCount</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__init</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_standardMaxRecordCount</span>
+    <span class="c1">#----------------------------------------------------------------------</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">tileMaxRecordCount</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; returns the tileMaxRecordCount for the feature layer&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tileMaxRecordCount</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__init</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tileMaxRecordCount</span>
+    <span class="c1">#----------------------------------------------------------------------</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">maxRecordCountFactor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; returns the maxRecordCountFactor for the feature layer&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maxRecordCountFactor</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__init</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maxRecordCountFactor</span>
+
     <span class="c1">#----------------------------------------------------------------------</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">url</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1437,7 +1462,7 @@
             <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;f&#39;</span><span class="p">:</span><span class="s1">&#39;json&#39;</span><span class="p">}</span>
             <span class="n">parsed</span> <span class="o">=</span> <span class="n">urlparse</span><span class="o">.</span><span class="n">urlparse</span><span class="p">(</span><span class="n">attachURL</span><span class="p">)</span>
 
-            <span class="n">files</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;attachment&#39;</span><span class="p">,</span> <span class="n">file_path</span><span class="p">}</span>
+            <span class="n">files</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;attachment&#39;</span><span class="p">:</span> <span class="n">file_path</span><span class="p">}</span>
             <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">attachURL</span><span class="p">,</span>
                              <span class="n">param_dict</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
                              <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">,</span>
@@ -1759,14 +1784,14 @@
                                 <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">)</span>
         <span class="k">return</span> <span class="s2">&quot;&quot;</span></div>
     <span class="c1">#----------------------------------------------------------------------</span>
-    <span class="k">def</span> <span class="nf">_chunks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<div class="viewcode-block" id="FeatureLayer._chunks"><a class="viewcode-back" href="../../../arcrest.agol.html#arcrest.agol.services.FeatureLayer._chunks">[docs]</a>    <span class="k">def</span> <span class="nf">_chunks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Yield n successive chunks from a list l.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">l</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
         <span class="n">newn</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
             <span class="k">yield</span> <span class="n">l</span><span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">newn</span><span class="p">:</span><span class="n">i</span><span class="o">*</span><span class="n">newn</span><span class="o">+</span><span class="n">newn</span><span class="p">]</span>
-        <span class="k">yield</span> <span class="n">l</span><span class="p">[</span><span class="n">n</span><span class="o">*</span><span class="n">newn</span><span class="o">-</span><span class="n">newn</span><span class="p">:]</span>
+        <span class="k">yield</span> <span class="n">l</span><span class="p">[</span><span class="n">n</span><span class="o">*</span><span class="n">newn</span><span class="o">-</span><span class="n">newn</span><span class="p">:]</span></div>
     <span class="c1">#----------------------------------------------------------------------</span>
 <div class="viewcode-block" id="FeatureLayer.get_local_copy"><a class="viewcode-back" href="../../../arcrest.agol.html#arcrest.agol.services.FeatureLayer.get_local_copy">[docs]</a>    <span class="k">def</span> <span class="nf">get_local_copy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out_path</span><span class="p">,</span> <span class="n">includeAttachments</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; exports the whole feature service to a feature class</span>
@@ -1926,6 +1951,7 @@
                    <span class="n">updateFeatures</span><span class="o">=</span><span class="p">[],</span>
                    <span class="n">deleteFeatures</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
                    <span class="n">gdbVersion</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                   <span class="n">useGlobalIds</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
                    <span class="n">rollbackOnFailure</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">           This operation adds, updates, and deletes features to the</span>
@@ -1938,6 +1964,11 @@
 <span class="sd">                               objects</span>
 <span class="sd">              deleteFeatures - string of OIDs to remove from service</span>
 <span class="sd">              gdbVersion - Geodatabase version to apply the edits.</span>
+<span class="sd">              useGlobalIds - instead of referencing the default Object ID</span>
+<span class="sd">                              field, the service will look at a GUID field</span>
+<span class="sd">                              to track changes.  This means the GUIDs will</span>
+<span class="sd">                              be passed instead of OIDs for delete,</span>
+<span class="sd">                              update or add features.</span>
 <span class="sd">              rollbackOnFailure - Optional parameter to specify if the</span>
 <span class="sd">                                  edits should be applied only if all</span>
 <span class="sd">                                  submitted edits succeed. If false, the</span>
@@ -1950,8 +1981,12 @@
 <span class="sd">              dictionary of messages</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">editURL</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_url</span> <span class="o">+</span> <span class="s2">&quot;/applyEdits&quot;</span>
-        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;f&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;f&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;useGlobalIds&quot;</span> <span class="p">:</span> <span class="n">userGlobalIds</span><span class="p">,</span>
+                  <span class="s2">&quot;rollbackOnFailure&quot;</span> <span class="p">:</span> <span class="n">rollbackOnFailure</span>
                   <span class="p">}</span>
+        <span class="k">if</span> <span class="n">gdbVersion</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">params</span><span class="p">[</span><span class="s1">&#39;gdbVersion&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gdbVersion</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">addFeatures</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> \
            <span class="nb">isinstance</span><span class="p">(</span><span class="n">addFeatures</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Feature</span><span class="p">):</span>
             <span class="n">params</span><span class="p">[</span><span class="s1">&#39;adds&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">([</span><span class="n">f</span><span class="o">.</span><span class="n">asDictionary</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">addFeatures</span><span class="p">],</span>
