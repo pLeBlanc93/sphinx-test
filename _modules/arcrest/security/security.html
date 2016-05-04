@@ -910,18 +910,20 @@
                               <span class="n">securityHandler</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
                               <span class="n">proxy_port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_port</span><span class="p">,</span>
                               <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">)</span>
-
         <span class="k">if</span> <span class="s1">&#39;access_token&#39;</span> <span class="ow">in</span> <span class="n">token</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_token</span> <span class="o">=</span> <span class="n">token</span><span class="p">[</span><span class="s1">&#39;access_token&#39;</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_expires_in</span> <span class="o">=</span> <span class="n">token</span><span class="p">[</span><span class="s1">&#39;expires_in&#39;</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_token_created_on</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_token_expires_on</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_token_created_on</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">token</span><span class="p">[</span><span class="s1">&#39;expires_in&#39;</span><span class="p">]))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_valid</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_message</span> <span class="o">=</span> <span class="s2">&quot;Token Generated&quot;</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_token</span> <span class="o">=</span> <span class="bp">None</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_expires_in</span> <span class="o">=</span> <span class="bp">None</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_token_created_on</span> <span class="o">=</span> <span class="bp">None</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_token_expires_on</span> <span class="o">=</span> <span class="bp">None</span></div></div>
-            <span class="c1">#self._token_expires_on = None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_token_expires_on</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_valid</span> <span class="o">=</span> <span class="bp">False</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_message</span> <span class="o">=</span> <span class="n">token</span></div></div>
 <span class="c1">########################################################################</span>
 <div class="viewcode-block" id="ArcGISTokenSecurityHandler"><a class="viewcode-back" href="../../../arcrest.security.html#arcrest.security.security.ArcGISTokenSecurityHandler">[docs]</a><span class="k">class</span> <span class="nc">ArcGISTokenSecurityHandler</span><span class="p">(</span><span class="n">abstract</span><span class="o">.</span><span class="n">BaseSecurityHandler</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; handles ArcGIS Maps Token Base Security</span>
@@ -1204,7 +1206,7 @@
 
         <span class="n">urlInfo</span> <span class="o">=</span> <span class="n">urlparse</span><span class="p">(</span><span class="n">org_url</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">urlInfo</span><span class="o">.</span><span class="n">netloc</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;www.arcgis.com&quot;</span><span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">urlInfo</span><span class="o">.</span><span class="n">netloc</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;www.arcgis.com&quot;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_initURL</span><span class="p">(</span><span class="n">org_url</span><span class="o">=</span><span class="n">org_url</span><span class="p">,</span><span class="n">token_url</span><span class="o">=</span><span class="n">token_url</span><span class="p">)</span>
 
             <span class="kn">from</span> <span class="nn">..manageorg</span> <span class="kn">import</span> <span class="n">Administration</span>
@@ -1383,6 +1385,13 @@
         <span class="sd">&quot;&quot;&quot; returns when the token was generated &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_referer_url</span>
     <span class="c1">#----------------------------------------------------------------------</span>
+    <span class="nd">@referer_url.setter</span>
+    <span class="k">def</span> <span class="nf">referer_url</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;sets the referer url&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_referer_url</span> <span class="o">!=</span> <span class="n">value</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_token</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_referer_url</span> <span class="o">=</span> <span class="n">value</span>
+    <span class="c1">#----------------------------------------------------------------------</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">token</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; returns the token for the site &quot;&quot;&quot;</span>
@@ -1434,13 +1443,6 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_token_expires_on</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">token</span><span class="p">[</span><span class="s1">&#39;expires&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">-</span> \
             <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-
-        <span class="c1">#if token[&#39;expires&#39;] &gt; 86400:</span>
-            <span class="c1">#seconds = 86400</span>
-        <span class="c1">#else:</span>
-            <span class="c1">#seconds = int(token[&#39;expires&#39;])</span>
-        <span class="c1">#self._token_expires_on = self._token_created_on + \</span>
-            <span class="c1">#datetime.timedelta(seconds=seconds)</span>
         <span class="k">if</span> <span class="s2">&quot;token&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">token</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_token</span> <span class="o">=</span> <span class="bp">None</span>
             <span class="k">return</span> <span class="bp">None</span>
@@ -1485,6 +1487,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_org_url</span> <span class="o">=</span> <span class="n">org_url</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_proxy_port</span> <span class="o">=</span> <span class="n">proxy_port</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span> <span class="o">=</span> <span class="n">proxy_url</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_referer_url</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_token_expires_on</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">_defaultTokenExpiration</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">token_url</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">and</span> \
            <span class="ow">not</span> <span class="n">org_url</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
@@ -1578,9 +1581,15 @@
         <span class="sd">&quot;&quot;&quot; returns the token for the site &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_token</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> \
            <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_token_expires_on</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_generateForTokenSecurity</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_username</span><span class="p">,</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_referer_url</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_generateForTokenSecurity</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_username</span><span class="p">,</span>
                                            <span class="n">password</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_password</span><span class="p">,</span>
                                            <span class="n">tokenUrl</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_token_url</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_generateForTokenSecurity</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_username</span><span class="p">,</span>
+                                               <span class="n">password</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_password</span><span class="p">,</span>
+                                               <span class="n">tokenUrl</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_token_url</span><span class="p">,</span>
+                                               <span class="n">client</span><span class="o">=</span><span class="s2">&quot;referer&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_token</span>
     <span class="c1">#----------------------------------------------------------------------</span>
     <span class="nd">@property</span>
@@ -1588,15 +1597,25 @@
         <span class="sd">&quot;&quot;&quot; returns when the token was generated &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_referer_url</span>
     <span class="c1">#----------------------------------------------------------------------</span>
+    <span class="nd">@referer_url.setter</span>
+    <span class="k">def</span> <span class="nf">referer_url</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; sets the referer_url for the token call&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_referer_url</span> <span class="o">!=</span> <span class="n">value</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_referer_url</span> <span class="o">=</span> <span class="n">value</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_token</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="c1">#----------------------------------------------------------------------</span>
 <div class="viewcode-block" id="AGSTokenSecurityHandler._generateForTokenSecurity"><a class="viewcode-back" href="../../../arcrest.security.html#arcrest.security.security.AGSTokenSecurityHandler._generateForTokenSecurity">[docs]</a>    <span class="k">def</span> <span class="nf">_generateForTokenSecurity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                                   <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span>
-                                  <span class="n">tokenUrl</span><span class="p">,</span> <span class="n">expiration</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+                                  <span class="n">tokenUrl</span><span class="p">,</span> <span class="n">expiration</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                                  <span class="n">client</span><span class="o">=</span><span class="s1">&#39;requestip&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; generates a token for a feature service &quot;&quot;&quot;</span>
         <span class="n">query_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="n">username</span><span class="p">,</span>
                       <span class="s1">&#39;password&#39;</span><span class="p">:</span> <span class="n">password</span><span class="p">,</span>
                       <span class="s1">&#39;expiration&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">_defaultTokenExpiration</span><span class="p">),</span>
-                      <span class="s1">&#39;client&#39;</span><span class="p">:</span> <span class="s1">&#39;requestip&#39;</span><span class="p">,</span>
+                      <span class="s1">&#39;client&#39;</span><span class="p">:</span> <span class="n">client</span><span class="p">,</span>
                       <span class="s1">&#39;f&#39;</span><span class="p">:</span> <span class="s1">&#39;json&#39;</span><span class="p">}</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_referer_url</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">client</span> <span class="o">==</span> <span class="s2">&quot;referer&quot;</span><span class="p">:</span>
+            <span class="n">query_dict</span><span class="p">[</span><span class="s1">&#39;referer&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_referer_url</span>
         <span class="k">if</span> <span class="n">expiration</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
             <span class="n">query_dict</span><span class="p">[</span><span class="s1">&#39;expiration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">expiration</span>
         <span class="n">token</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">tokenUrl</span><span class="p">,</span>
@@ -1613,11 +1632,6 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_token</span> <span class="o">=</span> <span class="n">token</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_token_created_on</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-            <span class="c1">#if token[&#39;expires&#39;] &gt; 86400:</span>
-                <span class="c1">#seconds = 86400</span>
-            <span class="c1">#else:</span>
-                <span class="c1">#seconds = int(token[&#39;expires&#39;])</span>
-            <span class="c1">#self._token_expires_on = self._token_created_on + datetime.timedelta(seconds=seconds)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_token_expires_on</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">token</span><span class="p">[</span><span class="s1">&#39;expires&#39;</span><span class="p">])</span> <span class="o">/</span><span class="mi">1000</span><span class="p">)</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_expires_in</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_token_expires_on</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_token_created_on</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>
             <span class="k">return</span> <span class="n">token</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">]</span></div></div>
@@ -1730,8 +1744,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_parsed_org_url</span> <span class="o">=</span> <span class="n">urlunparse</span><span class="p">((</span><span class="n">parsed_url</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">parsed_url</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">))</span>
 
         <span class="k">if</span> <span class="n">referer_url</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-
-            <span class="bp">self</span><span class="o">.</span><span class="n">_referer_url</span> <span class="o">=</span> <span class="n">parsed_url</span><span class="o">.</span><span class="n">netloc</span></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_referer_url</span> <span class="o">=</span> <span class="n">parsed_url</span><span class="o">.</span><span class="n">netloc</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span></div>
 
     <span class="n">_is_portal</span> <span class="o">=</span> <span class="bp">None</span>
     <span class="c1">#----------------------------------------------------------------------</span>
@@ -1743,11 +1756,9 @@
     <span class="c1">#----------------------------------------------------------------------</span>
 <div class="viewcode-block" id="PortalTokenSecurityHandler.check_portal"><a class="viewcode-back" href="../../../arcrest.security.html#arcrest.security.security.PortalTokenSecurityHandler.check_portal">[docs]</a>    <span class="k">def</span> <span class="nf">check_portal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="kn">from</span> <span class="nn">..manageorg</span> <span class="kn">import</span> <span class="n">Administration</span>
-
         <span class="n">admin</span> <span class="o">=</span> <span class="n">Administration</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_org_url</span><span class="p">,</span>
                                <span class="n">securityHandler</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
         <span class="n">portal</span> <span class="o">=</span> <span class="n">admin</span><span class="o">.</span><span class="n">portals</span><span class="o">.</span><span class="n">portalSelf</span>
-
         <span class="bp">self</span><span class="o">.</span><span class="n">_is_portal</span> <span class="o">=</span> <span class="n">portal</span><span class="o">.</span><span class="n">isPortal</span></div>
     <span class="c1">#----------------------------------------------------------------------</span>
     <span class="nd">@property</span>
@@ -1827,18 +1838,30 @@
     <span class="c1">#----------------------------------------------------------------------</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">referer_url</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; returns when the token was generated &quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;gets/sets the referer&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_referer_url</span>
     <span class="c1">#----------------------------------------------------------------------</span>
-
+    <span class="nd">@referer_url.setter</span>
+    <span class="k">def</span> <span class="nf">referer_url</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;gets/sets the referer&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_referer_url</span> <span class="o">!=</span> <span class="n">value</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_referer_url</span> <span class="o">=</span> <span class="n">value</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_token</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="c1">#----------------------------------------------------------------------</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">token</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; returns the token for the site &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_token</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> \
            <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_token_expires_on</span><span class="p">:</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generateForTokenSecurity</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_username</span><span class="p">,</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_referer_url</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generateForTokenSecurity</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_username</span><span class="p">,</span>
                                                     <span class="n">password</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_password</span><span class="p">,</span>
                                                     <span class="n">tokenUrl</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_token_url</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generateForTokenSecurity</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_username</span><span class="p">,</span>
+                                                        <span class="n">password</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_password</span><span class="p">,</span>
+                                                        <span class="n">tokenUrl</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_token_url</span><span class="p">,</span>
+                                                        <span class="n">client</span><span class="o">=</span><span class="s2">&quot;referer&quot;</span><span class="p">)</span>
             <span class="k">if</span> <span class="s1">&#39;error&#39;</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_valid</span> <span class="o">=</span> <span class="bp">False</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_message</span> <span class="o">=</span> <span class="n">result</span>
@@ -1945,13 +1968,17 @@
 <div class="viewcode-block" id="PortalTokenSecurityHandler._generateForTokenSecurity"><a class="viewcode-back" href="../../../arcrest.security.html#arcrest.security.security.PortalTokenSecurityHandler._generateForTokenSecurity">[docs]</a>    <span class="k">def</span> <span class="nf">_generateForTokenSecurity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                                   <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span>
                                   <span class="n">tokenUrl</span><span class="p">,</span>
-                                  <span class="n">expiration</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+                                  <span class="n">expiration</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                                  <span class="n">client</span><span class="o">=</span><span class="s1">&#39;requestip&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; generates a token for a feature service &quot;&quot;&quot;</span>
+
         <span class="n">query_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="n">username</span><span class="p">,</span>
                       <span class="s1">&#39;password&#39;</span><span class="p">:</span> <span class="n">password</span><span class="p">,</span>
                       <span class="s1">&#39;expiration&#39;</span><span class="p">:</span><span class="nb">str</span><span class="p">(</span><span class="n">_defaultTokenExpiration</span><span class="p">),</span>
-                      <span class="s1">&#39;client&#39;</span><span class="p">:</span> <span class="s1">&#39;requestip&#39;</span><span class="p">,</span>
+                      <span class="s1">&#39;client&#39;</span><span class="p">:</span> <span class="n">client</span><span class="p">,</span>
                       <span class="s1">&#39;f&#39;</span><span class="p">:</span> <span class="s1">&#39;json&#39;</span><span class="p">}</span>
+        <span class="k">if</span> <span class="n">client</span> <span class="o">==</span> <span class="s2">&quot;referer&quot;</span><span class="p">:</span>
+            <span class="n">query_dict</span><span class="p">[</span><span class="s1">&#39;referer&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_referer_url</span>
         <span class="k">if</span> <span class="n">expiration</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
             <span class="n">query_dict</span><span class="p">[</span><span class="s1">&#39;expiration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">expiration</span>
 

@@ -83,10 +83,20 @@
     <span class="k">return</span> <span class="n">inspect</span><span class="o">.</span><span class="n">currentframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_back</span><span class="o">.</span><span class="n">f_lineno</span></div>
 <span class="c1">#----------------------------------------------------------------------</span>
 <div class="viewcode-block" id="trace"><a class="viewcode-back" href="../../arcresthelper.html#arcresthelper.publishingtools.trace">[docs]</a><span class="k">def</span> <span class="nf">trace</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        trace finds the line, the filename</span>
-<span class="sd">        and error message and returns it</span>
-<span class="sd">        to the user</span>
+    <span class="sd">&quot;&quot;&quot;Determines information about where an error was thrown.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: line number, filename, error message</span>
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; try:</span>
+<span class="sd">        ...     1/0</span>
+<span class="sd">        ... except:</span>
+<span class="sd">        ...     print(&quot;Error on &#39;{}&#39;\\nin file &#39;{}&#39;\\nwith error &#39;{}&#39;&quot;.format(*trace()))</span>
+<span class="sd">        ...        </span>
+<span class="sd">        Error on &#39;line 1234&#39;</span>
+<span class="sd">        in file &#39;C:\\foo\\baz.py&#39;</span>
+<span class="sd">        with error &#39;ZeroDivisionError: integer division or modulo by zero&#39;</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">traceback</span><span class="o">,</span> <span class="nn">inspect</span><span class="o">,</span> <span class="nn">sys</span>
     <span class="n">tb</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span>
@@ -101,25 +111,32 @@
 
 
 <div class="viewcode-block" id="publishingtools"><a class="viewcode-back" href="../../arcresthelper.html#arcresthelper.publishingtools.publishingtools">[docs]</a><span class="k">class</span> <span class="nc">publishingtools</span><span class="p">(</span><span class="n">securityhandlerhelper</span><span class="p">):</span>
-<div class="viewcode-block" id="publishingtools.getItemID"><a class="viewcode-back" href="../../arcresthelper.html#arcresthelper.publishingtools.publishingtools.getItemID">[docs]</a>    <span class="k">def</span> <span class="nf">getItemID</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">userContent</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">itemType</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">           This function retrieves the item ID if the item exist</span>
+    <span class="c1">#----------------------------------------------------------------------</span>
+<div class="viewcode-block" id="publishingtools.getItemID"><a class="viewcode-back" href="../../arcresthelper.html#arcresthelper.publishingtools.publishingtools.getItemID">[docs]</a>    <span class="k">def</span> <span class="nf">getItemID</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">userContent</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">itemType</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Gets the ID of an item by a combination of title, name, and type.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            userContent (list): A list of user content.</span>
+<span class="sd">            title (str): The title of the item. Defaults to ``None``.</span>
+<span class="sd">            name (str): The name of the item. Defaults to ``None``.</span>
+<span class="sd">            itemType (str): The type of the item. Defaults to ``None``.</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            str: The item&#39;s ID. If the item does not exist, ``None``.        </span>
+<span class="sd">        Raises:</span>
+<span class="sd">            AttributeError: If both ``title`` and ``name`` are not specified (``None``).</span>
+<span class="sd">        See Also:</span>
+<span class="sd">            :py:func:`getItem`</span>
 
-<span class="sd">           Inputs:</span>
-<span class="sd">              name - the name of the item</span>
-<span class="sd">            userContent - a list of user contnet</span>
-<span class="sd">           Output:</span>
-<span class="sd">              string - ID of item, none if item does not exist</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">itemID</span> <span class="o">=</span> <span class="bp">None</span>
-        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">title</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">title</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s1">&#39;Name or Title needs to be specified&#39;</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">userContent</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">title</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">name</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">title</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">name</span> <span class="ow">and</span> <span class="p">(</span><span class="n">itemType</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">item</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">itemType</span><span class="p">):</span>
                     <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">id</span>
 
-            <span class="k">elif</span> <span class="ow">not</span> <span class="n">title</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">name</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">elif</span> <span class="n">title</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">name</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">title</span> <span class="o">==</span> <span class="n">title</span> <span class="ow">and</span> <span class="p">(</span><span class="n">itemType</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">item</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">itemType</span><span class="p">):</span>
                     <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">id</span>
 
@@ -127,25 +144,32 @@
                 <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">name</span> <span class="ow">and</span> <span class="n">item</span><span class="o">.</span><span class="n">title</span> <span class="o">==</span> <span class="n">title</span> <span class="ow">and</span> <span class="p">(</span><span class="n">itemType</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">item</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">itemType</span><span class="p">):</span>
                     <span class="k">return</span> <span class="n">item</span><span class="o">.</span><span class="n">id</span>
         <span class="k">return</span> <span class="bp">None</span></div>
-<div class="viewcode-block" id="publishingtools.getItem"><a class="viewcode-back" href="../../arcresthelper.html#arcresthelper.publishingtools.publishingtools.getItem">[docs]</a>    <span class="k">def</span> <span class="nf">getItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">userContent</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">itemType</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">           This function retrieves the item ID if the item exist</span>
+    <span class="c1">#----------------------------------------------------------------------    </span>
+<div class="viewcode-block" id="publishingtools.getItem"><a class="viewcode-back" href="../../arcresthelper.html#arcresthelper.publishingtools.publishingtools.getItem">[docs]</a>    <span class="k">def</span> <span class="nf">getItem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">userContent</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">itemType</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Gets an item by a combination of title, name, and type.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            userContent (list): A list of user content.</span>
+<span class="sd">            title (str): The title of the item. Defaults to ``None``.</span>
+<span class="sd">            name (str): The name of the item. Defaults to ``None``.</span>
+<span class="sd">            itemType (str): The type of the item. Defaults to ``None``.</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            str: The item&#39;s ID. If the item does not exist, ``None``.        </span>
+<span class="sd">        Raises:</span>
+<span class="sd">            AttributeError: If both ``title`` and ``name`` are not specified (``None``).</span>
+<span class="sd">        See Also:</span>
+<span class="sd">            :py:func:`getItemID`</span>
 
-<span class="sd">           Inputs:</span>
-<span class="sd">              name - the name of the item</span>
-<span class="sd">            userContent - a list of user contnet</span>
-<span class="sd">           Output:</span>
-<span class="sd">              string - ID of item, none if item does not exist</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">itemID</span> <span class="o">=</span> <span class="bp">None</span>
-        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">title</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">title</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s1">&#39;Name or Title needs to be specified&#39;</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">userContent</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">title</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">name</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">title</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">name</span> <span class="ow">and</span> <span class="p">(</span><span class="n">itemType</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">item</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">itemType</span><span class="p">):</span>
                     <span class="k">return</span> <span class="n">item</span>
 
-            <span class="k">elif</span> <span class="ow">not</span> <span class="n">title</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">name</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">elif</span> <span class="n">title</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">name</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">title</span> <span class="o">==</span> <span class="n">title</span> <span class="ow">and</span> <span class="p">(</span><span class="n">itemType</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">item</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">itemType</span><span class="p">):</span>
                     <span class="k">return</span> <span class="n">item</span>
 
@@ -155,22 +179,23 @@
         <span class="k">return</span> <span class="bp">None</span></div>
     <span class="c1">#----------------------------------------------------------------------</span>
 <div class="viewcode-block" id="publishingtools.folderExist"><a class="viewcode-back" href="../../arcresthelper.html#arcresthelper.publishingtools.publishingtools.folderExist">[docs]</a>    <span class="k">def</span> <span class="nf">folderExist</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">folders</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">           Determines if a folder exist</span>
-
-<span class="sd">           Inputs:</span>
-<span class="sd">             name - the name of the folder</span>
-<span class="sd">             folders - list of folders</span>
-<span class="sd">           Output:</span>
-<span class="sd">              boolean - true/false if the folder exist</span>
+        <span class="sd">&quot;&quot;&quot;Determines if a folder exists, case insensitively.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            name (str): The name of the folder to check.</span>
+<span class="sd">            folders (list): A list of folder dicts to check against. The dicts must contain</span>
+<span class="sd">                the key:value pair ``title``.</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: ``True`` if the folder exists in the list, ``False`` otherwise.</span>
+<span class="sd">          </span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span> <span class="o">==</span> <span class="bp">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">name</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
 
             <span class="n">folderID</span> <span class="o">=</span> <span class="bp">None</span>
 
             <span class="k">for</span> <span class="n">folder</span> <span class="ow">in</span> <span class="n">folders</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">folder</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
-                    <span class="k">return</span> <span class="bp">True</span><span class="p">;</span>
+                    <span class="k">return</span> <span class="bp">True</span>
 
             <span class="k">del</span> <span class="n">folders</span>
 
@@ -178,9 +203,17 @@
 
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">False</span></div>
-
     <span class="c1">#----------------------------------------------------------------------</span>
-<div class="viewcode-block" id="publishingtools.publishItems"><a class="viewcode-back" href="../../arcresthelper.html#arcresthelper.publishingtools.publishingtools.publishItems">[docs]</a>    <span class="k">def</span> <span class="nf">publishItems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">items_info</span><span class="p">):</span>
+<div class="viewcode-block" id="publishingtools.publishItems"><a class="viewcode-back" href="../../arcresthelper.html#arcresthelper.publishingtools.publishingtools.publishItems">[docs]</a>    <span class="k">def</span> <span class="nf">publishItems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items_info</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Publishes a list of items.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            items_info (list): A list of JSON configuration items to publish.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            list: A list of results from :py:meth:`arcrest.manageorg._content.User.addItem`.</span>
+<span class="sd">            </span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">securityhandler</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;Security handler required&quot;</span><span class="p">)</span>
             <span class="k">return</span>
@@ -192,7 +225,7 @@
             <span class="n">admin</span> <span class="o">=</span> <span class="n">arcrest</span><span class="o">.</span><span class="n">manageorg</span><span class="o">.</span><span class="n">Administration</span><span class="p">(</span><span class="n">securityHandler</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_securityHandler</span><span class="p">)</span>
             <span class="n">item_results</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">for</span> <span class="n">item_info</span> <span class="ow">in</span> <span class="n">items_info</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">item_info</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;ReplaceTag&#39;</span><span class="p">):</span>
+                <span class="k">if</span> <span class="s1">&#39;ReplaceTag&#39;</span> <span class="ow">in</span> <span class="n">item_info</span><span class="p">:</span>
 
                     <span class="n">itemInfo</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;ReplaceTag&quot;</span><span class="p">:</span><span class="n">item_info</span><span class="p">[</span><span class="s1">&#39;ReplaceTag&#39;</span><span class="p">]</span> <span class="p">}</span>
                 <span class="k">else</span><span class="p">:</span>
@@ -200,7 +233,7 @@
 
                 <span class="n">itemInfo</span><span class="p">[</span><span class="s1">&#39;ItemInfo&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_publishItems</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">item_info</span><span class="p">)</span>
 
-                <span class="k">if</span> <span class="ow">not</span> <span class="n">itemInfo</span><span class="p">[</span><span class="s1">&#39;ItemInfo&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">and</span> <span class="s1">&#39;name&#39;</span> <span class="ow">in</span> <span class="n">itemInfo</span><span class="p">[</span><span class="s1">&#39;ItemInfo&#39;</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="n">itemInfo</span><span class="p">[</span><span class="s1">&#39;ItemInfo&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="s1">&#39;name&#39;</span> <span class="ow">in</span> <span class="n">itemInfo</span><span class="p">[</span><span class="s1">&#39;ItemInfo&#39;</span><span class="p">]:</span>
                     <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> created&quot;</span> <span class="o">%</span> <span class="n">itemInfo</span><span class="p">[</span><span class="s1">&#39;ItemInfo&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
                     <span class="n">item_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">itemInfo</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
@@ -232,7 +265,7 @@
 
             <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span></div>
      <span class="c1">#----------------------------------------------------------------------</span>
-    <span class="k">def</span> <span class="nf">_publishItems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">config</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_publishItems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
         <span class="n">name</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="n">tags</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="n">description</span> <span class="o">=</span> <span class="bp">None</span>
@@ -270,15 +303,15 @@
             <span class="n">extent</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
             <span class="n">webmap_data</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 
-            <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;Data&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="s1">&#39;Data&#39;</span> <span class="ow">in</span> <span class="n">config</span><span class="p">:</span>
                 <span class="n">itemData</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;Data&#39;</span><span class="p">]</span>
 
-            <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;Url&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="s1">&#39;Url&#39;</span> <span class="ow">in</span> <span class="n">config</span><span class="p">:</span>
                 <span class="n">url</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;Url&#39;</span><span class="p">]</span>
 
             <span class="n">name</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span>
 
-            <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;DateTimeFormat&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="s1">&#39;DateTimeFormat&#39;</span> <span class="ow">in</span> <span class="n">config</span><span class="p">:</span>
                 <span class="n">loc_df</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;DateTimeFormat&#39;</span><span class="p">]</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">loc_df</span> <span class="o">=</span> <span class="n">dateTimeFormat</span>
@@ -298,7 +331,7 @@
             <span class="n">itemType</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;Type&#39;</span><span class="p">]</span>
             <span class="n">typeKeywords</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;typeKeywords&#39;</span><span class="p">]</span>
             <span class="n">skipIfExist</span> <span class="o">=</span> <span class="bp">False</span>
-            <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;SkipIfExist&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="s1">&#39;SkipIfExist&#39;</span> <span class="ow">in</span> <span class="n">config</span><span class="p">:</span>
                 <span class="n">skipIfExist</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;SkipIfExist&#39;</span><span class="p">]</span>
                 <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">skipIfExist</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;true&#39;</span><span class="p">:</span>
                     <span class="n">skipIfExist</span> <span class="o">=</span> <span class="bp">True</span>
@@ -461,10 +494,17 @@
             <span class="k">del</span> <span class="n">updateParams</span>
 
             <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
-
-
     <span class="c1">#----------------------------------------------------------------------</span>
-<div class="viewcode-block" id="publishingtools.publishMap"><a class="viewcode-back" href="../../arcresthelper.html#arcresthelper.publishingtools.publishingtools.publishMap">[docs]</a>    <span class="k">def</span> <span class="nf">publishMap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">maps_info</span><span class="p">,</span><span class="n">fsInfo</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">itInfo</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="publishingtools.publishMap"><a class="viewcode-back" href="../../arcresthelper.html#arcresthelper.publishingtools.publishingtools.publishMap">[docs]</a>    <span class="k">def</span> <span class="nf">publishMap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maps_info</span><span class="p">,</span> <span class="n">fsInfo</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">itInfo</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Publishes a list of maps.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            maps_info (list): A list of JSON configuration maps to publish.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            list: A list of results from :py:meth:`arcrest.manageorg._content.UserItem.updateItem`.</span>
+<span class="sd">            </span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">securityhandler</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;Security handler required&quot;</span><span class="p">)</span>
             <span class="k">return</span>
@@ -481,7 +521,7 @@
             <span class="k">for</span> <span class="n">map_info</span> <span class="ow">in</span> <span class="n">maps_info</span><span class="p">:</span>
                 <span class="n">itemInfo</span> <span class="o">=</span> <span class="p">{}</span>
 
-                <span class="k">if</span> <span class="n">map_info</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;ReplaceInfo&#39;</span><span class="p">):</span>
+                <span class="k">if</span> <span class="s1">&#39;ReplaceInfo&#39;</span> <span class="ow">in</span> <span class="n">map_info</span><span class="p">:</span>
                     <span class="n">replaceInfo</span> <span class="o">=</span> <span class="n">map_info</span><span class="p">[</span><span class="s1">&#39;ReplaceInfo&#39;</span><span class="p">]</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">replaceInfo</span> <span class="o">=</span> <span class="bp">None</span>
@@ -501,8 +541,8 @@
                                         <span class="n">replaceItem</span><span class="p">[</span><span class="s1">&#39;ItemFolder&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fs</span><span class="p">[</span><span class="s1">&#39;FSInfo&#39;</span><span class="p">][</span><span class="s1">&#39;folderId&#39;</span><span class="p">]</span>
                                         <span class="k">if</span> <span class="s1">&#39;convertCase&#39;</span> <span class="ow">in</span> <span class="n">fs</span><span class="p">[</span><span class="s1">&#39;FSInfo&#39;</span><span class="p">]:</span>
                                             <span class="n">replaceItem</span><span class="p">[</span><span class="s1">&#39;convertCase&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fs</span><span class="p">[</span><span class="s1">&#39;FSInfo&#39;</span><span class="p">][</span><span class="s1">&#39;convertCase&#39;</span><span class="p">]</span>
-                                    <span class="k">elif</span> <span class="n">replaceItem</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;ItemID&#39;</span><span class="p">):</span>
-                                        <span class="k">if</span> <span class="n">replaceItem</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;ItemFolder&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="bp">False</span><span class="p">:</span>
+                                    <span class="k">elif</span> <span class="s1">&#39;ItemID&#39;</span> <span class="ow">in</span> <span class="n">replaceItem</span><span class="p">:</span>
+                                        <span class="k">if</span> <span class="s1">&#39;ItemFolder&#39;</span> <span class="ow">in</span> <span class="n">replaceItem</span> <span class="o">==</span> <span class="bp">False</span><span class="p">:</span>
 
                                             <span class="n">itemId</span> <span class="o">=</span> <span class="n">replaceItem</span><span class="p">[</span><span class="s1">&#39;ItemID&#39;</span><span class="p">]</span>
                                             <span class="n">itemInfo</span> <span class="o">=</span> <span class="n">admin</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">getItem</span><span class="p">(</span><span class="n">itemId</span><span class="o">=</span><span class="n">itemId</span><span class="p">)</span>
@@ -524,7 +564,7 @@
                                                     <span class="n">replaceItem</span><span class="p">[</span><span class="s1">&#39;ReplaceString&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">itm</span><span class="p">[</span><span class="s1">&#39;ItemInfo&#39;</span><span class="p">][</span><span class="s1">&#39;url&#39;</span><span class="p">]</span>
 
 
-                <span class="k">if</span> <span class="n">map_info</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;ReplaceTag&#39;</span><span class="p">):</span>
+                <span class="k">if</span> <span class="s1">&#39;ReplaceTag&#39;</span> <span class="ow">in</span> <span class="n">map_info</span><span class="p">:</span>
 
                     <span class="n">itemInfo</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;ReplaceTag&quot;</span><span class="p">:</span><span class="n">map_info</span><span class="p">[</span><span class="s1">&#39;ReplaceTag&#39;</span><span class="p">]</span> <span class="p">}</span>
                 <span class="k">else</span><span class="p">:</span>
@@ -564,7 +604,7 @@
 
             <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span></div>
     <span class="c1">#----------------------------------------------------------------------</span>
-    <span class="k">def</span> <span class="nf">_publishMap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">config</span><span class="p">,</span><span class="n">replaceInfo</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">operationalLayers</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">tableLayers</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_publishMap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">replaceInfo</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">operationalLayers</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">tableLayers</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="n">name</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="n">tags</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="n">description</span> <span class="o">=</span> <span class="bp">None</span>
@@ -661,31 +701,31 @@
                         <span class="k">if</span> <span class="n">replaceItem</span><span class="p">[</span><span class="s1">&#39;ReplaceType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Global&#39;</span><span class="p">:</span>
                             <span class="n">webmap_data</span> <span class="o">=</span> <span class="n">common</span><span class="o">.</span><span class="n">find_replace</span><span class="p">(</span><span class="n">webmap_data</span><span class="p">,</span><span class="n">replaceItem</span><span class="p">[</span><span class="s1">&#39;SearchString&#39;</span><span class="p">],</span><span class="n">replaceItem</span><span class="p">[</span><span class="s1">&#39;ReplaceString&#39;</span><span class="p">])</span>
                         <span class="k">elif</span> <span class="n">replaceItem</span><span class="p">[</span><span class="s1">&#39;ReplaceType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Layer&#39;</span><span class="p">:</span>
-                            <span class="k">if</span> <span class="n">webmap_data</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;tables&#39;</span><span class="p">):</span>
+                            <span class="k">if</span> <span class="s1">&#39;tables&#39;</span> <span class="ow">in</span> <span class="n">webmap_data</span><span class="p">:</span>
                                 <span class="n">opLayers</span> <span class="o">=</span> <span class="n">webmap_data</span><span class="p">[</span><span class="s1">&#39;tables&#39;</span><span class="p">]</span>
                                 <span class="k">for</span> <span class="n">opLayer</span> <span class="ow">in</span> <span class="n">opLayers</span><span class="p">:</span>
                                     <span class="n">layerInfo</span><span class="o">=</span> <span class="p">{}</span>
                                     <span class="k">if</span> <span class="n">replaceItem</span><span class="p">[</span><span class="s1">&#39;SearchString&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">opLayer</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">]:</span>
 
                                         <span class="n">opLayer</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">opLayer</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">replaceItem</span><span class="p">[</span><span class="s1">&#39;SearchString&#39;</span><span class="p">],</span><span class="n">replaceItem</span><span class="p">[</span><span class="s1">&#39;ReplaceString&#39;</span><span class="p">])</span>
-                                        <span class="k">if</span> <span class="n">replaceItem</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;ItemID&#39;</span><span class="p">):</span>
+                                        <span class="k">if</span> <span class="s1">&#39;ItemID&#39;</span> <span class="ow">in</span> <span class="n">replaceItem</span><span class="p">:</span>
                                             <span class="n">opLayer</span><span class="p">[</span><span class="s1">&#39;itemId&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">replaceItem</span><span class="p">[</span><span class="s1">&#39;ItemID&#39;</span><span class="p">]</span>
                                         <span class="k">else</span><span class="p">:</span>
                                             <span class="n">opLayer</span><span class="p">[</span><span class="s1">&#39;itemId&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span>
                                             <span class="c1">#opLayer[&#39;itemId&#39;] = get_guid()</span>
-                                        <span class="k">if</span> <span class="n">replaceItem</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;convertCase&#39;</span><span class="p">):</span>
+                                        <span class="k">if</span> <span class="s1">&#39;convertCase&#39;</span> <span class="ow">in</span> <span class="n">replaceItem</span><span class="p">:</span>
                                             <span class="k">if</span> <span class="n">replaceItem</span><span class="p">[</span><span class="s1">&#39;convertCase&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;lower&#39;</span><span class="p">:</span>
                                                 <span class="n">layerInfo</span> <span class="o">=</span> <span class="p">{}</span>
 
                                                 <span class="n">layerInfo</span><span class="p">[</span><span class="s1">&#39;convertCase&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">replaceItem</span><span class="p">[</span><span class="s1">&#39;convertCase&#39;</span><span class="p">]</span>
                                                 <span class="n">layerInfo</span><span class="p">[</span><span class="s1">&#39;fields&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-                                                <span class="k">if</span> <span class="n">opLayer</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s2">&quot;layerDefinition&quot;</span><span class="p">):</span>
+                                                <span class="k">if</span> <span class="s1">&#39;layerDefinition&#39;</span> <span class="ow">in</span> <span class="n">opLayer</span><span class="p">:</span>
 
-                                                    <span class="k">if</span> <span class="n">opLayer</span><span class="p">[</span><span class="s2">&quot;layerDefinition&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;drawingInfo&#39;</span><span class="p">):</span>
-                                                        <span class="k">if</span> <span class="n">opLayer</span><span class="p">[</span><span class="s2">&quot;layerDefinition&quot;</span><span class="p">][</span><span class="s1">&#39;drawingInfo&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;renderer&#39;</span><span class="p">):</span>
+                                                    <span class="k">if</span> <span class="s1">&#39;drawingInfo&#39;</span> <span class="ow">in</span> <span class="n">opLayer</span><span class="p">[</span><span class="s2">&quot;layerDefinition&quot;</span><span class="p">]:</span>
+                                                        <span class="k">if</span> <span class="s1">&#39;renderer&#39;</span> <span class="ow">in</span> <span class="n">opLayer</span><span class="p">[</span><span class="s2">&quot;layerDefinition&quot;</span><span class="p">][</span><span class="s1">&#39;drawingInfo&#39;</span><span class="p">]:</span>
                                                             <span class="k">if</span> <span class="s1">&#39;field1&#39;</span> <span class="ow">in</span> <span class="n">opLayer</span><span class="p">[</span><span class="s2">&quot;layerDefinition&quot;</span><span class="p">][</span><span class="s1">&#39;drawingInfo&#39;</span><span class="p">][</span><span class="s1">&#39;renderer&#39;</span><span class="p">]:</span>
                                                                 <span class="n">opLayer</span><span class="p">[</span><span class="s2">&quot;layerDefinition&quot;</span><span class="p">][</span><span class="s1">&#39;drawingInfo&#39;</span><span class="p">][</span><span class="s1">&#39;renderer&#39;</span><span class="p">][</span><span class="s1">&#39;field1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">opLayer</span><span class="p">[</span><span class="s2">&quot;layerDefinition&quot;</span><span class="p">][</span><span class="s1">&#39;drawingInfo&#39;</span><span class="p">][</span><span class="s1">&#39;renderer&#39;</span><span class="p">][</span><span class="s1">&#39;field1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-                                                        <span class="k">if</span> <span class="n">opLayer</span><span class="p">[</span><span class="s2">&quot;layerDefinition&quot;</span><span class="p">][</span><span class="s1">&#39;drawingInfo&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;labelingInfo&#39;</span><span class="p">):</span>
+                                                        <span class="k">if</span> <span class="s1">&#39;labelingInfo&#39;</span> <span class="ow">in</span> <span class="n">opLayer</span><span class="p">[</span><span class="s2">&quot;layerDefinition&quot;</span><span class="p">][</span><span class="s1">&#39;drawingInfo&#39;</span><span class="p">]:</span>
 
                                                             <span class="n">lblInfos</span> <span class="o">=</span> <span class="n">opLayer</span><span class="p">[</span><span class="s2">&quot;layerDefinition&quot;</span><span class="p">][</span><span class="s1">&#39;drawingInfo&#39;</span><span class="p">][</span><span class="s1">&#39;labelingInfo&#39;</span><span class="p">]</span>
                                                             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">lblInfos</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
@@ -705,7 +745,7 @@
                                                                                     <span class="n">lblInfo</span><span class="p">[</span><span class="s1">&#39;labelExpressionInfo&#39;</span><span class="p">][</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">lblInfo</span><span class="p">[</span><span class="s1">&#39;labelExpressionInfo&#39;</span><span class="p">][</span><span class="s1">&#39;value&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="n">res</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
 
 
-                                                <span class="k">if</span> <span class="n">opLayer</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s2">&quot;popupInfo&quot;</span><span class="p">):</span>
+                                                <span class="k">if</span> <span class="s1">&#39;popupInfo&#39;</span> <span class="ow">in</span> <span class="n">opLayer</span><span class="p">:</span>
 
                                                     <span class="k">if</span> <span class="s1">&#39;mediaInfos&#39;</span> <span class="ow">in</span> <span class="n">opLayer</span><span class="p">[</span><span class="s1">&#39;popupInfo&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">opLayer</span><span class="p">[</span><span class="s1">&#39;popupInfo&#39;</span><span class="p">][</span><span class="s1">&#39;mediaInfos&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
                                                         <span class="k">for</span> <span class="n">chart</span> <span class="ow">in</span> <span class="n">opLayer</span><span class="p">[</span><span class="s1">&#39;popupInfo&#39;</span><span class="p">][</span><span class="s1">&#39;mediaInfos&#39;</span><span class="p">]:</span>
@@ -716,7 +756,7 @@
 
                                                                     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">chart</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">][</span><span class="s1">&#39;fields&#39;</span><span class="p">])):</span>
                                                                         <span class="n">chart</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">][</span><span class="s1">&#39;fields&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">chart</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">][</span><span class="s1">&#39;fields&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-                                                    <span class="k">if</span> <span class="n">opLayer</span><span class="p">[</span><span class="s1">&#39;popupInfo&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s2">&quot;fieldInfos&quot;</span><span class="p">):</span>
+                                                    <span class="k">if</span> <span class="s1">&#39;fieldInfos&#39;</span> <span class="ow">in</span> <span class="n">opLayer</span><span class="p">[</span><span class="s1">&#39;popupInfo&#39;</span><span class="p">]:</span>
 
                                                         <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">opLayer</span><span class="p">[</span><span class="s1">&#39;popupInfo&#39;</span><span class="p">][</span><span class="s1">&#39;fieldInfos&#39;</span><span class="p">]:</span>
                                                             <span class="n">newFld</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">field</span><span class="p">[</span><span class="s1">&#39;fieldName&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
@@ -737,24 +777,24 @@
                                 <span class="k">if</span> <span class="n">replaceItem</span><span class="p">[</span><span class="s1">&#39;SearchString&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">opLayer</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">]:</span>
 
                                     <span class="n">opLayer</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">opLayer</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">replaceItem</span><span class="p">[</span><span class="s1">&#39;SearchString&#39;</span><span class="p">],</span><span class="n">replaceItem</span><span class="p">[</span><span class="s1">&#39;ReplaceString&#39;</span><span class="p">])</span>
-                                    <span class="k">if</span> <span class="n">replaceItem</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;ItemID&#39;</span><span class="p">):</span>
+                                    <span class="k">if</span> <span class="s1">&#39;ItemID&#39;</span> <span class="ow">in</span> <span class="n">replaceItem</span><span class="p">:</span>
                                         <span class="n">opLayer</span><span class="p">[</span><span class="s1">&#39;itemId&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">replaceItem</span><span class="p">[</span><span class="s1">&#39;ItemID&#39;</span><span class="p">]</span>
                                     <span class="k">else</span><span class="p">:</span>
                                         <span class="n">opLayer</span><span class="p">[</span><span class="s1">&#39;itemId&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span>
                                         <span class="c1">#opLayer[&#39;itemId&#39;] = get_guid()</span>
-                                    <span class="k">if</span> <span class="n">replaceItem</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;convertCase&#39;</span><span class="p">):</span>
+                                    <span class="k">if</span> <span class="s1">&#39;convertCase&#39;</span> <span class="ow">in</span> <span class="n">replaceItem</span><span class="p">:</span>
                                         <span class="k">if</span> <span class="n">replaceItem</span><span class="p">[</span><span class="s1">&#39;convertCase&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;lower&#39;</span><span class="p">:</span>
                                             <span class="n">layerInfo</span> <span class="o">=</span> <span class="p">{}</span>
 
                                             <span class="n">layerInfo</span><span class="p">[</span><span class="s1">&#39;convertCase&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">replaceItem</span><span class="p">[</span><span class="s1">&#39;convertCase&#39;</span><span class="p">]</span>
                                             <span class="n">layerInfo</span><span class="p">[</span><span class="s1">&#39;fields&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-                                            <span class="k">if</span> <span class="n">opLayer</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s2">&quot;layerDefinition&quot;</span><span class="p">):</span>
+                                            <span class="k">if</span> <span class="s1">&#39;layerDefinition&#39;</span> <span class="ow">in</span> <span class="n">opLayer</span><span class="p">:</span>
 
-                                                <span class="k">if</span> <span class="n">opLayer</span><span class="p">[</span><span class="s2">&quot;layerDefinition&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;drawingInfo&#39;</span><span class="p">):</span>
-                                                    <span class="k">if</span> <span class="n">opLayer</span><span class="p">[</span><span class="s2">&quot;layerDefinition&quot;</span><span class="p">][</span><span class="s1">&#39;drawingInfo&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;renderer&#39;</span><span class="p">):</span>
+                                                <span class="k">if</span> <span class="s1">&#39;drawingInfo&#39;</span> <span class="ow">in</span> <span class="n">opLayer</span><span class="p">[</span><span class="s2">&quot;layerDefinition&quot;</span><span class="p">]:</span>
+                                                    <span class="k">if</span> <span class="s1">&#39;renderer&#39;</span> <span class="ow">in</span> <span class="n">opLayer</span><span class="p">[</span><span class="s2">&quot;layerDefinition&quot;</span><span class="p">][</span><span class="s1">&#39;drawingInfo&#39;</span><span class="p">]:</span>
                                                         <span class="k">if</span> <span class="s1">&#39;field1&#39;</span> <span class="ow">in</span> <span class="n">opLayer</span><span class="p">[</span><span class="s2">&quot;layerDefinition&quot;</span><span class="p">][</span><span class="s1">&#39;drawingInfo&#39;</span><span class="p">][</span><span class="s1">&#39;renderer&#39;</span><span class="p">]:</span>
                                                             <span class="n">opLayer</span><span class="p">[</span><span class="s2">&quot;layerDefinition&quot;</span><span class="p">][</span><span class="s1">&#39;drawingInfo&#39;</span><span class="p">][</span><span class="s1">&#39;renderer&#39;</span><span class="p">][</span><span class="s1">&#39;field1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">opLayer</span><span class="p">[</span><span class="s2">&quot;layerDefinition&quot;</span><span class="p">][</span><span class="s1">&#39;drawingInfo&#39;</span><span class="p">][</span><span class="s1">&#39;renderer&#39;</span><span class="p">][</span><span class="s1">&#39;field1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-                                                    <span class="k">if</span> <span class="n">opLayer</span><span class="p">[</span><span class="s2">&quot;layerDefinition&quot;</span><span class="p">][</span><span class="s1">&#39;drawingInfo&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;labelingInfo&#39;</span><span class="p">):</span>
+                                                    <span class="k">if</span> <span class="s1">&#39;labelingInfo&#39;</span> <span class="ow">in</span> <span class="n">opLayer</span><span class="p">[</span><span class="s2">&quot;layerDefinition&quot;</span><span class="p">][</span><span class="s1">&#39;drawingInfo&#39;</span><span class="p">]:</span>
 
                                                         <span class="n">lblInfos</span> <span class="o">=</span> <span class="n">opLayer</span><span class="p">[</span><span class="s2">&quot;layerDefinition&quot;</span><span class="p">][</span><span class="s1">&#39;drawingInfo&#39;</span><span class="p">][</span><span class="s1">&#39;labelingInfo&#39;</span><span class="p">]</span>
                                                         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">lblInfos</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
@@ -773,7 +813,7 @@
                                                                             <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
                                                                                 <span class="n">lblInfo</span><span class="p">[</span><span class="s1">&#39;labelExpressionInfo&#39;</span><span class="p">][</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">lblInfo</span><span class="p">[</span><span class="s1">&#39;labelExpressionInfo&#39;</span><span class="p">][</span><span class="s1">&#39;value&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="n">res</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
 
-                                            <span class="k">if</span> <span class="n">opLayer</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s2">&quot;popupInfo&quot;</span><span class="p">):</span>
+                                            <span class="k">if</span> <span class="s1">&#39;popupInfo&#39;</span> <span class="ow">in</span> <span class="n">opLayer</span><span class="p">:</span>
 
                                                 <span class="k">if</span> <span class="s1">&#39;mediaInfos&#39;</span> <span class="ow">in</span> <span class="n">opLayer</span><span class="p">[</span><span class="s1">&#39;popupInfo&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">opLayer</span><span class="p">[</span><span class="s1">&#39;popupInfo&#39;</span><span class="p">][</span><span class="s1">&#39;mediaInfos&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
                                                     <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">opLayer</span><span class="p">[</span><span class="s1">&#39;popupInfo&#39;</span><span class="p">][</span><span class="s1">&#39;mediaInfos&#39;</span><span class="p">])):</span>
@@ -786,7 +826,7 @@
                                                                 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">chart</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">][</span><span class="s1">&#39;fields&#39;</span><span class="p">])):</span>
                                                                     <span class="n">chart</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">][</span><span class="s1">&#39;fields&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">chart</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">][</span><span class="s1">&#39;fields&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
                                                             <span class="n">opLayer</span><span class="p">[</span><span class="s1">&#39;popupInfo&#39;</span><span class="p">][</span><span class="s1">&#39;mediaInfos&#39;</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">chart</span>
-                                                <span class="k">if</span> <span class="n">opLayer</span><span class="p">[</span><span class="s1">&#39;popupInfo&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s2">&quot;fieldInfos&quot;</span><span class="p">):</span>
+                                                <span class="k">if</span> <span class="s1">&#39;fieldInfos&#39;</span> <span class="ow">in</span> <span class="n">opLayer</span><span class="p">[</span><span class="s1">&#39;popupInfo&#39;</span><span class="p">]:</span>
 
                                                     <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">opLayer</span><span class="p">[</span><span class="s1">&#39;popupInfo&#39;</span><span class="p">][</span><span class="s1">&#39;fieldInfos&#39;</span><span class="p">]:</span>
                                                         <span class="n">newFld</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">field</span><span class="p">[</span><span class="s1">&#39;fieldName&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
@@ -854,7 +894,7 @@
                     <span class="n">resultMap</span><span class="p">[</span><span class="s1">&#39;Layers&#39;</span><span class="p">][</span><span class="n">currentID</span><span class="p">]</span> <span class="o">=</span> <span class="n">resultLayer</span>
 
 
-                <span class="k">if</span> <span class="n">webmap_data</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;tables&#39;</span><span class="p">):</span>
+                <span class="k">if</span> <span class="s1">&#39;tables&#39;</span> <span class="ow">in</span> <span class="n">webmap_data</span><span class="p">:</span>
 
                     <span class="n">opLayers</span> <span class="o">=</span> <span class="n">webmap_data</span><span class="p">[</span><span class="s1">&#39;tables&#39;</span><span class="p">]</span>
                     <span class="k">for</span> <span class="n">opLayer</span> <span class="ow">in</span> <span class="n">opLayers</span><span class="p">:</span>
@@ -901,7 +941,7 @@
 
             <span class="n">name</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span>
 
-            <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;DateTimeFormat&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="s1">&#39;DateTimeFormat&#39;</span> <span class="ow">in</span> <span class="n">config</span><span class="p">:</span>
                 <span class="n">loc_df</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;DateTimeFormat&#39;</span><span class="p">]</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">loc_df</span> <span class="o">=</span> <span class="n">dateTimeFormat</span>
@@ -1107,9 +1147,17 @@
             <span class="k">del</span> <span class="n">updateParams</span>
 
             <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
-
     <span class="c1">#----------------------------------------------------------------------</span>
-<div class="viewcode-block" id="publishingtools.publishCombinedWebMap"><a class="viewcode-back" href="../../arcresthelper.html#arcresthelper.publishingtools.publishingtools.publishCombinedWebMap">[docs]</a>    <span class="k">def</span> <span class="nf">publishCombinedWebMap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">maps_info</span><span class="p">,</span><span class="n">webmaps</span><span class="p">):</span>
+<div class="viewcode-block" id="publishingtools.publishCombinedWebMap"><a class="viewcode-back" href="../../arcresthelper.html#arcresthelper.publishingtools.publishingtools.publishCombinedWebMap">[docs]</a>    <span class="k">def</span> <span class="nf">publishCombinedWebMap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">maps_info</span><span class="p">,</span> <span class="n">webmaps</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Publishes a combination of web maps.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            maps_info (list): A list of JSON configuration combined web maps to publish.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            list: A list of results from :py:meth:`arcrest.manageorg._content.UserItem.updateItem`.</span>
+<span class="sd">            </span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">securityhandler</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;Security handler required&quot;</span><span class="p">)</span>
             <span class="k">return</span>
@@ -1151,7 +1199,7 @@
                         <span class="n">tblLays</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">tableLayers</span><span class="p">)</span>
                         <span class="n">tableLayers</span> <span class="o">=</span> <span class="n">tblLays</span>
 
-                <span class="k">if</span> <span class="n">map_info</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;ReplaceTag&#39;</span><span class="p">):</span>
+                <span class="k">if</span> <span class="s1">&#39;ReplaceTag&#39;</span> <span class="ow">in</span> <span class="n">map_info</span><span class="p">:</span>
 
                     <span class="n">itemInfo</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;ReplaceTag&quot;</span><span class="p">:</span><span class="n">map_info</span><span class="p">[</span><span class="s1">&#39;ReplaceTag&#39;</span><span class="p">]</span> <span class="p">}</span>
                 <span class="k">else</span><span class="p">:</span>
@@ -1210,13 +1258,13 @@
 
             <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span></div>
     <span class="c1">#----------------------------------------------------------------------</span>
-<div class="viewcode-block" id="publishingtools.publishFsFromMXD"><a class="viewcode-back" href="../../arcresthelper.html#arcresthelper.publishingtools.publishingtools.publishFsFromMXD">[docs]</a>    <span class="k">def</span> <span class="nf">publishFsFromMXD</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">fs_config</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">            publishs a feature service from a mxd</span>
-<span class="sd">            Inputs:</span>
-<span class="sd">                feature_service_config: Json file with list of feature service publishing details</span>
-<span class="sd">            Output:</span>
-<span class="sd">                feature service item information</span>
+<div class="viewcode-block" id="publishingtools.publishFsFromMXD"><a class="viewcode-back" href="../../arcresthelper.html#arcresthelper.publishingtools.publishingtools.publishFsFromMXD">[docs]</a>    <span class="k">def</span> <span class="nf">publishFsFromMXD</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fs_config</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Publishes the layers in a MXD to a feauture service.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            fs_config (list): A list of JSON configuration feature service details to publish.</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: A dictionary of results objects.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">fs</span> <span class="o">=</span> <span class="bp">None</span>
@@ -1233,7 +1281,7 @@
             <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fs_config</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
                 <span class="k">for</span> <span class="n">fs</span> <span class="ow">in</span> <span class="n">fs_config</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="n">fs</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;ReplaceTag&#39;</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="s1">&#39;ReplaceTag&#39;</span> <span class="ow">in</span> <span class="n">fs</span><span class="p">:</span>
 
                         <span class="n">resItm</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;ReplaceTag&quot;</span><span class="p">:</span><span class="n">fs</span><span class="p">[</span><span class="s1">&#39;ReplaceTag&#39;</span><span class="p">]</span> <span class="p">}</span>
                     <span class="k">else</span><span class="p">:</span>
@@ -1248,7 +1296,7 @@
                         <span class="k">print</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">resItm</span><span class="p">[</span><span class="s1">&#39;FSInfo&#39;</span><span class="p">]))</span>
 
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">fs_config</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;ReplaceTag&#39;</span><span class="p">):</span>
+                <span class="k">if</span> <span class="s1">&#39;ReplaceTag&#39;</span> <span class="ow">in</span> <span class="n">fs_config</span><span class="p">:</span>
 
                     <span class="n">resItm</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;ReplaceTag&quot;</span><span class="p">:</span><span class="n">fs_config</span><span class="p">[</span><span class="s1">&#39;ReplaceTag&#39;</span><span class="p">]</span> <span class="p">}</span>
                 <span class="k">else</span><span class="p">:</span>
@@ -1285,13 +1333,13 @@
 
             <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span></div>
     <span class="c1">#----------------------------------------------------------------------</span>
-<div class="viewcode-block" id="publishingtools.publishFeatureCollections"><a class="viewcode-back" href="../../arcresthelper.html#arcresthelper.publishingtools.publishingtools.publishFeatureCollections">[docs]</a>    <span class="k">def</span> <span class="nf">publishFeatureCollections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">configs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">            publishs a feature service from a mxd</span>
-<span class="sd">            Inputs:</span>
-<span class="sd">                feature_service_config: Json file with list of feature service publishing details</span>
-<span class="sd">            Output:</span>
-<span class="sd">                feature service item information</span>
+<div class="viewcode-block" id="publishingtools.publishFeatureCollections"><a class="viewcode-back" href="../../arcresthelper.html#arcresthelper.publishingtools.publishingtools.publishFeatureCollections">[docs]</a>    <span class="k">def</span> <span class="nf">publishFeatureCollections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">configs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Publishes feature collections to a feature service.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            configs (list): A list of JSON configuration feature service details to publish.</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: A dictionary of results objects.</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">securityhandler</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
@@ -1304,7 +1352,7 @@
             <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">configs</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
                 <span class="k">for</span> <span class="n">config</span> <span class="ow">in</span> <span class="n">configs</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;ReplaceTag&#39;</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="s1">&#39;ReplaceTag&#39;</span> <span class="ow">in</span> <span class="n">config</span><span class="p">:</span>
 
                         <span class="n">resItm</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;ReplaceTag&quot;</span><span class="p">:</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;ReplaceTag&#39;</span><span class="p">]</span> <span class="p">}</span>
                     <span class="k">else</span><span class="p">:</span>
@@ -1343,9 +1391,8 @@
             <span class="k">del</span> <span class="n">config</span>
 
             <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span></div>
-
     <span class="c1">#----------------------------------------------------------------------</span>
-    <span class="k">def</span> <span class="nf">_publishFSFromMXD</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">config</span><span class="p">,</span><span class="n">url</span><span class="o">=</span><span class="s1">&#39;http://www.arcgis.com&#39;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_publishFSFromMXD</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;http://www.arcgis.com&#39;</span><span class="p">):</span>
         <span class="n">mxd</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="n">q</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="n">everyone</span> <span class="o">=</span> <span class="bp">None</span>
@@ -1399,7 +1446,7 @@
             <span class="n">everyone</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;ShareEveryone&#39;</span><span class="p">]</span>
             <span class="n">org</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;ShareOrg&#39;</span><span class="p">]</span>
             <span class="n">groupNames</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;Groups&#39;</span><span class="p">]</span>  <span class="c1">#Groups are by ID. Multiple groups comma separated</span>
-            <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;EnableEditTracking&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="s1">&#39;EnableEditTracking&#39;</span> <span class="ow">in</span> <span class="n">config</span><span class="p">:</span>
                 <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;enableEditTracking parameter has been deprecated, please add a definition section to the config&quot;</span><span class="p">)</span>
                 <span class="n">enableEditTracking</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;EnableEditTracking&#39;</span><span class="p">]</span>
             <span class="k">else</span><span class="p">:</span>
@@ -1417,17 +1464,17 @@
 
                 <span class="k">if</span> <span class="s1">&#39;capabilities&#39;</span> <span class="ow">in</span> <span class="n">definition</span><span class="p">:</span>
                     <span class="n">capabilities</span> <span class="o">=</span> <span class="n">definition</span><span class="p">[</span><span class="s1">&#39;capabilities&#39;</span><span class="p">]</span>
-            <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s2">&quot;maxRecordCount&quot;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="s1">&#39;maxRecordCount&#39;</span> <span class="ow">in</span> <span class="n">config</span><span class="p">:</span>
                 <span class="n">maxRecordCount</span> <span class="o">=</span>  <span class="n">config</span><span class="p">[</span><span class="s2">&quot;maxRecordCount&quot;</span><span class="p">]</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">maxRecordCount</span> <span class="o">=</span> <span class="s1">&#39;1000&#39;</span> <span class="c1"># If not cast as a string, the MXDtoFeatureServiceDef method called below returns an error stating &#39;cannot serialize 1000 (type int)&#39;</span>
 
-            <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;DateTimeFormat&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="s1">&#39;DateTimeFormat&#39;</span> <span class="ow">in</span> <span class="n">config</span><span class="p">:</span>
                 <span class="n">loc_df</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;DateTimeFormat&#39;</span><span class="p">]</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">loc_df</span> <span class="o">=</span> <span class="n">dateTimeFormat</span>
             <span class="n">skipIfExist</span> <span class="o">=</span> <span class="bp">False</span>
-            <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;SkipIfExist&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="s1">&#39;SkipIfExist&#39;</span> <span class="ow">in</span> <span class="n">config</span><span class="p">:</span>
                 <span class="n">skipIfExist</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;SkipIfExist&#39;</span><span class="p">]</span>
                 <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">skipIfExist</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;true&#39;</span><span class="p">:</span>
                     <span class="n">skipIfExist</span> <span class="o">=</span> <span class="bp">True</span>
@@ -1888,7 +1935,7 @@
             <span class="k">del</span> <span class="n">enableResults</span>
             <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
     <span class="c1">#----------------------------------------------------------------------</span>
-    <span class="k">def</span> <span class="nf">_publishAppLogic</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">appDet</span><span class="p">,</span><span class="n">map_info</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">fsInfo</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_publishAppLogic</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">appDet</span><span class="p">,</span> <span class="n">map_info</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">fsInfo</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="n">itemInfo</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="n">replaceInfo</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="n">replaceItem</span> <span class="o">=</span> <span class="bp">None</span>
@@ -1900,7 +1947,7 @@
             <span class="n">admin</span> <span class="o">=</span> <span class="n">arcrest</span><span class="o">.</span><span class="n">manageorg</span><span class="o">.</span><span class="n">Administration</span><span class="p">(</span><span class="n">securityHandler</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_securityHandler</span><span class="p">)</span>
             <span class="n">itemInfo</span> <span class="o">=</span> <span class="p">{}</span>
 
-            <span class="k">if</span> <span class="n">appDet</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;ReplaceInfo&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="s1">&#39;ReplaceInfo&#39;</span> <span class="ow">in</span> <span class="n">appDet</span><span class="p">:</span>
                 <span class="n">replaceInfo</span> <span class="o">=</span> <span class="n">appDet</span><span class="p">[</span><span class="s1">&#39;ReplaceInfo&#39;</span><span class="p">]</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">replaceInfo</span> <span class="o">=</span> <span class="bp">None</span>
@@ -1910,7 +1957,7 @@
                 <span class="k">for</span> <span class="n">replaceItem</span> <span class="ow">in</span> <span class="n">replaceInfo</span><span class="p">:</span>
                     <span class="k">if</span> <span class="n">fsInfo</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
                         <span class="k">for</span> <span class="n">fsDet</span> <span class="ow">in</span> <span class="n">fsInfo</span><span class="p">:</span>
-                            <span class="k">if</span> <span class="n">fsDet</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;ReplaceTag&#39;</span><span class="p">):</span>
+                            <span class="k">if</span> <span class="s1">&#39;ReplaceTag&#39;</span> <span class="ow">in</span> <span class="n">fsDet</span><span class="p">:</span>
                                 <span class="k">if</span> <span class="s1">&#39;ReplaceString&#39;</span> <span class="ow">in</span> <span class="n">replaceItem</span><span class="p">:</span>
                                     <span class="k">if</span> <span class="n">fsDet</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">replaceItem</span><span class="p">[</span><span class="s1">&#39;ReplaceString&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">fsDet</span><span class="p">[</span><span class="s1">&#39;ReplaceTag&#39;</span><span class="p">]</span> <span class="ow">and</span> \
                                        <span class="p">(</span><span class="n">replaceItem</span><span class="p">[</span><span class="s1">&#39;ReplaceType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Service&#39;</span> <span class="ow">or</span> <span class="n">replaceItem</span><span class="p">[</span><span class="s1">&#39;ReplaceType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Layer&#39;</span><span class="p">):</span>
@@ -1922,7 +1969,7 @@
                                         <span class="n">replaceItem</span><span class="p">[</span><span class="s1">&#39;ReplaceType&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Global&quot;</span>
                     <span class="k">if</span> <span class="n">map_info</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
                         <span class="k">for</span> <span class="n">mapDet</span> <span class="ow">in</span> <span class="n">map_info</span><span class="p">:</span>
-                            <span class="k">if</span> <span class="n">mapDet</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;ReplaceTag&#39;</span><span class="p">):</span>
+                            <span class="k">if</span> <span class="s1">&#39;ReplaceTag&#39;</span> <span class="ow">in</span> <span class="n">mapDet</span><span class="p">:</span>
                                 <span class="k">if</span> <span class="s1">&#39;ReplaceString&#39;</span> <span class="ow">in</span> <span class="n">replaceItem</span><span class="p">:</span>
                                     <span class="k">if</span> <span class="n">mapDet</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">replaceItem</span><span class="p">[</span><span class="s1">&#39;ReplaceString&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">mapDet</span><span class="p">[</span><span class="s1">&#39;ReplaceTag&#39;</span><span class="p">]</span> <span class="ow">and</span> \
                                        <span class="n">replaceItem</span><span class="p">[</span><span class="s1">&#39;ReplaceType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Map&#39;</span><span class="p">:</span>
@@ -1938,8 +1985,8 @@
                                                     <span class="k">if</span> <span class="n">value</span><span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">repInfo</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
                                                         <span class="n">replaceItem</span><span class="p">[</span><span class="s1">&#39;ReplaceString&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="p">[</span><span class="s2">&quot;ID&quot;</span><span class="p">]</span>
 
-                                <span class="k">if</span> <span class="n">replaceItem</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;ItemID&#39;</span><span class="p">):</span>
-                                    <span class="k">if</span> <span class="n">replaceItem</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;ItemFolder&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="bp">False</span><span class="p">:</span>
+                                <span class="k">if</span> <span class="s1">&#39;ItemID&#39;</span> <span class="ow">in</span> <span class="n">replaceItem</span><span class="p">:</span>
+                                    <span class="k">if</span> <span class="s1">&#39;ItemFolder&#39;</span> <span class="ow">in</span> <span class="n">replaceItem</span> <span class="o">==</span> <span class="bp">False</span><span class="p">:</span>
 
                                         <span class="n">itemId</span> <span class="o">=</span> <span class="n">replaceItem</span><span class="p">[</span><span class="s1">&#39;ItemID&#39;</span><span class="p">]</span>
 
@@ -1951,7 +1998,7 @@
                                             <span class="n">replaceItem</span><span class="p">[</span><span class="s1">&#39;ItemFolder&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span>
 
 
-            <span class="k">if</span> <span class="n">appDet</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;ReplaceTag&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="s1">&#39;ReplaceTag&#39;</span> <span class="ow">in</span> <span class="n">appDet</span><span class="p">:</span>
 
                 <span class="n">itemInfo</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;ReplaceTag&quot;</span><span class="p">:</span><span class="n">appDet</span><span class="p">[</span><span class="s1">&#39;ReplaceTag&#39;</span><span class="p">]</span> <span class="p">}</span>
             <span class="k">else</span><span class="p">:</span>
@@ -2003,7 +2050,17 @@
             <span class="k">del</span> <span class="n">itemId</span>
             <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
     <span class="c1">#----------------------------------------------------------------------</span>
-<div class="viewcode-block" id="publishingtools.publishApp"><a class="viewcode-back" href="../../arcresthelper.html#arcresthelper.publishingtools.publishingtools.publishApp">[docs]</a>    <span class="k">def</span> <span class="nf">publishApp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">app_info</span><span class="p">,</span><span class="n">map_info</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">fsInfo</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="publishingtools.publishApp"><a class="viewcode-back" href="../../arcresthelper.html#arcresthelper.publishingtools.publishingtools.publishApp">[docs]</a>    <span class="k">def</span> <span class="nf">publishApp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app_info</span><span class="p">,</span> <span class="n">map_info</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">fsInfo</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Publishes apps to AGOL/Portal</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            app_info (list): A list of JSON configuration apps to publish.</span>
+<span class="sd">            map_info (list): Defaults to ``None``.</span>
+<span class="sd">            fsInfo (list): Defaults to ``None``.</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: A dictionary of results objects.</span>
+<span class="sd">            </span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">securityhandler</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;Security handler required&quot;</span><span class="p">)</span>
             <span class="k">return</span>
@@ -2148,7 +2205,7 @@
 
             <span class="n">name</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span>
 
-            <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;DateTimeFormat&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="s1">&#39;DateTimeFormat&#39;</span> <span class="ow">in</span> <span class="n">config</span><span class="p">:</span>
                 <span class="n">loc_df</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;DateTimeFormat&#39;</span><span class="p">]</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">loc_df</span> <span class="o">=</span> <span class="n">dateTimeFormat</span>
@@ -2338,7 +2395,7 @@
 
             <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
     <span class="c1">#----------------------------------------------------------------------</span>
-    <span class="k">def</span> <span class="nf">_publishDashboard</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">config</span><span class="p">,</span> <span class="n">replaceInfo</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_publishDashboard</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">replaceInfo</span><span class="p">):</span>
         <span class="n">resultApp</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="n">tags</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="n">description</span> <span class="o">=</span> <span class="bp">None</span>
@@ -2449,17 +2506,17 @@
                             <span class="n">dataSourceIDToFields</span> <span class="o">=</span> <span class="p">{}</span>
                             <span class="k">for</span> <span class="n">widget</span> <span class="ow">in</span> <span class="n">widgets</span><span class="p">:</span>
 
-                                <span class="k">if</span> <span class="n">widget</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;mapId&#39;</span><span class="p">):</span>
+                                <span class="k">if</span> <span class="s1">&#39;mapId&#39;</span> <span class="ow">in</span> <span class="n">widget</span><span class="p">:</span>
                                     <span class="k">if</span> <span class="n">replaceItem</span><span class="p">[</span><span class="s1">&#39;SearchString&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">widget</span><span class="p">[</span><span class="s1">&#39;mapId&#39;</span><span class="p">]:</span>
                                         <span class="n">widget</span><span class="p">[</span><span class="s1">&#39;mapId&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">replaceItem</span><span class="p">[</span><span class="s1">&#39;ItemID&#39;</span><span class="p">]</span>
-                                        <span class="k">if</span> <span class="n">widget</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;mapTools&#39;</span><span class="p">):</span>
+                                        <span class="k">if</span> <span class="s1">&#39;mapTools&#39;</span> <span class="ow">in</span> <span class="n">widget</span><span class="p">:</span>
                                             <span class="k">for</span> <span class="n">mapTool</span> <span class="ow">in</span> <span class="n">widget</span><span class="p">[</span><span class="s1">&#39;mapTools&#39;</span><span class="p">]:</span>
-                                                <span class="k">if</span> <span class="n">mapTool</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;layerIds&#39;</span><span class="p">):</span>
+                                                <span class="k">if</span> <span class="s1">&#39;layerIds&#39;</span> <span class="ow">in</span> <span class="n">mapTool</span><span class="p">:</span>
                                                     <span class="n">mapTool</span><span class="p">[</span><span class="s1">&#39;layerIds&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">layerIDs</span>
-                                        <span class="k">if</span> <span class="n">widget</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;dataSources&#39;</span><span class="p">):</span>
+                                        <span class="k">if</span> <span class="s1">&#39;dataSources&#39;</span> <span class="ow">in</span> <span class="n">widget</span><span class="p">:</span>
                                             <span class="k">for</span> <span class="n">dataSource</span> <span class="ow">in</span> <span class="n">widget</span><span class="p">[</span><span class="s1">&#39;dataSources&#39;</span><span class="p">]:</span>
 
-                                                <span class="k">if</span> <span class="n">dataSource</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;layerId&#39;</span><span class="p">):</span>
+                                                <span class="k">if</span> <span class="s1">&#39;layerId&#39;</span> <span class="ow">in</span> <span class="n">dataSource</span><span class="p">:</span>
                                                     <span class="k">if</span> <span class="s1">&#39;LayerInfo&#39;</span> <span class="ow">in</span> <span class="n">replaceItem</span><span class="p">:</span>
                                                         <span class="k">if</span> <span class="n">dataSource</span><span class="p">[</span><span class="s1">&#39;layerId&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">replaceItem</span><span class="p">[</span><span class="s1">&#39;LayerInfo&#39;</span><span class="p">]:</span>
                                                             <span class="n">layerIDSwitch</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;OrigID&quot;</span><span class="p">:</span><span class="n">dataSource</span><span class="p">[</span><span class="s1">&#39;layerId&#39;</span><span class="p">],</span>
@@ -2469,12 +2526,12 @@
                                                             <span class="c1">#dataSourceIDToFields[dataSource[&#39;id&#39;]] = {&#39;NewID&#39;: replaceItem[&#39;LayerInfo&#39;][dataSource[&#39;layerId&#39;]][&#39;ID&#39;],</span>
                                                                                                       <span class="c1">#&#39;FieldInfo&#39;: replaceItem[&#39;LayerInfo&#39;][dataSource[&#39;layerId&#39;]][&#39;FieldInfo&#39;]}</span>
                                                             <span class="n">dataSource</span><span class="p">[</span><span class="s1">&#39;layerId&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">replaceItem</span><span class="p">[</span><span class="s1">&#39;LayerInfo&#39;</span><span class="p">][</span><span class="n">dataSource</span><span class="p">[</span><span class="s1">&#39;layerId&#39;</span><span class="p">]][</span><span class="s1">&#39;ID&#39;</span><span class="p">]</span>
-                                                    <span class="k">elif</span> <span class="n">layerNamesID</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="n">dataSource</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]):</span>
+                                                    <span class="k">elif</span> <span class="n">dataSource</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">layerNamesID</span><span class="p">:</span>
                                                         <span class="n">layerIDSwitch</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;OrigID&quot;</span><span class="p">:</span><span class="n">dataSource</span><span class="p">[</span><span class="s1">&#39;layerId&#39;</span><span class="p">],</span><span class="s2">&quot;NewID&quot;</span><span class="p">:</span><span class="n">layerNamesID</span><span class="p">[</span><span class="n">dataSource</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]]</span> <span class="p">})</span>
                                                         <span class="n">dataSource</span><span class="p">[</span><span class="s1">&#39;layerId&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">layerNamesID</span><span class="p">[</span><span class="n">dataSource</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]]</span>
                                             <span class="k">for</span> <span class="n">dataSource</span> <span class="ow">in</span> <span class="n">widget</span><span class="p">[</span><span class="s1">&#39;dataSources&#39;</span><span class="p">]:</span>
 
-                                                <span class="k">if</span> <span class="n">dataSource</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;filter&#39;</span><span class="p">):</span>
+                                                <span class="k">if</span> <span class="s1">&#39;filter&#39;</span> <span class="ow">in</span> <span class="n">dataSource</span><span class="p">:</span>
                                                     <span class="k">if</span> <span class="n">dataSource</span><span class="p">[</span><span class="s1">&#39;parentDataSourceId&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">dataSourceIDToFields</span><span class="p">:</span>
                                                         <span class="k">if</span> <span class="s1">&#39;whereClause&#39;</span> <span class="ow">in</span> <span class="n">dataSource</span><span class="p">[</span><span class="s1">&#39;filter&#39;</span><span class="p">]:</span>
                                                             <span class="n">whercla</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">dataSource</span><span class="p">[</span><span class="s1">&#39;filter&#39;</span><span class="p">][</span><span class="s1">&#39;whereClause&#39;</span><span class="p">])</span>
@@ -2519,7 +2576,7 @@
 
             <span class="n">name</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span>
 
-            <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;DateTimeFormat&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="s1">&#39;DateTimeFormat&#39;</span> <span class="ow">in</span> <span class="n">config</span><span class="p">:</span>
                 <span class="n">loc_df</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;DateTimeFormat&#39;</span><span class="p">]</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">loc_df</span> <span class="o">=</span> <span class="n">dateTimeFormat</span>
@@ -2720,7 +2777,15 @@
             <span class="k">del</span> <span class="n">updateResults</span>
             <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
     <span class="c1">#----------------------------------------------------------------------</span>
-<div class="viewcode-block" id="publishingtools.updateFeatureService"><a class="viewcode-back" href="../../arcresthelper.html#arcresthelper.publishingtools.publishingtools.updateFeatureService">[docs]</a>    <span class="k">def</span> <span class="nf">updateFeatureService</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">efs_config</span><span class="p">):</span>
+<div class="viewcode-block" id="publishingtools.updateFeatureService"><a class="viewcode-back" href="../../arcresthelper.html#arcresthelper.publishingtools.publishingtools.updateFeatureService">[docs]</a>    <span class="k">def</span> <span class="nf">updateFeatureService</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">efs_config</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Updates a feature service.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            efs_config (list): A list of JSON configuration feature service details to update.</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: A dictionary of results objects.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">securityhandler</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;Security handler required&quot;</span><span class="p">)</span>
             <span class="k">return</span>
@@ -2840,7 +2905,7 @@
             <span class="c1"># Service settings</span>
             <span class="n">zipfile</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;Zip&#39;</span><span class="p">]</span>
             <span class="n">service_name</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;Title&#39;</span><span class="p">]</span>
-            <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;DateTimeFormat&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="s1">&#39;DateTimeFormat&#39;</span> <span class="ow">in</span> <span class="n">config</span><span class="p">:</span>
                 <span class="n">loc_df</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;DateTimeFormat&#39;</span><span class="p">]</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">loc_df</span> <span class="o">=</span> <span class="n">dateTimeFormat</span>

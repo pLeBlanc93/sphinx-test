@@ -168,7 +168,7 @@ the identity providers and the authentication mode for your portal.</p>
 
 <dl class="method">
 <dt id="arcrest.manageportal.administration._Security.createUser">
-<code class="descname">createUser</code><span class="sig-paren">(</span><em>username</em>, <em>password</em>, <em>fullname</em>, <em>email</em>, <em>role='org_user'</em>, <em>provider='arcgis'</em>, <em>description=''</em>, <em>idpUsername=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/manageportal/administration.html#_Security.createUser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.manageportal.administration._Security.createUser" title="Permalink to this definition">¶</a></dt>
+<code class="descname">createUser</code><span class="sig-paren">(</span><em>username</em>, <em>password</em>, <em>firstName</em>, <em>lastName</em>, <em>email</em>, <em>role='org_user'</em>, <em>provider='arcgis'</em>, <em>description=''</em>, <em>idpUsername=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/manageportal/administration.html#_Security.createUser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.manageportal.administration._Security.createUser" title="Permalink to this definition">¶</a></dt>
 <dd><p>This operation is used to create a new user account in the portal.
 Inputs:</p>
 <blockquote>
@@ -177,7 +177,8 @@ password - The password for the account. This is a required</p>
 <blockquote>
 <div>parameter only if the provider is arcgis; otherwise,
 the password parameter is ignored.</div></blockquote>
-<p>fullname - The full name for the user account.
+<p>firstName - first name of the user account
+lastName - last name of the user account
 email - The email address for the user account.
 description - An optional description string for the user</p>
 <blockquote>

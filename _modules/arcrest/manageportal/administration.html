@@ -300,7 +300,8 @@
 <div class="viewcode-block" id="_Security.createUser"><a class="viewcode-back" href="../../../arcrest.manageportal.html#arcrest.manageportal.administration._Security.createUser">[docs]</a>    <span class="k">def</span> <span class="nf">createUser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                    <span class="n">username</span><span class="p">,</span>
                    <span class="n">password</span><span class="p">,</span>
-                   <span class="n">fullname</span><span class="p">,</span>
+                   <span class="n">firstName</span><span class="p">,</span>
+                   <span class="n">lastName</span><span class="p">,</span>
                    <span class="n">email</span><span class="p">,</span>
                    <span class="n">role</span><span class="o">=</span><span class="s2">&quot;org_user&quot;</span><span class="p">,</span>
                    <span class="n">provider</span><span class="o">=</span><span class="s2">&quot;arcgis&quot;</span><span class="p">,</span>
@@ -313,7 +314,8 @@
 <span class="sd">           password - The password for the account. This is a required</span>
 <span class="sd">                      parameter only if the provider is arcgis; otherwise,</span>
 <span class="sd">                      the password parameter is ignored.</span>
-<span class="sd">           fullname - The full name for the user account.</span>
+<span class="sd">           firstName - first name of the user account</span>
+<span class="sd">           lastName - last name of the user account</span>
 <span class="sd">           email - The email address for the user account.</span>
 <span class="sd">           description - An optional description string for the user</span>
 <span class="sd">                         account.</span>
@@ -331,7 +333,8 @@
             <span class="s2">&quot;f&quot;</span> <span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span>
             <span class="s2">&quot;username&quot;</span> <span class="p">:</span> <span class="n">username</span><span class="p">,</span>
             <span class="s2">&quot;password&quot;</span> <span class="p">:</span> <span class="n">password</span><span class="p">,</span>
-            <span class="s2">&quot;fullname&quot;</span> <span class="p">:</span> <span class="n">fullname</span><span class="p">,</span>
+            <span class="s2">&quot;firstname&quot;</span> <span class="p">:</span> <span class="n">firstName</span><span class="p">,</span>
+            <span class="s2">&quot;lastname&quot;</span> <span class="p">:</span> <span class="n">lastName</span><span class="p">,</span>
             <span class="s2">&quot;email&quot;</span> <span class="p">:</span> <span class="n">email</span><span class="p">,</span>
             <span class="s2">&quot;role&quot;</span> <span class="p">:</span> <span class="n">role</span><span class="p">,</span>
             <span class="s2">&quot;provider&quot;</span> <span class="p">:</span> <span class="n">provider</span><span class="p">,</span>
@@ -340,10 +343,10 @@
         <span class="k">if</span> <span class="n">idpUsername</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="n">params</span><span class="p">[</span><span class="s1">&#39;idpUsername&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">idpUsername</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
-                             <span class="n">param_dict</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
-                             <span class="n">securityHandler</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_securityHandler</span><span class="p">,</span>
-                             <span class="n">proxy_port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_port</span><span class="p">,</span>
-                             <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">)</span></div>
+                          <span class="n">param_dict</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
+                          <span class="n">securityHandler</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_securityHandler</span><span class="p">,</span>
+                          <span class="n">proxy_port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_port</span><span class="p">,</span>
+                          <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">)</span></div>
 
     <span class="c1">#----------------------------------------------------------------------</span>
 <div class="viewcode-block" id="_Security.updateSecurityConfiguration"><a class="viewcode-back" href="../../../arcrest.manageportal.html#arcrest.manageportal.administration._Security.updateSecurityConfiguration">[docs]</a>    <span class="k">def</span> <span class="nf">updateSecurityConfiguration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>

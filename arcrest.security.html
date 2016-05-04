@@ -205,7 +205,7 @@ proxy_url - optional - IP of proxy
 proxy_port - optional - port of the proxy server</p>
 <dl class="method">
 <dt id="arcrest.security.security.AGSTokenSecurityHandler._generateForTokenSecurity">
-<code class="descname">_generateForTokenSecurity</code><span class="sig-paren">(</span><em>username</em>, <em>password</em>, <em>tokenUrl</em>, <em>expiration=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#AGSTokenSecurityHandler._generateForTokenSecurity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.AGSTokenSecurityHandler._generateForTokenSecurity" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_generateForTokenSecurity</code><span class="sig-paren">(</span><em>username</em>, <em>password</em>, <em>tokenUrl</em>, <em>expiration=None</em>, <em>client='requestip'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#AGSTokenSecurityHandler._generateForTokenSecurity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.AGSTokenSecurityHandler._generateForTokenSecurity" title="Permalink to this definition">¶</a></dt>
 <dd><p>generates a token for a feature service</p>
 </dd></dl>
 
@@ -845,7 +845,7 @@ proxy_port - proxy port</p>
 
 <dl class="method">
 <dt id="arcrest.security.security.PortalTokenSecurityHandler._generateForTokenSecurity">
-<code class="descname">_generateForTokenSecurity</code><span class="sig-paren">(</span><em>username</em>, <em>password</em>, <em>tokenUrl</em>, <em>expiration=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#PortalTokenSecurityHandler._generateForTokenSecurity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.PortalTokenSecurityHandler._generateForTokenSecurity" title="Permalink to this definition">¶</a></dt>
+<code class="descname">_generateForTokenSecurity</code><span class="sig-paren">(</span><em>username</em>, <em>password</em>, <em>tokenUrl</em>, <em>expiration=None</em>, <em>client='requestip'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/security/security.html#PortalTokenSecurityHandler._generateForTokenSecurity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.security.security.PortalTokenSecurityHandler._generateForTokenSecurity" title="Permalink to this definition">¶</a></dt>
 <dd><p>generates a token for a feature service</p>
 </dd></dl>
 
@@ -938,7 +938,7 @@ proxy_port - proxy port</p>
 <dl class="attribute">
 <dt id="arcrest.security.security.PortalTokenSecurityHandler.referer_url">
 <code class="descname">referer_url</code><a class="headerlink" href="#arcrest.security.security.PortalTokenSecurityHandler.referer_url" title="Permalink to this definition">¶</a></dt>
-<dd><p>returns when the token was generated</p>
+<dd><p>gets/sets the referer</p>
 </dd></dl>
 
 <dl class="method">

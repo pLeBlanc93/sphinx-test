@@ -226,9 +226,9 @@
                 <span class="k">if</span> <span class="s1">&#39;name&#39;</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
                     <span class="n">name</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
                 <span class="n">typefs</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span>
-                <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
+                <span class="k">if</span> <span class="s1">&#39;name&#39;</span> <span class="ow">in</span> <span class="n">item</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
                     <span class="n">name</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
-                <span class="k">elif</span> <span class="n">item</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;serviceName&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
+                <span class="k">elif</span> <span class="s1">&#39;serviceName&#39;</span> <span class="ow">in</span> <span class="n">item</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
                     <span class="n">name</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;serviceName&#39;</span><span class="p">]</span>
 
                 <span class="bp">self</span><span class="o">.</span><span class="n">_services</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
@@ -242,10 +242,10 @@
                 <span class="k">if</span> <span class="s1">&#39;name&#39;</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
                     <span class="n">name</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
                 <span class="n">typefs</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span>
-                <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;adminServiceInfo&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
+                <span class="k">if</span> <span class="s1">&#39;adminServiceInfo&#39;</span> <span class="ow">in</span> <span class="n">item</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
                     <span class="n">name</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;adminServiceInfo&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
                     <span class="n">typefs</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;adminServiceInfo&#39;</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]</span>
-                <span class="k">elif</span> <span class="n">item</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;serviceName&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
+                <span class="k">elif</span> <span class="s1">&#39;serviceName&#39;</span> <span class="ow">in</span> <span class="n">item</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
                     <span class="n">name</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;serviceName&#39;</span><span class="p">]</span>
                     <span class="n">typefs</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span>
 

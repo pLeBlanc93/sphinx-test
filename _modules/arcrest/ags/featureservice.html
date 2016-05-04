@@ -55,7 +55,7 @@
 <span class="kn">from</span> <span class="nn">re</span> <span class="kn">import</span> <span class="n">search</span>
 <span class="kn">from</span> <span class="nn">.._abstract.abstract</span> <span class="kn">import</span> <span class="n">BaseAGSServer</span><span class="p">,</span> <span class="n">BaseSecurityHandler</span>
 <span class="kn">from</span> <span class="nn">..security</span> <span class="kn">import</span> <span class="n">security</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">layer</span>
+<span class="kn">from</span> <span class="nn">..agol.services</span> <span class="kn">import</span> <span class="n">FeatureLayer</span>
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">from</span> <span class="nn">..common.geometry</span> <span class="kn">import</span> <span class="n">SpatialReference</span>
 <span class="kn">from</span> <span class="nn">..common.general</span> <span class="kn">import</span> <span class="n">FeatureSet</span>
@@ -326,10 +326,10 @@
                                  <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">,</span>
                                  <span class="n">proxy_port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_port</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_layers</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">if</span> <span class="n">json_dict</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s2">&quot;layers&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s1">&#39;layers&#39;</span> <span class="ow">in</span> <span class="n">json_dict</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">json_dict</span><span class="p">[</span><span class="s2">&quot;layers&quot;</span><span class="p">]:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                    <span class="n">layer</span><span class="o">.</span><span class="n">FeatureLayer</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_url</span> <span class="o">+</span> <span class="s2">&quot;/</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">l</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">],</span>
+                    <span class="n">FeatureLayer</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_url</span> <span class="o">+</span> <span class="s2">&quot;/</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">l</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">],</span>
                                        <span class="n">securityHandler</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_securityHandler</span><span class="p">,</span>
                                        <span class="n">proxy_port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_port</span><span class="p">,</span>
                                        <span class="n">proxy_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxy_url</span><span class="p">)</span>

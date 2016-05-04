@@ -66,11 +66,20 @@
 
 <span class="c1">#----------------------------------------------------------------------</span>
 <div class="viewcode-block" id="trace"><a class="viewcode-back" href="../../arcresthelper.html#arcresthelper.orgtools.trace">[docs]</a><span class="k">def</span> <span class="nf">trace</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;Determine information about where an error was thrown.</span>
+    <span class="sd">&quot;&quot;&quot;Determines information about where an error was thrown.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        tuple: line number, filename, error message</span>
-
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; try:</span>
+<span class="sd">        ...     1/0</span>
+<span class="sd">        ... except:</span>
+<span class="sd">        ...     print(&quot;Error on &#39;{}&#39;\\nin file &#39;{}&#39;\\nwith error &#39;{}&#39;&quot;.format(*trace()))</span>
+<span class="sd">        ...        </span>
+<span class="sd">        Error on &#39;line 1234&#39;</span>
+<span class="sd">        in file &#39;C:\\foo\\baz.py&#39;</span>
+<span class="sd">        with error &#39;ZeroDivisionError: integer division or modulo by zero&#39;  </span>
+<span class="sd">        </span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">traceback</span><span class="o">,</span> <span class="nn">inspect</span><span class="o">,</span> <span class="nn">sys</span>
     <span class="n">tb</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span>
@@ -269,9 +278,9 @@
 
             <span class="n">groups</span> <span class="o">=</span> <span class="n">admin</span><span class="o">.</span><span class="n">community</span><span class="o">.</span><span class="n">groups</span>
             <span class="n">q</span> <span class="o">=</span> <span class="n">groupName</span>
-            <span class="k">if</span> <span class="n">onlyInOrg</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">onlyInOrg</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
                 <span class="n">q</span> <span class="o">+=</span> <span class="s2">&quot; orgid: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">admin</span><span class="o">.</span><span class="n">portals</span><span class="o">.</span><span class="n">portalSelf</span><span class="o">.</span><span class="n">id</span>
-            <span class="k">if</span> <span class="n">onlyInUser</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">onlyInUser</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
                 <span class="n">q</span> <span class="o">+=</span> <span class="s2">&quot; owner: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_securityHandler</span><span class="o">.</span><span class="n">username</span>
             <span class="n">results</span> <span class="o">=</span> <span class="n">groups</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="n">q</span><span class="p">)</span>
             <span class="k">if</span> <span class="s1">&#39;total&#39;</span> <span class="ow">in</span> <span class="n">results</span> <span class="ow">and</span> <span class="s1">&#39;results&#39;</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
@@ -367,16 +376,16 @@
 <span class="sd">            If sucessful, the result from :py:func:`arcrest.manageorg._community.Community.createGroup`.</span>
 <span class="sd">            </span>
 <span class="sd">            If the group already exists or there is an error, ``None`` is returned.</span>
-<span class="sd">            </span>
-<span class="sd">        ===============     ====================================================</span>
-<span class="sd">        **Parameter**        **Possible Values**</span>
-<span class="sd">        ---------------     ----------------------------------------------------</span>
-<span class="sd">        access              private | org | public</span>
-<span class="sd">        ---------------     ----------------------------------------------------</span>
-<span class="sd">        sortField           title | owner | avgrating | numviews | created | modified</span>
-<span class="sd">        ---------------     ----------------------------------------------------</span>
-<span class="sd">        sortOrder           asc | desc</span>
-<span class="sd">        ===============     ==================================================== </span>
+<span class="sd">        </span>
+<span class="sd">        +------------+----------------------------------------------------------------+</span>
+<span class="sd">        | Parameters |                      Possible Values                           |</span>
+<span class="sd">        +------------+----------------------------------------------------------------+</span>
+<span class="sd">        | access     | ``private|org|public``                                         |</span>
+<span class="sd">        +------------+----------------------------------------------------------------+</span>
+<span class="sd">        | sortField  | ``title|owner|avgrating|numviews|created|modified``            |</span>
+<span class="sd">        +------------+----------------------------------------------------------------+</span>
+<span class="sd">        | sortOrder  | ``asc|desc``                                                   |</span>
+<span class="sd">        +------------+----------------------------------------------------------------+</span>
 <span class="sd">            </span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">admin</span> <span class="o">=</span> <span class="bp">None</span>

@@ -79,13 +79,21 @@
 <span class="kn">import</span> <span class="nn">collections</span>
 <span class="c1">#----------------------------------------------------------------------</span>
 <div class="viewcode-block" id="trace"><a class="viewcode-back" href="../../arcresthelper.html#arcresthelper.featureservicetools.trace">[docs]</a><span class="k">def</span> <span class="nf">trace</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;Determine information about where an error was thrown.</span>
+    <span class="sd">&quot;&quot;&quot;Determines information about where an error was thrown.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        tuple: line number, filename, error message</span>
-
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; try:</span>
+<span class="sd">        ...     1/0</span>
+<span class="sd">        ... except:</span>
+<span class="sd">        ...     print(&quot;Error on &#39;{}&#39;\\nin file &#39;{}&#39;\\nwith error &#39;{}&#39;&quot;.format(*trace()))</span>
+<span class="sd">        ...        </span>
+<span class="sd">        Error on &#39;line 1234&#39;</span>
+<span class="sd">        in file &#39;C:\\foo\\baz.py&#39;</span>
+<span class="sd">        with error &#39;ZeroDivisionError: integer division or modulo by zero&#39;</span>
+<span class="sd">        </span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="n">tb</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span>
     <span class="n">tbinfo</span> <span class="o">=</span> <span class="n">traceback</span><span class="o">.</span><span class="n">format_tb</span><span class="p">(</span><span class="n">tb</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">filename</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getfile</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">currentframe</span><span class="p">())</span>
@@ -242,23 +250,28 @@
 <span class="sd">            url (str): The URL of the feature service.</span>
 <span class="sd">            definition (dict): A dictionary containing valid definition values. Defaults to ``None``.</span>
 <span class="sd">        Returns:</span>
-<span class="sd">            dict: The existing feature service definition capabilities.</span>
-<span class="sd">        Notes:</span>
-<span class="sd">            When ``definition`` is not provided (``None``), the following values are used by default:</span>
-<span class="sd">                hasStaticData = ``False``</span>
-
-<span class="sd">                allowGeometryUpdates = ``True``</span>
-
-<span class="sd">                enableEditorTracking = ``False``</span>
-
-<span class="sd">                enableOwnershipAccessControl = ``False``</span>
-
-<span class="sd">                allowOthersToUpdate = ``True``</span>
-
-<span class="sd">                allowOthersToDelete = ``True``</span>
-
-<span class="sd">                capabilities = ``&quot;Query,Editing,Create,Update,Delete&quot;``</span>
-
+<span class="sd">            dict: The existing feature service definition capabilities.            </span>
+<span class="sd">        </span>
+<span class="sd">        When ``definition`` is not provided (``None``), the following values are used by default: </span>
+<span class="sd">        </span>
+<span class="sd">        +------------------------------+------------------------------------------+</span>
+<span class="sd">        |              Key             |                   Value                  |</span>
+<span class="sd">        +------------------------------+------------------------------------------+</span>
+<span class="sd">        | hasStaticData                | ``False``                                |</span>
+<span class="sd">        +------------------------------+------------------------------------------+</span>
+<span class="sd">        | allowGeometryUpdates         | ``True``                                 |</span>
+<span class="sd">        +------------------------------+------------------------------------------+</span>
+<span class="sd">        | enableEditorTracking         | ``False``                                |</span>
+<span class="sd">        +------------------------------+------------------------------------------+</span>
+<span class="sd">        | enableOwnershipAccessControl | ``False``                                |</span>
+<span class="sd">        +------------------------------+------------------------------------------+</span>
+<span class="sd">        | allowOthersToUpdate          | ``True``                                 |</span>
+<span class="sd">        +------------------------------+------------------------------------------+</span>
+<span class="sd">        | allowOthersToDelete          | ``True``                                 |</span>
+<span class="sd">        +------------------------------+------------------------------------------+</span>
+<span class="sd">        | capabilities                 | ``&quot;Query,Editing,Create,Update,Delete&quot;`` |</span>
+<span class="sd">        +------------------------------+------------------------------------------+</span>
+<span class="sd">                </span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">adminFS</span> <span class="o">=</span> <span class="n">AdminFeatureService</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">securityHandler</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_securityHandler</span><span class="p">)</span>
 
@@ -683,7 +696,7 @@
             <span class="k">del</span> <span class="n">fl</span>
             <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span></div>
     <span class="c1">#----------------------------------------------------------------------</span>
-<div class="viewcode-block" id="featureservicetools.QueryAllFeatures"><a class="viewcode-back" href="../../arcresthelper.html#arcresthelper.featureservicetools.featureservicetools.QueryAllFeatures">[docs]</a>    <span class="k">def</span> <span class="nf">QueryAllFeatures</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">sql</span><span class="p">,</span> <span class="n">out_fields</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">savePath</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="featureservicetools.QueryAllFeatures"><a class="viewcode-back" href="../../arcresthelper.html#arcresthelper.featureservicetools.featureservicetools.QueryAllFeatures">[docs]</a>    <span class="k">def</span> <span class="nf">QueryAllFeatures</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">sql</span><span class="p">,</span> <span class="n">out_fields</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">savePath</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">printIndent</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Performs an SQL query against a hosted feature service layer.</span>
 
 <span class="sd">        Args:</span>
@@ -716,7 +729,7 @@
                 <span class="k">if</span> <span class="n">total</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                     <span class="k">return</span>  <span class="p">{</span><span class="s1">&#39;success&#39;</span><span class="p">:</span><span class="bp">True</span><span class="p">,</span> <span class="s1">&#39;message&#39;</span><span class="p">:</span><span class="s2">&quot;No features matched the query&quot;</span><span class="p">}</span>
 
-                <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> features to be downloaded&quot;</span> <span class="o">%</span> <span class="n">total</span><span class="p">)</span>
+                <span class="k">print</span> <span class="p">(</span><span class="n">printIndent</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> features to be downloaded&quot;</span> <span class="o">%</span> <span class="n">total</span><span class="p">)</span>
                 <span class="n">chunksize</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">chunksize</span><span class="p">,</span> <span class="n">fl</span><span class="o">.</span><span class="n">maxRecordCount</span><span class="p">)</span>
                 <span class="n">combinedResults</span> <span class="o">=</span> <span class="bp">None</span>
                 <span class="n">totalQueried</span> <span class="o">=</span> <span class="mi">0</span>
@@ -736,7 +749,7 @@
                                     <span class="n">combinedResults</span><span class="o">.</span><span class="n">features</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
 
                             <span class="n">totalQueried</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">features</span><span class="p">)</span>
-                            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;{:.0%} Completed: {}/{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">totalQueried</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">total</span><span class="p">),</span> <span class="n">totalQueried</span><span class="p">,</span> <span class="n">total</span><span class="p">))</span>
+                            <span class="k">print</span><span class="p">(</span><span class="n">printIndent</span> <span class="o">+</span> <span class="s2">&quot;{:.0%} Completed: {}/{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">totalQueried</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">total</span><span class="p">),</span> <span class="n">totalQueried</span><span class="p">,</span> <span class="n">total</span><span class="p">))</span>
 
                         <span class="k">else</span><span class="p">:</span>
                             <span class="k">print</span> <span class="p">(</span><span class="n">results</span><span class="p">)</span>
@@ -749,7 +762,7 @@
         <span class="k">except</span><span class="p">:</span>
             <span class="n">line</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">synerror</span> <span class="o">=</span> <span class="n">trace</span><span class="p">()</span>
             <span class="k">raise</span> <span class="n">common</span><span class="o">.</span><span class="n">ArcRestHelperError</span><span class="p">({</span>
-                        <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;QueryFeatureLayer&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;QueryAllFeatures&quot;</span><span class="p">,</span>
                         <span class="s2">&quot;line&quot;</span><span class="p">:</span> <span class="n">line</span><span class="p">,</span>
                         <span class="s2">&quot;filename&quot;</span><span class="p">:</span>  <span class="n">filename</span><span class="p">,</span>
                         <span class="s2">&quot;synerror&quot;</span><span class="p">:</span> <span class="n">synerror</span><span class="p">,</span>

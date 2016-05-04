@@ -102,16 +102,34 @@
 
     <span class="k">return</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">mktime</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">timetuple</span><span class="p">())</span>  <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">utc_offset</span> <span class="o">*</span><span class="mi">1000</span><span class="p">)</span></div>
 <span class="c1">#----------------------------------------------------------------------</span>
-<div class="viewcode-block" id="online_time_to_string"><a class="viewcode-back" href="../../../arcrest.common.html#arcrest.common.general.online_time_to_string">[docs]</a><span class="k">def</span> <span class="nf">online_time_to_string</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="n">timeFormat</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">       Converts a timestamp to date/time string</span>
-<span class="sd">       Inputs:</span>
-<span class="sd">          value - timestamp as long</span>
-<span class="sd">          timeFormat - output date/time format</span>
-<span class="sd">       Output:</span>
-<span class="sd">          string</span>
+<div class="viewcode-block" id="online_time_to_string"><a class="viewcode-back" href="../../../arcrest.common.html#arcrest.common.general.online_time_to_string">[docs]</a><span class="k">def</span> <span class="nf">online_time_to_string</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">timeFormat</span><span class="p">,</span> <span class="n">utcOffset</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Converts AGOL timestamp to formatted string.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        value (float): A UTC timestamp as reported by AGOL (time in ms since Unix epoch * 1000)</span>
+<span class="sd">        timeFormat (str): Date/Time format string as parsed by :py:func:`datetime.strftime`.</span>
+<span class="sd">        utcOffset (int): Hours difference from UTC and desired output. Default is 0 (remain in UTC).</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: A string representation of the timestamp.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; rcrest.general.online_time_to_string(1457167261000.0, &quot;%Y-%m-%d %H:%M:%S&quot;)</span>
+<span class="sd">        &#39;2016-03-05 00:41:01&#39;</span>
+<span class="sd">        &gt;&gt;&gt; rcrest.general.online_time_to_string(731392515000.0, &#39;%m/%d/%Y %H:%M:%S&#39;, -8) # PST is UTC-8:00</span>
+<span class="sd">        &#39;03/05/1993 12:35:15&#39;</span>
+
+<span class="sd">    See Also:</span>
+<span class="sd">       :py:func:`local_time_to_online` for converting a :py:class:`datetime.datetime` object to AGOL timestamp</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">value</span> <span class="o">/</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="n">timeFormat</span><span class="p">)</span></div>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">value</span><span class="o">/</span><span class="mi">1000</span> <span class="o">+</span> <span class="n">utcOffset</span><span class="o">*</span><span class="mi">3600</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="n">timeFormat</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="k">pass</span></div>
 <span class="c1">#----------------------------------------------------------------------</span>
 <div class="viewcode-block" id="timestamp_to_datetime"><a class="viewcode-back" href="../../../arcrest.common.html#arcrest.common.general.timestamp_to_datetime">[docs]</a><span class="k">def</span> <span class="nf">timestamp_to_datetime</span><span class="p">(</span><span class="n">timestamp</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -211,11 +229,11 @@
         <span class="sd">&quot;&quot;&quot;returns the feature as a dictionary&quot;&quot;&quot;</span>
         <span class="n">feat_dict</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_geom</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;feature&#39;</span><span class="p">):</span>
-                <span class="n">feat_dict</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">]</span> <span class="o">=</span>  <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="p">[</span><span class="s1">&#39;feature&#39;</span><span class="p">][</span><span class="s1">&#39;geometry&#39;</span><span class="p">]</span>
-            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;geometry&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="s1">&#39;feature&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="p">:</span>
+                <span class="n">feat_dict</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="p">[</span><span class="s1">&#39;feature&#39;</span><span class="p">][</span><span class="s1">&#39;geometry&#39;</span><span class="p">]</span>
+            <span class="k">elif</span> <span class="s1">&#39;geometry&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="p">:</span>
                 <span class="n">feat_dict</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">]</span> <span class="o">=</span>  <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">]</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s2">&quot;feature&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s1">&#39;feature&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="p">:</span>
             <span class="n">feat_dict</span><span class="p">[</span><span class="s1">&#39;attributes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="p">[</span><span class="s1">&#39;feature&#39;</span><span class="p">][</span><span class="s1">&#39;attributes&#39;</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">feat_dict</span><span class="p">[</span><span class="s1">&#39;attributes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="p">[</span><span class="s1">&#39;attributes&#39;</span><span class="p">]</span>
@@ -248,9 +266,9 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">sr</span> <span class="o">=</span> <span class="bp">None</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_geom</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;feature&#39;</span><span class="p">):</span>
+                <span class="k">if</span> <span class="s1">&#39;feature&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">_geom</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">AsShape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="p">[</span><span class="s1">&#39;feature&#39;</span><span class="p">][</span><span class="s1">&#39;geometry&#39;</span><span class="p">],</span> <span class="n">esri_json</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-                <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;geometry&#39;</span><span class="p">):</span>
+                <span class="k">elif</span> <span class="s1">&#39;geometry&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">_geom</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">AsShape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">],</span> <span class="n">esri_json</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_geom</span>
         <span class="k">return</span> <span class="bp">None</span>
@@ -258,7 +276,7 @@
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">fields</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; returns a list of feature fields &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s2">&quot;feature&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s1">&#39;feature&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_attributes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="p">[</span><span class="s1">&#39;feature&#39;</span><span class="p">][</span><span class="s1">&#39;attributes&#39;</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_attributes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dict</span><span class="p">[</span><span class="s1">&#39;attributes&#39;</span><span class="p">]</span>
@@ -641,7 +659,7 @@
         <span class="sd">&quot;&quot;&quot;returns a featureset from a JSON string&quot;&quot;&quot;</span>
         <span class="n">jd</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">jsonValue</span><span class="p">)</span>
         <span class="n">features</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">if</span> <span class="n">jd</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;fields&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s1">&#39;fields&#39;</span> <span class="ow">in</span> <span class="n">jd</span><span class="p">:</span>
             <span class="n">fields</span> <span class="o">=</span> <span class="n">jd</span><span class="p">[</span><span class="s1">&#39;fields&#39;</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">fields</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;fields&#39;</span><span class="p">:[]}</span>
@@ -744,23 +762,61 @@
         <span class="sd">&quot;&quot;&quot;gets/sets the displayFieldName&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_displayFieldName</span> <span class="o">=</span> <span class="n">value</span>
     <span class="c1">#----------------------------------------------------------------------</span>
+   
 <div class="viewcode-block" id="FeatureSet.save"><a class="viewcode-back" href="../../../arcrest.common.html#arcrest.common.general.FeatureSet.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">saveLocation</span><span class="p">,</span> <span class="n">outName</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Saves a featureset object to a feature class</span>
 <span class="sd">        Input:</span>
 <span class="sd">           saveLocation - output location of the data</span>
 <span class="sd">           outName - name of the table the data will be saved to</span>
+<span class="sd">                Types: </span>
+<span class="sd">                    *.csv - CSV file returned</span>
+<span class="sd">                    *.json - text file with json</span>
+<span class="sd">                    * If no extension, a shapefile if the path is a </span>
+<span class="sd">                        folder, a featureclass if the path is a GDB</span>
+<span class="sd">                    </span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">tempDir</span> <span class="o">=</span>  <span class="n">tempfile</span><span class="o">.</span><span class="n">gettempdir</span><span class="p">()</span>
-        <span class="n">tempFile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tempDir</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.json&quot;</span> <span class="o">%</span> <span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span><span class="o">.</span><span class="n">get_hex</span><span class="p">())</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">tempFile</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
-            <span class="n">writer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
-            <span class="n">writer</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
-            <span class="n">writer</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-        <span class="k">del</span> <span class="n">writer</span>
-        <span class="n">res</span> <span class="o">=</span> <span class="n">json_to_featureclass</span><span class="p">(</span><span class="n">json_file</span><span class="o">=</span><span class="n">tempFile</span><span class="p">,</span>
-                                   <span class="n">out_fc</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">saveLocation</span><span class="p">,</span> <span class="n">outName</span><span class="p">))</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">tempFile</span><span class="p">)</span>
+        <span class="n">filename</span><span class="p">,</span> <span class="n">file_extension</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">outName</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">file_extension</span> <span class="o">==</span> <span class="s2">&quot;.csv&quot;</span><span class="p">):</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">saveLocation</span><span class="p">,</span><span class="n">outName</span><span class="p">)</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="s2">&quot;wt+&quot;</span><span class="p">,</span><span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvFile</span><span class="p">:</span>
+                <span class="kn">import</span> <span class="nn">csv</span>
+                <span class="n">f</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">csvFile</span><span class="p">)</span>
+                <span class="n">fields</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="c1">#write the headers to the csv</span>
+                <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="p">:</span>
+                    <span class="n">fields</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">field</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
+        
+                <span class="n">newRow</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="c1">#Loop through the results and save each to a row</span>
+                <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+                    <span class="n">newRow</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="p">:</span>
+                        <span class="n">newRow</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="n">field</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]))</span>
+                    <span class="n">f</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">newRow</span><span class="p">)</span>
+                <span class="n">csvFile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="k">del</span> <span class="n">csvFile</span>
+        <span class="k">elif</span> <span class="p">(</span><span class="n">file_extension</span> <span class="o">==</span> <span class="s2">&quot;.json&quot;</span><span class="p">):</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">saveLocation</span><span class="p">,</span><span class="n">outName</span><span class="p">)</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+                
+                <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">writer</span><span class="p">,</span> <span class="n">sort_keys</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">indent</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+                <span class="n">writer</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+                <span class="n">writer</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="k">del</span> <span class="n">writer</span>
+            
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">tempDir</span> <span class="o">=</span>  <span class="n">tempfile</span><span class="o">.</span><span class="n">gettempdir</span><span class="p">()</span>
+            <span class="n">tempFile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tempDir</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.json&quot;</span> <span class="o">%</span> <span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span><span class="o">.</span><span class="n">hex</span><span class="p">)</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">tempFile</span><span class="p">,</span> <span class="s1">&#39;wt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+                <span class="n">writer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">toJSON</span><span class="p">)</span>
+                <span class="n">writer</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+                <span class="n">writer</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="k">del</span> <span class="n">writer</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">json_to_featureclass</span><span class="p">(</span><span class="n">json_file</span><span class="o">=</span><span class="n">tempFile</span><span class="p">,</span>
+                                       <span class="n">out_fc</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">saveLocation</span><span class="p">,</span> <span class="n">outName</span><span class="p">))</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">tempFile</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">res</span></div>
     <span class="c1">#----------------------------------------------------------------------</span>
     <span class="nd">@property</span>
