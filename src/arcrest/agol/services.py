@@ -10,7 +10,7 @@
 """
 from __future__ import absolute_import
 from __future__ import print_function
-
+from __future__ import division
 import os
 import uuid
 import json
@@ -325,7 +325,7 @@ class FeatureService(abstract.BaseAGOLClass):
                                   proxy_url=self._proxy_url,
                                   proxy_port=self._proxy_port)
             if isinstance(json_dict, dict) and \
-               json_dict.has_key("layers"):
+               'layers' in json_dict:
                 for l in json_dict['layers']:
                     self._layers.append(FeatureLayer(url=self._url + "/%s" % l['id'],
                                                      securityHandler=self._securityHandler,
@@ -344,7 +344,7 @@ class FeatureService(abstract.BaseAGOLClass):
                                      proxy_url=self._proxy_url,
                                      proxy_port=self._proxy_port)
             if isinstance(json_dict, dict) and \
-               json_dict.has_key("tables"):
+               'tables' in json_dict:
                 for l in json_dict['tables']:
                     self._tables.append(FeatureLayer(url=self._url + "/%s" % l['id'],
                                                      securityHandler=self._securityHandler,
@@ -836,6 +836,10 @@ class FeatureLayer(abstract.BaseAGOLClass):
     """
        This contains information about a feature service's layer.
     """
+    _supportsValidateSQL = None
+    _syncCanReturnChanges = None
+    _dateFieldsTimeReference = None
+    _enableZDefaults = None
     _objectIdField = None
     _allowGeometryUpdates = None
     _globalIdField = None
@@ -899,6 +903,9 @@ class FeatureLayer(abstract.BaseAGOLClass):
     _serviceItemId = None
     _json = None
     _json_dict = None
+    _standardMaxRecordCount = None
+    _tileMaxRecordCount = None
+    _maxRecordCountFactor = None
     #----------------------------------------------------------------------
     def __init__(self, url,
                  securityHandler=None,
@@ -945,7 +952,7 @@ class FeatureLayer(abstract.BaseAGOLClass):
                 setattr(self, "_"+ k, json_dict[k])
             else:
                 print("%s - attribute not implemented in Feature Layer." % k)
-        if not self._parentLayer is None:
+        if self._parentLayer is None:
             self._parentLayer = FeatureService(
                 url=os.path.dirname(self._url),
                 securityHandler=self._securityHandler,
@@ -958,6 +965,8 @@ class FeatureLayer(abstract.BaseAGOLClass):
     #----------------------------------------------------------------------
     def __str__(self):
         """ returns object as string """
+        if self._json is None:
+            self.refresh()
         return self._json
     #----------------------------------------------------------------------
     def __iter__(self):
@@ -973,6 +982,28 @@ class FeatureLayer(abstract.BaseAGOLClass):
                       ]
         for att in attributes:
             yield (att, getattr(self, att))
+    #----------------------------------------------------------------------
+    @property
+    def standardMaxRecordCount(self):
+        """ returns the standardMaxRecordCount for the feature layer"""
+        if self._standardMaxRecordCount is None:
+            self.__init()
+        return self._standardMaxRecordCount
+    #----------------------------------------------------------------------
+    @property
+    def tileMaxRecordCount(self):
+        """ returns the tileMaxRecordCount for the feature layer"""
+        if self._tileMaxRecordCount is None:
+            self.__init()
+        return self._tileMaxRecordCount
+    #----------------------------------------------------------------------
+    @property
+    def maxRecordCountFactor(self):
+        """ returns the maxRecordCountFactor for the feature layer"""
+        if self._maxRecordCountFactor is None:
+            self.__init()
+        return self._maxRecordCountFactor
+
     #----------------------------------------------------------------------
     @property
     def url(self):
@@ -1185,7 +1216,11 @@ class FeatureLayer(abstract.BaseAGOLClass):
     def parentLayer(self):
         """ returns information about the parent """
         if self._parentLayer is None:
-            self.__init()
+            url = os.path.dirname(self._url)
+            self._parentLayer = FeatureService(url=url,
+                                               securityHandler=self._securityHandler,
+                                               proxy_url=self._proxy_url,
+                                               proxy_port=self._proxy_port)
         return self._parentLayer
     #----------------------------------------------------------------------
     @property
@@ -1355,6 +1390,33 @@ class FeatureLayer(abstract.BaseAGOLClass):
         return self._useStandardizedQueries
     #----------------------------------------------------------------------
     @property
+    def supportsValidateSQL(self):
+        """ returns the boolean value """
+        if self._supportsValidateSQL is None:
+            self.__init()
+        return self._supportsValidateSQL
+    #----------------------------------------------------------------------
+    @property
+    def syncCanReturnChanges(self):
+        """ returns the syncCanReturnChanges value"""
+        if self._syncCanReturnChanges is None:
+            self.__init()
+        return self._syncCanReturnChanges
+    #----------------------------------------------------------------------
+    @property
+    def dateFieldsTimeReference(self):
+        """returns the dateFieldsTimeReference value"""
+        if self._dateFieldsTimeReference is None:
+            self.__init()
+        return self._dateFieldsTimeReference
+    #----------------------------------------------------------------------
+    @property
+    def enableZDefaults(self):
+        if self._enableZDefaults is None:
+            self.__init()
+        return self._enableZDefaults
+    #----------------------------------------------------------------------
+    @property
     def securityHandler(self):
         """ gets the security handler """
         return self._securityHandler
@@ -1388,7 +1450,7 @@ class FeatureLayer(abstract.BaseAGOLClass):
             params = {'f':'json'}
             parsed = urlparse.urlparse(attachURL)
 
-            files = {'attachment', file_path}
+            files = {'attachment': file_path}
             res = self._post(url=attachURL,
                              param_dict=params,
                              files=files,
@@ -1877,6 +1939,7 @@ class FeatureLayer(abstract.BaseAGOLClass):
                    updateFeatures=[],
                    deleteFeatures=None,
                    gdbVersion=None,
+                   useGlobalIds=False,
                    rollbackOnFailure=True):
         """
            This operation adds, updates, and deletes features to the
@@ -1889,6 +1952,11 @@ class FeatureLayer(abstract.BaseAGOLClass):
                                objects
               deleteFeatures - string of OIDs to remove from service
               gdbVersion - Geodatabase version to apply the edits.
+              useGlobalIds - instead of referencing the default Object ID
+                              field, the service will look at a GUID field
+                              to track changes.  This means the GUIDs will
+                              be passed instead of OIDs for delete,
+                              update or add features.
               rollbackOnFailure - Optional parameter to specify if the
                                   edits should be applied only if all
                                   submitted edits succeed. If false, the
@@ -1901,8 +1969,12 @@ class FeatureLayer(abstract.BaseAGOLClass):
               dictionary of messages
         """
         editURL = self._url + "/applyEdits"
-        params = {"f": "json"
+        params = {"f": "json",
+                  "useGlobalIds" : userGlobalIds,
+                  "rollbackOnFailure" : rollbackOnFailure
                   }
+        if gdbVersion is not None:
+            params['gdbVersion'] = gdbVersion
         if len(addFeatures) > 0 and \
            isinstance(addFeatures[0], Feature):
             params['adds'] = json.dumps([f.asDictionary for f in addFeatures],

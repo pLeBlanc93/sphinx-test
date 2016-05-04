@@ -451,6 +451,9 @@ class Group(BaseAGOLClass):
     _userMembership = None
     _isInvitationOnly = None
     _thumbnail = None
+    _featuredItemsId = None
+    _isPublic = None
+    _isOrganization = None
     _tags = None
     _capabilities = None
     #----------------------------------------------------------------------
@@ -661,6 +664,30 @@ class Group(BaseAGOLClass):
         if self._thumbnail is None:
             self.__init()
         return self._thumbnail
+
+    #----------------------------------------------------------------------
+    @property
+    def featuredItemsId(self):
+        '''gets the property value for featuredItemsId'''
+        if self._featuredItemsId is None:
+            self.__init()
+        return self._featuredItemsId
+
+    #----------------------------------------------------------------------
+    @property
+    def isPublic(self):
+        '''gets the property value for isPublic'''
+        if self._isPublic is None:
+            self.__init()
+        return self._isPublic
+
+    #----------------------------------------------------------------------
+    @property
+    def isOrganization(self):
+        '''gets the property value for isOrganization'''
+        if self._isOrganization is None:
+            self.__init()
+        return self._isOrganization
 
     #----------------------------------------------------------------------
     @property
@@ -1181,8 +1208,8 @@ class Users(BaseAGOLClass):
     def __getUsername(self):
         """tries to parse the user name from various objects"""
 
-        if isinstance(self._securityHandler, (AGOLTokenSecurityHandler,
-                                              PortalTokenSecurityHandler)):
+        if self._securityHandler is not None and \
+           not self._securityHandler._username is None:
             return self._securityHandler._username
         elif self._securityHandler is not None and \
                hasattr(self._securityHandler, "org_url") and \
@@ -1249,6 +1276,15 @@ class User(BaseAGOLClass):
     _preferredView = None
     _lastLogin = None
     _validateUserProfile = None
+    _assignedCredits = None
+    _availableCredits = None
+    _firstName = None
+    _lastName = None
+    _clientApps = None
+    _accountId = None
+    _privacy = None
+    _defaultGroupId = None
+    _organization = None
     #----------------------------------------------------------------------
     def __init__(self,
                  url,
@@ -1316,6 +1352,32 @@ class User(BaseAGOLClass):
                     securityHandler=self._securityHandler,
                     proxy_url=self._proxy_url,
                     proxy_port=self._proxy_port)
+    @property
+    def lastName(self):
+        '''gets the property value for username'''
+        if self._lastName is None:
+            self.__init()
+        return self._lastName
+    @property
+    def firstName(self):
+        '''gets the property value for username'''
+        if self._firstName is None:
+            self.__init()
+        return self._firstName
+    #----------------------------------------------------------------------
+    @property
+    def assignedCredits(self):
+        """returns the assignedCredits value"""
+        if self._assignedCredits is None:
+            self.__init()
+        return self._assignedCredits
+    #----------------------------------------------------------------------
+    @property
+    def availableCredits(self):
+        """gets the availableCredits value"""
+        if self._availableCredits is None:
+            self.__init()
+        return self._availableCredits
     #----------------------------------------------------------------------
     @property
     def disabled(self):
@@ -1479,6 +1541,41 @@ class User(BaseAGOLClass):
         return self._thumbnail
     #----------------------------------------------------------------------
     @property
+    def clientApps(self):
+        '''gets clientApps value'''
+        if self._clientApps is None:
+            self.__init()
+        return self._clientApps
+    #----------------------------------------------------------------------
+    @property
+    def accountId(self):
+        '''gets accountId value'''
+        if self._accountId is None:
+            self.__init()
+        return self._accountId
+    #----------------------------------------------------------------------
+    @property
+    def privacy(self):
+        '''gets privacy value'''
+        if self._privacy is None:
+            self.__init()
+        return self._privacy
+    #----------------------------------------------------------------------
+    @property
+    def defaultGroupId(self):
+        '''gets defaultGroupId value'''
+        if self._defaultGroupId is None:
+            self.__init()
+        return self._defaultGroupId
+    #----------------------------------------------------------------------
+    @property
+    def organization(self):
+        '''gets organization value'''
+        if self._organization is None:
+            self.__init()
+        return self._organization
+    #----------------------------------------------------------------------
+    @property
     def orgId(self):
         '''gets orgId value'''
         if self._orgId is None:
@@ -1555,6 +1652,27 @@ class User(BaseAGOLClass):
                              proxy_url=self._proxy_url,
                              proxy_port=self._proxy_port)
     #----------------------------------------------------------------------
+    def resetPassword(self, email=True):
+        """
+        resets a users password for an account.  The password will be randomly
+        generated and emailed by the system.
+
+        Input:
+           email - boolean that an email password will be sent to the
+                   user's profile email address.  The default is True.
+
+        """
+        url = self.root + "/reset"
+        params = {
+            "f" : "json",
+            "email" : email
+        }
+        return self._post(url=url,
+                             param_dict=params,
+                             securityHandler=self._securityHandler,
+                             proxy_url=self._proxy_url,
+                             proxy_port=self._proxy_port)
+    #----------------------------------------------------------------------
     def expirePassword(self,
                        hours="now"):
         """sets a time when a user must reset their password"""
@@ -1610,11 +1728,11 @@ class User(BaseAGOLClass):
             "f" : "json"
         }
         url = self.root + "/enable"
-        return self._get(securityHandler=self._securityHandler,
-                            url = url,
-                            param_dict=params,
-                            proxy_url=self._proxy_url,
-                            proxy_port=self._proxy_port)
+        return self._post(url=url,
+                   param_dict=params,
+                   securityHandler=self._securityHandler,
+                   proxy_url=self._proxy_url,
+                   proxy_port=self._proxy_port)
     #----------------------------------------------------------------------
     def update(self,
                clearEmptyFields=None,
@@ -1626,7 +1744,8 @@ class User(BaseAGOLClass):
                securityQuestionIdx=None,
                securityAnswer=None,
                culture=None,
-               region=None
+               region=None,
+               userType=None
                ):
         """
         The Update User operation (POST only) modifies properties such as
@@ -1671,6 +1790,11 @@ class User(BaseAGOLClass):
                   browser/machine language setting.
         region - Specifies the region of featured maps and apps and the
                  basemap gallery.
+        userType - if the value is set to "both", then the value will allow
+                   users to access both ArcGIS Org and the forums from this
+                   account.  'arcgisorg' means the account is only valid
+                   for the organizational site.  This is an AGOL only
+                   parameter.
         """
         params = {
             "f" : "json"
@@ -1693,7 +1817,9 @@ class User(BaseAGOLClass):
             params['securityQuestionIdx'] = securityQuestionIdx
         if securityAnswer is not None:
             params['securityAnswer'] = securityAnswer
-
+        if userType is not None and \
+           userType.lower() in ['both', 'arcgisorg']:
+            params['userType'] = userType.lower()
         files = {}
 
 

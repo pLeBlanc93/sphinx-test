@@ -1257,6 +1257,7 @@ class ItemParameter(BaseParameters):
        type - The type of the item. Must be drawn from the list of
               supported types. See Items and item types for a list of the
               supported types.
+              http://resources.arcgis.com/en/help/arcgis-rest-api/#/Items_and_item_types/02r3000000ms000000/
        typeKeywords - Type keywords describe the type and should logically
                       apply to all items of that type. See Items and item
                       types for a list of the different predefined type
@@ -1282,7 +1283,10 @@ class ItemParameter(BaseParameters):
                          Server service. It is valid on Map Services,
                          Feature Services, and Image Services only.
        fileName - name of the file updating (optional)
+       archiveSelect - type of archive. Values: filegeodatabase
+       stylx - 2d or 3d value
     """
+    _archiveSelect = None
     _title = None
     _thumbnail = None
     _thumbnailurl = None
@@ -1301,6 +1305,7 @@ class ItemParameter(BaseParameters):
     _serviceUsername = None
     _servicePassword = None
     _filename = None
+    _stylx = None
     #----------------------------------------------------------------------
     def __init__(self):
         """Constructor"""
@@ -1461,6 +1466,16 @@ class ItemParameter(BaseParameters):
         """gets/sets an item description of any length"""
         if self._description != value:
             self._description = value
+    @property
+    def archiveSelect(self):
+        """ gets/sets an item archiveSelect value"""
+        return self._archiveSelect
+    #----------------------------------------------------------------------
+    @archiveSelect.setter
+    def archiveSelect(self, value):
+        """gets/sets an item description of any length"""
+        if self._archiveSelect != value:
+            self._archiveSelect = value
     #----------------------------------------------------------------------
     @property
     def tags(self):
@@ -1526,6 +1541,17 @@ class ItemParameter(BaseParameters):
         """gets/sets the coordinate system of the item """
         if self._spatialReference != value:
             self._spatialReference = value
+    #----------------------------------------------------------------------
+    @property
+    def stylx(self):
+        """gets/sets the stylx value"""
+        return self._stylx
+    #----------------------------------------------------------------------
+    @stylx.setter
+    def stylx(self, value):
+        """gets/sets the stylx value"""
+        if self._stylx != value:
+            self._stylx = value
     #----------------------------------------------------------------------
     @property
     def accessInformation(self):

@@ -7,10 +7,12 @@ from __future__ import print_function
 import io
 import os
 import re
+import ssl
 import sys
 import json
 import uuid
 import zlib
+from inspect import getargspec
 import shutil
 import tempfile
 import mimetypes
@@ -27,8 +29,9 @@ from ..packages.six.moves import http_cookiejar as cookiejar
 from ..packages.six.moves.urllib_parse import urlencode
 
 ########################################################################
-__version__ = "3.5.3"
+__version__ = "3.5.4"
 ########################################################################
+
 class BaseOperation(object):
     """base class for all objects"""
     _error = None
@@ -40,7 +43,7 @@ class BaseOperation(object):
                 init = getattr(self, "_" + self.__class__.__name__ + "__init", None)
                 if init is not None and callable(init):
                     init()
-            except Exception,e:
+            except Exception as e:
                 pass
         """gets the error"""
         return self._error
@@ -73,7 +76,11 @@ class MultiPartForm(object):
     boundary = None
     form_data = ""
     #----------------------------------------------------------------------
-    def __init__(self, param_dict={}, files={}):
+    def __init__(self, param_dict=None, files=None):
+        if param_dict is None:
+            param_dict = {}
+        if files is None:
+            files = {}
         self.boundary = None
         self.files = []
         self.form_data = ""
@@ -90,11 +97,17 @@ class MultiPartForm(object):
             self.files = []
         else:
             for key,v in files.items():
+                if isinstance(v, list):
+                    fileName = os.path.basename(v[1])
+                    filePath = v[0]
+                else:
+                    filePath = v
+                    fileName = os.path.basename(v)
                 self.add_file(fieldname=key,
-                              filename=os.path.basename(v),
-                              filePath=v,
+                              filename=fileName,#os.path.basename(v),
+                              filePath=filePath,#,v
                               mimetype=None)
-        self.boundary = email.generator._make_boundary()
+        self.boundary = "-%s" % email.generator._make_boundary()
     #----------------------------------------------------------------------
     def get_content_type(self):
         return 'multipart/form-data; boundary=%s' % self.boundary
@@ -188,6 +201,9 @@ class BaseWebOperations(BaseOperation):
     _last_code = None
     _last_method = None
     _useragent = "Mozilla/5.0 (Windows NT 6.3; rv:36.0) Gecko/20100101 Firefox/36.0"
+    _verify = False
+    def __init__(self, verify=False):
+        self._verify = verify
     #----------------------------------------------------------------------
     @property
     def last_method(self):
@@ -261,6 +277,10 @@ class BaseWebOperations(BaseOperation):
         elif securityHandler.method.lower() == "handler":
             handler = securityHandler.handler
             cj = securityHandler.cookiejar
+        if len(param_dict) > 0:
+            for k,v in param_dict.items():
+                if isinstance(v, bool):
+                    param_dict[k] = json.dumps(v)
         return param_dict, handler, cj
     #----------------------------------------------------------------------
     def _process_response(self, resp, out_folder=None):
@@ -268,7 +288,7 @@ class BaseWebOperations(BaseOperation):
         CHUNK = 4056
         maintype = self._mainType(resp)
         contentDisposition = resp.headers.get('content-disposition')
-        contentEncoding = resp.headers.get('content-encoding')
+        #contentEncoding = resp.headers.get('content-encoding')
         contentType = resp.headers.get('content-type')
         contentLength = resp.headers.get('content-length')
         if maintype.lower() in ('image',
@@ -310,14 +330,14 @@ class BaseWebOperations(BaseOperation):
     def _make_boundary(self):
         """ creates a boundary for multipart post (form post)"""
         if self.PY2:
-            return '===============%s==' % uuid.uuid4().get_hex()
+            return '-===============%s==' % uuid.uuid4().get_hex()
         elif self.PY3:
-            return '===============%s==' % uuid.uuid4().hex
+            return '-===============%s==' % uuid.uuid4().hex
         else:
             from random import choice
             digits = "0123456789"
             letters = "abcdefghijklmnopqrstuvwxyz"
-            return '===============%s==' % ''.join(choice(letters + digits) \
+            return '-===============%s==' % ''.join(choice(letters + digits) \
                                                    for i in range(15))
     #----------------------------------------------------------------------
     def _get_content_type(self, filename):
@@ -350,16 +370,17 @@ class BaseWebOperations(BaseOperation):
                 yield chunk
     #----------------------------------------------------------------------
     def _post(self, url,
-              param_dict={},
-              files={},
+              param_dict=None,
+              files=None,
               securityHandler=None,
-              additional_headers={},
-              custom_handlers=[],
+              additional_headers=None,
+              custom_handlers=None,
               proxy_url=None,
               proxy_port=80,
               compress=True,
               out_folder=None,
-              file_name=None):
+              file_name=None,
+              force_form_post=False):
         """
         Performs a POST operation on a URL.
 
@@ -387,11 +408,38 @@ class BaseWebOperations(BaseOperation):
            file_name - if the operation returns a file and the file name is not
              given in the header or a user wishes to override the return saved
              file name, provide value here.
+           force_form_post - boolean -
         Output:
            returns dictionary or string depending on web operation.
         """
-        self._last_method = "POST"
-        headers = {}
+        if param_dict is None:
+            param_dict = {}
+        if files is None:
+            files = {}
+        if additional_headers is None:
+            additional_headers = {}
+        if custom_handlers is None:
+            custom_handlers = []
+        if self._verify == False and \
+           sys.version_info[0:3] >= (2, 7, 9):
+            ctx = ssl.create_default_context()
+            ctx.check_hostname = False
+            ctx.verify_mode = ssl.CERT_NONE
+            custom_handlers.append(request.HTTPSHandler(context=ctx))
+        if len(files) == 0 and force_form_post == False:
+            self._last_method = "POST"
+        elif len(files) == 0 and force_form_post == True:
+            self._last_method = "FORM-MULTIPART"
+        elif len(files) > 0:
+            self._last_method = "FORM-MULTIPART"
+            force_form_post = True
+
+        headers = {
+            "User-Agent": self.useragent,
+            'Accept': '*/*'
+        }
+        if securityHandler and securityHandler.referer_url:
+            headers['referer'] = securityHandler.referer_url
         opener = None
         return_value = None
         handlers = [RedirectHandler()]
@@ -411,26 +459,44 @@ class BaseWebOperations(BaseOperation):
         for k,v in additional_headers.items():
             headers[k] = v
             del k,v
+        hasContext = 'context' in self._has_context(request.urlopen)
+        if self._verify == False and \
+           sys.version_info[0:3] >= (2, 7, 9):
+            ctx = ssl.create_default_context()
+            ctx.check_hostname = False
+            ctx.verify_mode = ssl.CERT_NONE
+
         opener = request.build_opener(*handlers)
-        request.install_opener(opener)
         opener.addheaders = [(k,v) for k,v in headers.items()]
-        if len(files) == 0:
+        request.install_opener(opener)
+        if force_form_post == False:
             data = urlencode(param_dict)
             if self.PY3:
                 data = data.encode('ascii')
             opener.data = data
-            resp = opener.open(self._asString(url),
-                               data=data)
+            req = request.Request(self._asString(url),
+                                  data = data,
+                                  headers=headers)
+            for k,v in headers.items():
+                req.add_header(k,v)
+            if hasContext and self._verify == False:
+                resp = request.urlopen(req, context=ctx)
+            else:
+                resp = request.urlopen(req)
         else:
             mpf = MultiPartForm(param_dict=param_dict,
                                 files=files)
-            req = request.Request(self._asString(url))
+            req = request.Request(self._asString(url), headers=headers)
             body = mpf.make_result
             req.add_header('User-agent', self.useragent)
             req.add_header('Content-type', mpf.get_content_type())
             req.add_header('Content-length', len(body))
             req.data = body
-            resp = request.urlopen(req)
+            if 'context' in self._has_context(request.urlopen) and \
+               self._verify == False:
+                resp = request.urlopen(req, context=ctx)
+            else:
+                resp = request.urlopen(req)
             del body, mpf
         self._last_code = resp.getcode()
         self._last_url = resp.geturl()
@@ -468,15 +534,23 @@ class BaseWebOperations(BaseOperation):
         elif sys.version_info[0] == 2:
             return value.encode('ascii')
     #----------------------------------------------------------------------
+    def _has_context(self, func):
+        if sys.version[0] == '2':
+            from inspect import getargspec
+            return getargspec(func).args
+        else:
+            from inspect import signature
+            return signature(func).parameters
+    #----------------------------------------------------------------------
     def _get(self, url,
-             param_dict={},
+             param_dict=None,
              securityHandler=None,
-             additional_headers=[],
-             handlers=[],
+             additional_headers=None,
+             handlers=None,
              proxy_url=None,
              proxy_port=None,
              compress=True,
-             custom_handlers=[],
+             custom_handlers=None,
              out_folder=None,
              file_name=None):
         """
@@ -486,15 +560,32 @@ class BaseWebOperations(BaseOperation):
         Output:
            returns dictionary, string or None
         """
+        pass_headers = {}
+        if custom_handlers is None:
+            custom_handlers = []
+        if handlers is None:
+            handlers = []
+        if param_dict is None:
+            param_dict = {}
         self._last_method = "GET"
         CHUNK = 4056
         param_dict, handler, cj = self._processHandler(securityHandler, param_dict)
-        headers = [] + additional_headers
-        if compress:
-            headers.append(('Accept-encoding', 'gzip'))
+        if additional_headers is not None:
+            headers = [] + additional_headers
         else:
-            headers.append(('Accept-encoding', ''))
-        headers.append(('User-Agent', self.useragent))
+            headers = []
+        pass_headers = {}
+        if securityHandler and securityHandler.referer_url:
+            pass_headers['referer'] = securityHandler.referer_url
+        for h in headers:
+            pass_headers[h[0]] = h[1]
+
+        if compress:
+            pass_headers['Accept-encoding'] = 'gzip'
+        else:
+            pass_headers['Accept-encoding'] = ""
+        #headers.append(('User-Agent', USER_AGENT))
+        pass_headers['User-Agent'] = self.useragent
         if len(param_dict.keys()) == 0:
             param_dict = None
         if handlers is None:
@@ -502,6 +593,12 @@ class BaseWebOperations(BaseOperation):
         if handler is not None:
             handlers.append(handler)
         handlers.append(RedirectHandler())
+        if self._verify == False and \
+           sys.version_info[0:3] >= (2, 7, 9):
+            ctx = ssl.create_default_context()
+            ctx.check_hostname = False
+            ctx.verify_mode = ssl.CERT_NONE
+            handlers.append(request.HTTPSHandler(context=ctx))
         if cj is not None:
             handlers.append(request.HTTPCookieProcessor(cj))
         if proxy_url is not None:
@@ -512,26 +609,83 @@ class BaseWebOperations(BaseOperation):
             proxy_support = request.ProxyHandler(proxies)
             handlers.append(proxy_support)
         opener = request.build_opener(*handlers)
+
         opener.addheaders = headers
-        if param_dict is None:
-            resp = opener.open(self._asString(url), data=param_dict)
-        elif len(str(urlencode(param_dict))) + len(url) >= 1999:
-            resp = opener.open(self._asString(url),
-                               data=urlencode(param_dict))
+        request.install_opener(opener)
+        ctx = None
+        hasContext = False
+        if self._verify == False and \
+           'context' in self._has_context(request.urlopen) and \
+            sys.version_info[0:3] >= (2, 7, 9):
+            ctx = ssl.create_default_context()
+            ctx.check_hostname = False
+            ctx.verify_mode = ssl.CERT_NONE
+            hasContext = True
+
+        if hasContext == False:
+
+            if param_dict is None:
+                req = request.Request(self._asString(url),
+                                      headers=pass_headers)
+                resp = request.urlopen(req)
+            elif len(str(urlencode(param_dict))) + len(url) >= 1999:
+                return self._post(
+                    url=url,
+                    param_dict=param_dict,
+                    files=None,
+                    securityHandler=securityHandler,
+                    additional_headers=additional_headers,
+                    custom_handlers=custom_handlers,
+                    proxy_url=proxy_url,
+                    proxy_port=proxy_port,
+                    compress=compress,
+                    out_folder=out_folder,
+                    file_name=file_name,
+                    force_form_post=False)
+            else:
+                format_url = self._asString(url) + "?%s" % urlencode(param_dict)
+                req = request.Request(format_url,
+                                      headers=pass_headers)
+                resp = request.urlopen(req)
         else:
-            format_url = self._asString(url) + "?%s" % urlencode(param_dict)
-            resp = opener.open(fullurl=format_url)
+            if param_dict is None:
+                req = request.Request(self._asString(url),
+                                      headers=pass_headers)
+                resp = request.urlopen(req,
+                                       context=ctx)
+            elif len(str(urlencode(param_dict))) + len(url) >= 1999:
+                return self._post(
+                    url=url,
+                    param_dict=param_dict,
+                    files=None,
+                    securityHandler=securityHandler,
+                    additional_headers=additional_headers,
+                    custom_handlers=custom_handlers,
+                    proxy_url=proxy_url,
+                    proxy_port=proxy_port,
+                    compress=compress,
+                    out_folder=out_folder,
+                    file_name=file_name,
+                    force_form_post=False)
+            else:
+                format_url = self._asString(url) + "?%s" % urlencode(param_dict)
+                req = request.Request(format_url,
+                                      headers=pass_headers)
+                resp = request.urlopen(req,
+                                       context=ctx)
         self._last_code = resp.getcode()
         self._last_url = resp.geturl()
         #  Get some headers from the response
         maintype = self._mainType(resp)
         contentDisposition = resp.headers.get('content-disposition')
-        contentEncoding = resp.headers.get('content-encoding')
+        contentMD5 = resp.headers.get('Content-MD5')
+        #contentEncoding = resp.headers.get('content-encoding')
         contentType = resp.headers.get('content-Type').split(';')[0].lower()
         contentLength = resp.headers.get('content-length')
         if maintype.lower() in ('image',
                                 'application/x-zip-compressed') or \
            contentType == 'application/x-zip-compressed' or \
+           contentMD5 is not None or\
            (contentDisposition is not None and \
             contentDisposition.lower().find('attachment;') > -1):
 
