@@ -36,9 +36,6 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
           <a href="arcrest.ags.html" title="arcrest.ags package"
              accesskey="N">next</a> |</li>
         <li class="right" >
@@ -61,218 +58,20 @@
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-arcrest.agol.helperservices.analysis">
-<span id="arcrest-agol-helperservices-analysis-module"></span><h2>arcrest.agol.helperservices.analysis module<a class="headerlink" href="#module-arcrest.agol.helperservices.analysis" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="arcrest.agol.helperservices.analysis.analysis">
-<em class="property">class </em><code class="descclassname">arcrest.agol.helperservices.analysis.</code><code class="descname">analysis</code><span class="sig-paren">(</span><em>securityHandler</em>, <em>url=None</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/helperservices/analysis.html#analysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.helperservices.analysis.analysis" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">arcrest._abstract.abstract.BaseAGOLClass</span></code></p>
-<p>ArcGIS Online is a collaborative, cloud-based platform that lets
-members of an organization create, share, and access maps,
-applications, and data, including authoritative basemaps published
-by Esri. Through ArcGIS Online, you get access to Esri&#8217;s secure
-cloud, where you can manage, create, store, and access hosted web
-services.
-ArcGIS Online includes the Spatial Analysis service. The Spatial
-Analysis service contains a number of tasks, listed below, that you
-can access and use in your applications. Using Spatial Analysis
-service tasks consumes credits. For more information on credits, see
-see Service credits overview which includes access to an interactive
-Service Credits Estimator.</p>
-<p>Site Reference: <a class="reference external" href="https://developers.arcgis.com/rest/analysis/">https://developers.arcgis.com/rest/analysis/</a></p>
-<dl class="docutils">
-<dt>Inputs:</dt>
-<dd><p class="first">securityHandler - ArcGIS Online security handler object
-url - optional url to the site.</p>
-<blockquote>
-<div>ex: <a class="reference external" href="http://www.arcgis.com/sharing/rest">http://www.arcgis.com/sharing/rest</a></div></blockquote>
-<p class="last">proxy_url - optional proxy IP
-proxy_port - optional proxy port required if proxy_url specified</p>
-</dd>
-<dt>Basic Usage:</dt>
-<dd><p class="first">import arcrest
-import arcrest.agol as agol</p>
-<dl class="last docutils">
-<dt>if __name__ == &#8220;__main__&#8221;:</dt>
-<dd><p class="first">username = &#8220;username&#8221;
-password = &#8220;password&#8221;
-sh = arcrest.AGOLTokenSecurityHandler(username, password)
-a = agol.analysis(securityHandler=sh)
-for task in a.tasks:</p>
-<blockquote class="last">
-<div><dl class="docutils">
-<dt>if task.name.lower() == &#8220;aggregatepoints&#8221;:</dt>
-<dd><dl class="first last docutils">
-<dt>for params in task.parameters:</dt>
-<dd>print( params)</dd>
-</dl>
-</dd>
-</dl>
-</div></blockquote>
-</dd>
-</dl>
-</dd>
-</dl>
-<dl class="method">
-<dt id="arcrest.agol.helperservices.analysis.analysis._analysis__init_url">
-<code class="descname">_analysis__init_url</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.agol.helperservices.analysis.analysis._analysis__init_url" title="Permalink to this definition">¶</a></dt>
-<dd><p>loads the information into the class</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="arcrest.agol.helperservices.analysis.analysis.gpService">
-<code class="descname">gpService</code><a class="headerlink" href="#arcrest.agol.helperservices.analysis.analysis.gpService" title="Permalink to this definition">¶</a></dt>
-<dd><p>returns the geoprocessing object</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="arcrest.agol.helperservices.analysis.analysis.tasks">
-<code class="descname">tasks</code><a class="headerlink" href="#arcrest.agol.helperservices.analysis.analysis.tasks" title="Permalink to this definition">¶</a></dt>
-<dd><p>returns the available analysis tasks</p>
-</dd></dl>
-
-</dd></dl>
-
+<div class="section" id="arcrest-agol-helperservices-analysis-module">
+<h2>arcrest.agol.helperservices.analysis module<a class="headerlink" href="#arcrest-agol-helperservices-analysis-module" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-arcrest.agol.helperservices.elevation">
-<span id="arcrest-agol-helperservices-elevation-module"></span><h2>arcrest.agol.helperservices.elevation module<a class="headerlink" href="#module-arcrest.agol.helperservices.elevation" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="arcrest.agol.helperservices.elevation.elevation">
-<em class="property">class </em><code class="descclassname">arcrest.agol.helperservices.elevation.</code><code class="descname">elevation</code><span class="sig-paren">(</span><em>securityHandler</em>, <em>url=None</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/helperservices/elevation.html#elevation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.helperservices.elevation.elevation" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">arcrest._abstract.abstract.BaseAGOLClass</span></code></p>
-<p>The Elevation Analysis services provide a group of capabilities for
-performing analytical operations against data hosted and managed by
-Esri. This allows you to perform certain common analytical tasks
-quickly and easily, without having to collect, maintain, or update an
-authoritative set of base data. That&#8217;s done for you.</p>
-<dl class="docutils">
-<dt>Inputs:</dt>
-<dd><p class="first">securityHandler - arcgis online security handler
-url - orginization url</p>
-<blockquote>
-<div>ex: <a class="reference external" href="http://www.arcgis.com">http://www.arcgis.com</a></div></blockquote>
-<p class="last">proxy_url - IP/address of proxy
-proxy_port - port # of proxy is on.</p>
-</dd>
-</dl>
-<dl class="method">
-<dt id="arcrest.agol.helperservices.elevation.elevation._elevation__init_url">
-<code class="descname">_elevation__init_url</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.agol.helperservices.elevation.elevation._elevation__init_url" title="Permalink to this definition">¶</a></dt>
-<dd><p>loads the information into the class</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="arcrest.agol.helperservices.elevation.elevation.gpService">
-<code class="descname">gpService</code><a class="headerlink" href="#arcrest.agol.helperservices.elevation.elevation.gpService" title="Permalink to this definition">¶</a></dt>
-<dd><p>returns the geoprocessing service object</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="arcrest.agol.helperservices.elevation.elevation.tasks">
-<code class="descname">tasks</code><a class="headerlink" href="#arcrest.agol.helperservices.elevation.elevation.tasks" title="Permalink to this definition">¶</a></dt>
-<dd><p>returns a list of GPTask objects for GPService</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="arcrest.agol.helperservices.elevation.elevationSync">
-<em class="property">class </em><code class="descclassname">arcrest.agol.helperservices.elevation.</code><code class="descname">elevationSync</code><span class="sig-paren">(</span><em>securityHandler</em>, <em>url=None</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/helperservices/elevation.html#elevationSync"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.helperservices.elevation.elevationSync" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">arcrest._abstract.abstract.BaseAGOLClass</span></code></p>
-<p>These are synchronus gp tasks.</p>
-<p>The Elevation Analysis services provide a group of capabilities for
-performing analytical operations against data hosted and managed by
-Esri. This allows you to perform certain common analytical tasks
-quickly and easily, without having to collect, maintain, or update an
-authoritative set of base data. That&#8217;s done for you.</p>
-<dl class="docutils">
-<dt>Inputs:</dt>
-<dd><p class="first">securityHandler - arcgis online security handler
-url - orginization url</p>
-<blockquote>
-<div>ex: <a class="reference external" href="http://www.arcgis.com">http://www.arcgis.com</a></div></blockquote>
-<p class="last">proxy_url - IP/address of proxy
-proxy_port - port # of proxy is on.</p>
-</dd>
-</dl>
-<dl class="method">
-<dt id="arcrest.agol.helperservices.elevation.elevationSync._elevationSync__init_url">
-<code class="descname">_elevationSync__init_url</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.agol.helperservices.elevation.elevationSync._elevationSync__init_url" title="Permalink to this definition">¶</a></dt>
-<dd><p>loads the information into the class</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="arcrest.agol.helperservices.elevation.elevationSync.gpService">
-<code class="descname">gpService</code><a class="headerlink" href="#arcrest.agol.helperservices.elevation.elevationSync.gpService" title="Permalink to this definition">¶</a></dt>
-<dd><p>returns the geoprocessing service object</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="arcrest.agol.helperservices.elevation.elevationSync.tasks">
-<code class="descname">tasks</code><a class="headerlink" href="#arcrest.agol.helperservices.elevation.elevationSync.tasks" title="Permalink to this definition">¶</a></dt>
-<dd><p>returns a list of GPTask objects for GPService</p>
-</dd></dl>
-
-</dd></dl>
-
+<div class="section" id="arcrest-agol-helperservices-elevation-module">
+<h2>arcrest.agol.helperservices.elevation module<a class="headerlink" href="#arcrest-agol-helperservices-elevation-module" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-arcrest.agol.helperservices.geocoder">
-<span id="arcrest-agol-helperservices-geocoder-module"></span><h2>arcrest.agol.helperservices.geocoder module<a class="headerlink" href="#module-arcrest.agol.helperservices.geocoder" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="arcrest.agol.helperservices.geocoder.geocode">
-<em class="property">class </em><code class="descclassname">arcrest.agol.helperservices.geocoder.</code><code class="descname">geocode</code><span class="sig-paren">(</span><em>url</em>, <em>securityHandler=None</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em>, <em>initialize=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/helperservices/geocoder.html#geocode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.helperservices.geocoder.geocode" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">arcrest.ags._geocodeservice.GeocodeService</span></code></p>
-<p>agol geocode object</p>
-</dd></dl>
-
+<div class="section" id="arcrest-agol-helperservices-geocoder-module">
+<h2>arcrest.agol.helperservices.geocoder module<a class="headerlink" href="#arcrest-agol-helperservices-geocoder-module" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-arcrest.agol.helperservices.hydrology">
-<span id="arcrest-agol-helperservices-hydrology-module"></span><h2>arcrest.agol.helperservices.hydrology module<a class="headerlink" href="#module-arcrest.agol.helperservices.hydrology" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="arcrest.agol.helperservices.hydrology.hydrology">
-<em class="property">class </em><code class="descclassname">arcrest.agol.helperservices.hydrology.</code><code class="descname">hydrology</code><span class="sig-paren">(</span><em>securityHandler</em>, <em>url=None</em>, <em>proxy_url=None</em>, <em>proxy_port=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/arcrest/agol/helperservices/hydrology.html#hydrology"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arcrest.agol.helperservices.hydrology.hydrology" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">arcrest._abstract.abstract.BaseAGOLClass</span></code></p>
-<p>The data being operated on are maintained by Esri and made available to
-you through these tasks. A primary benefit of using these data sources
-is that a lot of the hard work has already been done, freeing you up to
-just work on performing analysis instead of having to worry about
-compiling, processing and storing very large datasets of continental
-and global scales on your local machine or network.</p>
-<p>Find out more here:
-<a class="reference external" href="https://developers.arcgis.com/rest/elevation/api-reference/source-data-for-hydrology-analysis-tasks.htm">https://developers.arcgis.com/rest/elevation/api-reference/source-data-for-hydrology-analysis-tasks.htm</a></p>
-<dl class="docutils">
-<dt>Inputs:</dt>
-<dd><p class="first">securityHandler - arcgis online security handler
-url - orginization url</p>
-<blockquote>
-<div>ex: <a class="reference external" href="http://www.arcgis.com">http://www.arcgis.com</a></div></blockquote>
-<p class="last">proxy_url - IP/address of proxy
-proxy_port - port # of proxy is on.</p>
-</dd>
-</dl>
-<dl class="method">
-<dt id="arcrest.agol.helperservices.hydrology.hydrology._hydrology__init_url">
-<code class="descname">_hydrology__init_url</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#arcrest.agol.helperservices.hydrology.hydrology._hydrology__init_url" title="Permalink to this definition">¶</a></dt>
-<dd><p>loads the information into the class</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="arcrest.agol.helperservices.hydrology.hydrology.gpService">
-<code class="descname">gpService</code><a class="headerlink" href="#arcrest.agol.helperservices.hydrology.hydrology.gpService" title="Permalink to this definition">¶</a></dt>
-<dd><p>returns the geoprocessing service object</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="arcrest.agol.helperservices.hydrology.hydrology.tasks">
-<code class="descname">tasks</code><a class="headerlink" href="#arcrest.agol.helperservices.hydrology.hydrology.tasks" title="Permalink to this definition">¶</a></dt>
-<dd><p>returns a list of GPTask objects for GPService</p>
-</dd></dl>
-
-</dd></dl>
-
+<div class="section" id="arcrest-agol-helperservices-hydrology-module">
+<h2>arcrest.agol.helperservices.hydrology module<a class="headerlink" href="#arcrest-agol-helperservices-hydrology-module" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-arcrest.agol.helperservices">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-arcrest.agol.helperservices" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-contents">
+<h2>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -286,11 +85,11 @@ proxy_port - port # of proxy is on.</p>
   <ul>
 <li><a class="reference internal" href="#">arcrest.agol.helperservices package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-arcrest.agol.helperservices.analysis">arcrest.agol.helperservices.analysis module</a></li>
-<li><a class="reference internal" href="#module-arcrest.agol.helperservices.elevation">arcrest.agol.helperservices.elevation module</a></li>
-<li><a class="reference internal" href="#module-arcrest.agol.helperservices.geocoder">arcrest.agol.helperservices.geocoder module</a></li>
-<li><a class="reference internal" href="#module-arcrest.agol.helperservices.hydrology">arcrest.agol.helperservices.hydrology module</a></li>
-<li><a class="reference internal" href="#module-arcrest.agol.helperservices">Module contents</a></li>
+<li><a class="reference internal" href="#arcrest-agol-helperservices-analysis-module">arcrest.agol.helperservices.analysis module</a></li>
+<li><a class="reference internal" href="#arcrest-agol-helperservices-elevation-module">arcrest.agol.helperservices.elevation module</a></li>
+<li><a class="reference internal" href="#arcrest-agol-helperservices-geocoder-module">arcrest.agol.helperservices.geocoder module</a></li>
+<li><a class="reference internal" href="#arcrest-agol-helperservices-hydrology-module">arcrest.agol.helperservices.hydrology module</a></li>
+<li><a class="reference internal" href="#module-contents">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -316,9 +115,6 @@ proxy_port - port # of proxy is on.</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -331,9 +127,6 @@ proxy_port - port # of proxy is on.</p>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
         <li class="right" >
           <a href="arcrest.ags.html" title="arcrest.ags package"
              >next</a> |</li>
@@ -348,7 +141,7 @@ proxy_port - port # of proxy is on.</p>
     </div>
     <div class="footer" role="contentinfo">
         &copy; Copyright 2016, p.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.
     </div>
   </body>
 </html>
